@@ -1,0 +1,68 @@
+{
+  "image": "/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png",
+  "detector": "contour/blob baseline (NOT YOLO)",
+  "zone": null,
+  "counts": {
+    "server": 2,
+    "switch": 1,
+    "cable": 2
+  },
+  "total": 5,
+  "detections": [
+    {
+      "label": "server",
+      "confidence": 0.687,
+      "bbox": [
+        181,
+        111,
+        260,
+        160
+      ],
+      "area": 3744
+    },
+    {
+      "label": "server",
+      "confidence": 0.687,
+      "bbox": [
+        31,
+        31,
+        110,
+        80
+      ],
+      "area": 3744
+    },
+    {
+      "label": "switch",
+      "confidence": 0.684,
+      "bbox": [
+        31,
+        111,
+        140,
+        146
+      ],
+      "area": 3672
+    },
+    {
+      "label": "cable",
+      "confidence": 0.625,
+      "bbox": [
+        31,
+        171,
+        210,
+        186
+      ],
+      "area": 2492
+    },
+    {
+      "label": "cable",
+      "confidence": 0.604,
+      "bbox": [
+        141,
+        41,
+        290,
+        56
+      ],
+      "area": 2072
+    }
+  ]
+}

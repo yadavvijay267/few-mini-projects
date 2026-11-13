@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquid UI Playground — Clamor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"/><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs>
+</svg>
+<header><h1>🫧 Liquid UI Playground</h1><p>Tune the blob live, try the gooey demos, and copy the code for any effect.</p></header>
+<main>
+  <section class="stage"><div id="blob" class="blob" aria-label="Morphing blob preview"></div><p id="blobLabel">Your blob, morphing live</p></section>
+  <section class="controls">
+    <label>Roundness <input id="round" type="range" min="20" max="80" value="55"><span id="roundVal">55%</span></label>
+    <label>Morph speed <input id="speed" type="range" min="1" max="20" value="8"><span id="speedVal">8s</span></label>
+    <label>Colour <input id="color" type="color" value="#0ea5e9"></label>
+    <label>Blur glow <input id="blur" type="range" min="0" max="60" value="30"><span id="blurVal">30px</span></label>
+    <label>Size <input id="size" type="range" min="140" max="340" value="240"><span id="sizeVal">240px</span></label>
+    <div class="presets"><span>Presets:</span>
+      <button data-preset="calm">Calm</button><button data-preset="playful">Playful</button><button data-preset="energetic">Energetic</button></div>
+    <button id="copyBlob" class="btn primary">📋 Copy blob CSS</button>
+    <pre id="codeOut" class="code"></pre>
+  </section>
+  <section class="demos">
+    <div class="demo"><h2>Gooey buttons</h2><div class="goo-row" style="filter:url(#goo)">
+      <button class="goo-btn">Menu</button><button class="goo-btn">Share</button><button class="goo-btn">Save</button></div>
+      <p>Three buttons under an SVG goo filter — hover them and they merge like liquid.</p>
+      <button class="btn" data-copy="goo">📋 Copy gooey SVG filter</button></div>
+    <div class="demo"><h2>Gooey menu</h2><div class="goo-menu" style="filter:url(#goo)">
+      <button id="gooToggle" class="goo-btn big">+</button>
+      <button class="goo-btn small">A</button><button class="goo-btn small">B</button><button class="goo-btn small">C</button></div>
+      <p>Tap + and the menu items bubble out of the main button.</p></div>
+    <div class="demo"><h2>Liquid background</h2><div id="liquidBg" class="liquid-bg"><span>Hover me</span></div>
+      <p>A background of drifting blobs — move your pointer across it.</p>
+      <button class="btn" data-copy="bg">📋 Copy liquid background CSS</button></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

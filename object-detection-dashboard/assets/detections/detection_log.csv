@@ -1,0 +1,51 @@
+timestamp,image,total,counts
+2026-11-12T02:13:02,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:13:02,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:13:03,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:13:03,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:13:04,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:16:31,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:16:31,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:16:31,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:16:32,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:16:32,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:18:25,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:18:26,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:18:26,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:18:27,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:18:27,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:20:09,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:20:09,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:20:10,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:20:10,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:20:10,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:21:57,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:21:57,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:21:58,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:21:58,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:21:59,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:22:07,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:22:07,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:22:08,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:22:08,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:22:09,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:24:55,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:24:56,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:24:56,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:24:56,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:24:57,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:25:24,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:25:24,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:25:25,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:25:25,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:25:26,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:26:42,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:26:42,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:26:43,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:26:43,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:26:43,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"
+2026-11-12T02:26:47,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,6,"{""server"": 3, ""switch"": 2, ""cable"": 1}"
+2026-11-12T02:26:47,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/floor_scene.png,5,"{""server"": 2, ""switch"": 1, ""cable"": 2}"
+2026-11-12T02:26:48,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,1,"{""server"": 1}"
+2026-11-12T02:26:48,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png,0,{}
+2026-11-12T02:26:49,/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/empty_rack.png,2,"{""switch"": 1, ""cable"": 1}"

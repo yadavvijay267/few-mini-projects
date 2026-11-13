@@ -1,0 +1,11 @@
+{
+  "name": "mini-social-app",
+  "version": "1.0.0",
+  "description": "Social Media App (Mini)",
+  "main": "src/server/server.js",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "test": "node tests/test.js"
+  },
+  "license": "MIT"
+}

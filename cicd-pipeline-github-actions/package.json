@@ -1,0 +1,16 @@
+{
+  "name": "cicd-demo-app",
+  "version": "1.0.0",
+  "description": "Demo app shipped by the CI/CD pipeline.",
+  "main": "src/app.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/test.js",
+    "start": "node src/app.js",
+    "lint": "node scripts/lint.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "pr1",
+      "name": "Wireless Headphones",
+      "price": 79.99,
+      "stock": 12,
+      "category": "Electronics",
+      "description": "Bluetooth over-ear headphones, 30h battery.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "pr2",
+      "name": "Mechanical Keyboard",
+      "price": 59.99,
+      "stock": 3,
+      "category": "Electronics",
+      "description": "Hot-swappable mechanical keyboard.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "pr3",
+      "name": "Cotton T-Shirt",
+      "price": 19.99,
+      "stock": 40,
+      "category": "Clothing",
+      "description": "100% cotton tee.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "pr4",
+      "name": "Desk Lamp",
+      "price": 29.99,
+      "stock": 2,
+      "category": "Home",
+      "description": "LED desk lamp with dimmer.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "pr5",
+      "name": "Running Shoes",
+      "price": 89.99,
+      "stock": 8,
+      "category": "Sports",
+      "description": "Lightweight running shoes.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "pr6",
+      "name": "Python Cookbook",
+      "price": 34.99,
+      "stock": 15,
+      "category": "Books",
+      "description": "Recipes for everyday Python.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "o1",
+      "customer": "Ana Sharma",
+      "items": "Wireless Headphones x1",
+      "total": 79.99,
+      "status": "Delivered",
+      "paymentRef": "pi_test_001",
+      "createdAt": "2026-11-04T00:00:00.000Z"
+    }
+  ],
+  "abandonedCarts": [
+    {
+      "id": "ac1",
+      "customer": "ravi@example.com",
+      "items": "Desk Lamp x1",
+      "total": 29.99,
+      "createdAt": "2026-11-06T00:00:00.000Z"
+    }
+  ]
+}

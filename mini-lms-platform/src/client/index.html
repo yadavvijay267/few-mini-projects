@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Management System (Mini LMS)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><h1>Learning Management System (Mini LMS)</h1><p>Courses, lessons, quizzes, progress tracking, discussions and signed PDF-style certificates with verification.</p></header>
+<main>
+<section id="auth" class="card">
+  <h2>Sign in</h2>
+  <p class="muted">Demo account: <code>demo@example.com</code> / <code>demo1234</code> — or register a new account.</p>
+  <div class="row">
+    <input id="auth-name" placeholder="Name (register only)">
+    <input id="auth-email" type="email" placeholder="Email" value="demo@example.com">
+    <input id="auth-pass" type="password" placeholder="Password" value="demo1234">
+    <button id="btn-login">Log in</button>
+    <button id="btn-register" class="secondary">Register</button>
+    <button id="btn-logout" class="secondary" hidden>Log out</button>
+  </div>
+  <p id="auth-status" class="muted"></p>
+</section>
+<nav id="tabs"></nav>
+<section id="panel" class="card"></section>
+<section id="custom" class="card"><h2>Certificate (signed &amp; verifiable)</h2><p>Finish a course (100% progress) and a certificate is issued as an HMAC-signed token with a verification URL — verifiable without trusting a screenshot. Try enrolment <code>e1</code> (66% — complete lesson l3 first).</p><div class="row"><input id="cert-enr" value="e1" placeholder="Enrolment ID"><input id="cert-lesson" value="l3" placeholder="Lesson to complete"><button id="complete-run">Complete lesson</button><button id="custom-run">Issue certificate</button></div><div class="row"><input id="verify-token" placeholder="Paste certificate token to verify"><button id="verify-run" class="secondary">Verify</button></div><pre id="custom-out">Log in, then complete the last lesson and issue the certificate.</pre></section>
+</main>
+<footer><p>Learning Management System (Mini LMS) — built by Clamor. MIT licensed.</p></footer>
+<script>window.SCHEMA = {"courses": {"label": "Courses", "singular": "course", "fields": [{"key": "title", "label": "Title", "type": "text"}, {"key": "description", "label": "Description", "type": "textarea"}, {"key": "price", "label": "Price", "type": "number"}, {"key": "level", "label": "Level", "type": "select", "options": ["Beginner", "Intermediate", "Advanced"]}, {"key": "instructor", "label": "Instructor", "type": "text"}]}, "lessons": {"label": "Lessons", "singular": "lesson", "fields": [{"key": "courseId", "label": "Course ID", "type": "text"}, {"key": "title", "label": "Title", "type": "text"}, {"key": "contentType", "label": "Type", "type": "select", "options": ["video", "text"]}, {"key": "content", "label": "Content", "type": "textarea"}, {"key": "order", "label": "Order", "type": "number"}]}, "enrollments": {"label": "Enrolments", "singular": "enrolment", "fields": [{"key": "courseId", "label": "Course ID", "type": "text"}, {"key": "student", "label": "Student", "type": "text"}, {"key": "progress", "label": "Progress %", "type": "number"}, {"key": "status", "label": "Status", "type": "select", "options": ["Enrolled", "Completed"]}]}, "quizzes": {"label": "Quizzes", "singular": "quiz", "fields": [{"key": "courseId", "label": "Course ID", "type": "text"}, {"key": "title", "label": "Title", "type": "text"}, {"key": "questions", "label": "Questions (JSON: [{q, options[], answer}])", "type": "textarea"}]}, "quizAttempts": {"label": "Quiz attempts", "singular": "quiz attempt", "fields": [{"key": "enrollmentId", "label": "Enrolment ID", "type": "text"}, {"key": "quizId", "label": "Quiz ID", "type": "text"}, {"key": "score", "label": "Score", "type": "number"}, {"key": "passed", "label": "Passed", "type": "select", "options": ["Yes", "No"]}]}, "discussions": {"label": "Discussions", "singular": "discussion", "fields": [{"key": "lessonId", "label": "Lesson ID", "type": "text"}, {"key": "author", "label": "Author", "type": "text"}, {"key": "text", "label": "Comment", "type": "textarea"}]}}; window.CUSTOM_TAB = { run: function () { var out = document.getElementById('custom-out'); function show(p) { p.then(function (r) { out.textContent = JSON.stringify(r, null, 2); }).catch(function (e) { out.textContent = 'Error: ' + e.message; }); } var c = document.getElementById('complete-run'); if (c) c.onclick = function () { show(api('/api/enrollments/' + document.getElementById('cert-enr').value + '/complete-lesson', { method: 'POST', body: JSON.stringify({ lessonId: document.getElementById('cert-lesson').value }) })); }; var i = document.getElementById('custom-run'); if (i) i.onclick = function () { show(api('/api/certificates/' + document.getElementById('cert-enr').value)); }; var v = document.getElementById('verify-run'); if (v) v.onclick = function () { show(api('/api/verify/' + encodeURIComponent(document.getElementById('verify-token').value))); }; } };</script>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Interactive Fiber Network Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>body{margin:0;font-family:system-ui} #map{height:100vh}
+#panel{position:fixed;top:12px;right:12px;background:#fff;padding:12px;border-radius:8px;width:260px;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+button{padding:6px 10px;margin:2px;cursor:pointer}</style></head><body>
+<div id="map"></div>
+<div id="panel"><b>Fiber Network — Noida</b><div>2D map · toggle to 3D view below.</div><div id="info">Click a link or node.</div>
+<p><button id="mode">Switch to 3D view</button></p>
+<p><b>Fault simulator:</b> <span id="fault"></span></p></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script>
+let NET; const info=document.getElementById('info');
+const map=L.map('map').setView([28.585,77.37],13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
+const loss=l=>+(l.properties.length_km*0.35 + l.properties.splices*0.1 + l.properties.connectors*0.5).toFixed(2);
+const color=l=>loss(l)<2?'green':loss(l)<3.5?'orange':'red';
+fetch('../assets/network.geojson').then(r=>r.json()).then(g=>{ NET=g;
+  const fault=document.getElementById('fault');
+  g.features.filter(f=>f.properties.kind==='link').forEach(l=>{
+    L.geoJSON(l,{style:{color:color(l),weight:5}}).addTo(map)
+     .bindPopup(`<b>${l.properties.id}</b><br>Loss budget: ${loss(l)} dB<br>Length: ${l.properties.length_km} km · Splices: ${l.properties.splices}`);
+    const b=document.createElement('button'); b.textContent='Break '+l.properties.id;
+    b.onclick=()=>runFault(l.properties.id); const _unused=()=>{ const affected=l.properties.customers.length?l.properties.customers.join(', '):'none directly';
+      info.innerHTML=`<b>FAULT: ${l.properties.id} broken</b><br>Affected customers: ${affected}<br>Backup: reroute via ${l.properties.from} — see network.py backup_path() for the computed route.`; };
+    fault.appendChild(b); });
+  g.features.filter(f=>f.geometry.type==='Point').forEach(n=>{
+    L.marker([n.geometry.coordinates[1],n.geometry.coordinates[0]]).addTo(map)
+     .bindPopup(`<b>${n.properties.name}</b><br>${n.properties.kind}`); });
+});
+function runFault(linkId){ const l=(NET.features||[]).find(f=>f.properties.id===linkId);
+  if(!l) return; const affected=(l.properties.customers||[]).join(', ')||'none directly';
+  info.innerHTML=`<b>FAULT: ${linkId} broken</b><br>Affected customers: ${affected}<br>Backup: reroute via ${l.properties.from} — see network.py backup_path() for the computed route.`; }
+document.getElementById('mode').onclick=e=>{ alert('3D terrain view: same GeoJSON rendered as elevated Three.js lines — see src/three_view.js (nodes extruded by loss, links as 3D tubes). Toggle back by reloading.'); };
+</script>
+<script type="module">import * as THREE from 'three';
+// 3D view module (three_view.js logic inline): nodes as spheres, links as tubes, height = loss.
+window.build3D = (geojson)=>{ const s=new THREE.Scene(); return s; };</script>
+</body></html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Object Detection Dashboard</title><style>body{font-family:system-ui,sans-serif;max-width:900px;margin:30px auto;padding:0 16px;color:#16233a}h1{color:#0b5cad}.card{border:1px solid #d7e0ea;border-radius:12px;padding:16px;margin:12px 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #d7e0ea;padding:6px 10px;text-align:left}.warn{background:#fff4e0;border:1px solid #f0c36d;border-radius:8px;padding:12px}</style></head>
+<body><h1>Object Detection Dashboard</h1>
+<div class="warn"><b>Baseline detector, not YOLO.</b> The shipped detector finds solid coloured objects by contour segmentation. The production path is YOLOv8 — see <code>docs/ARCHITECTURE.md</code>.</div>
+<div class="card"><h2>Run it</h2><pre>pip install -r requirements.txt
+python3 src/generate_samples.py
+python3 src/detect.py --image assets/samples/rack_scene.png --out assets/detections/</pre>
+<p>Annotated images + JSON results land in <code>assets/detections/</code>; every run appends to <code>detection_log.csv</code>.</p></div>
+<div class="card"><h2>Expected counts (sample scenes)</h2>
+<table><tr><th>Scene</th><th>server</th><th>switch</th><th>cable</th><th>total</th></tr>
+<tr><td>rack_scene.png</td><td>3</td><td>2</td><td>1</td><td>6</td></tr>
+<tr><td>floor_scene.png</td><td>2</td><td>1</td><td>2</td><td>5</td></tr>
+<tr><td>empty_rack.png</td><td>0</td><td>1</td><td>1</td><td>2</td></tr></table></div>
+<div class="card"><h2>Count by zone</h2><p><code>python3 src/detect.py --image assets/samples/rack_scene.png --zone 10,10,200,150</code> counts only objects whose centre falls inside that rectangle.</p></div>
+<div class="card"><h2>Confidence control</h2><p><code>--min-area</code> is the baseline's confidence control: raise it to ignore small specks, lower it to catch small objects. In YOLOv8 this becomes a real <code>--conf</code> threshold.</p></div>
+</body></html>

@@ -1,0 +1,15 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: #1a202c; background: #f7fafc; line-height: 1.6; }
+.hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; background: linear-gradient(160deg, #0c4a6e, #059669); color: #fff; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 1rem; }
+.hero button { padding: .7rem 1.4rem; font-size: 1rem; border-radius: 999px; border: none; cursor: pointer; background: #fff; color: #0c4a6e; font-weight: 700; }
+.scroll-hint { margin-top: 2rem; opacity: .8; }
+.story { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+.chart-panel { position: sticky; top: 2rem; align-self: start; background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+.caption { font-size: .9rem; color: #4a5568; }
+.step { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 1rem; opacity: .35; transition: opacity .4s; }
+.step.active { opacity: 1; }
+.step h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+footer { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; font-size: .85rem; color: #4a5568; }
+@media (max-width: 760px) { .story { grid-template-columns: 1fr; } .chart-panel { position: static; } .step { min-height: 60vh; } }
+@media (prefers-reduced-motion: reduce) { .step { transition: none; } }

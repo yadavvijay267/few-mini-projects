@@ -1,0 +1,2 @@
+# Core tool uses only the Python standard library.
+# Optional: requests>=2.31  (LLM calls work with urllib if absent)

@@ -1,0 +1,2 @@
+# Services use only the Python standard library.
+# Docker images: python:3.12-slim, nginx:alpine, postgres:16, redis:7.

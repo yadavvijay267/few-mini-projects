@@ -1,0 +1,12 @@
+python
+sql
+pandas
+data analysis
+data visualisation
+dashboards
+statistics
+a/b testing
+machine learning
+communication
+transaction data
+excel

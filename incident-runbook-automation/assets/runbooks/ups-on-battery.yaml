@@ -1,0 +1,30 @@
+id: ups-on-battery
+title: UPS on battery
+severity: 1
+description: Mains power lost; the UPS is carrying the hall. Act within 10 minutes.
+steps:
+  - id: check-ups
+    type: check
+    name: Check UPS is on battery and load is within rating
+    check: ups_on_battery
+  - id: check-runtime
+    type: check
+    name: Check remaining UPS runtime is above 10 minutes
+    check: ups_runtime_ok
+  - id: shed-load
+    type: command
+    name: Shed non-critical load
+    command: shed-non-critical-load
+  - id: notify-noc
+    type: notify
+    name: Notify NOC and on-call
+    channel: noc
+    message: "SEV1: UPS on battery in Hall A. Non-critical load shed. Generator start requested."
+  - id: confirm-generator
+    type: manual
+    name: Confirm generator started
+    prompt: "Has the generator started and taken load? (y/n)"
+  - id: verify-mains
+    type: check
+    name: Verify mains restored or generator stable
+    check: power_stable

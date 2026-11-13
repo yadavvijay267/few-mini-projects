@@ -1,0 +1,11 @@
+Subject: Welcome to ${company}, ${name}!
+
+Hi ${name},
+
+Welcome aboard! Your ${plan} plan is active, and we're glad to have
+${company} with us.
+
+If you ever need a hand, just reply to this email.
+
+Best regards,
+The Team

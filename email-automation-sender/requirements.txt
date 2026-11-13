@@ -1,0 +1,2 @@
+# Standard library only (smtplib + string.Template).
+# No third-party dependencies are required.

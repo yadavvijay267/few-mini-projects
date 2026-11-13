@@ -1,0 +1,2 @@
+# Node.js project (built-ins only) — no Python dependencies and no npm packages.
+# Production path: apollo-server + prisma + pg + jsonwebtoken (see docs/SCHEMA.md).

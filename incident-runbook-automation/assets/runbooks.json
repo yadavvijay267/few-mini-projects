@@ -1,0 +1,19 @@
+{"runbooks": [
+  {"id": "ups-on-battery", "title": "UPS on battery",
+   "steps": [
+     {"id": "confirm-gen", "title": "Confirm generator started", "check": "echo generator-ok", "requires_confirmation": true},
+     {"id": "check-runtime", "title": "Check battery runtime remaining", "check": "echo runtime-12m"},
+     {"id": "notify-noc", "title": "Notify NOC within 5 minutes", "check": "echo noc-notified", "requires_confirmation": true}
+   ]},
+  {"id": "crac-failure", "title": "CRAC failure",
+   "steps": [
+     {"id": "open-aisle", "title": "Open hot aisle doors", "check": "echo doors-open", "requires_confirmation": true},
+     {"id": "check-temp", "title": "Check hall temperature", "check": "echo temp-26C"},
+     {"id": "shift-load", "title": "Shift load if temp above 27C", "check": "echo load-ok"}
+   ]},
+  {"id": "network-flap", "title": "Network flap",
+   "steps": [
+     {"id": "check-links", "title": "Check uplink status", "check": "echo links-up"},
+     {"id": "failover", "title": "Fail over to backup link", "check": "echo failover-done", "requires_confirmation": true}
+   ]}
+]}

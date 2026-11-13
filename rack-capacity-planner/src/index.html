@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rack Capacity Planner (DCIM Lite)</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><h1>Rack Capacity Planner (DCIM Lite)</h1><p>42U rack elevation, power &amp; cooling capacity, stranded-capacity detection.</p></header>
+<main>
+<section class="card"><h2>Add device</h2>
+<label>Device name<input id="nm" value="Server-01"></label>
+<label>Type <select id="tp"><option>Server</option><option>Switch</option><option>PDU</option><option>Storage</option></select></label>
+<label>Size (U)<input id="us" type="number" value="2" min="1" max="42"></label>
+<label>Power (kW)<input id="pw" type="number" value="0.5" step="0.1"></label>
+<label>Weight (kg)<input id="wt" type="number" value="25"></label>
+<label>Rack <select id="rk"><option value="0">Rack A1</option><option value="1">Rack A2</option><option value="2">Rack A3</option></select></label>
+<button onclick="addDev()">Place device</button>
+<button class="sec" onclick="exportCSV()">Export plan (CSV)</button>
+<div id="room" style="margin-top:14px"></div></section>
+<section class="card"><h2>Rack A1 — 42U elevation</h2><div id="rack" style="display:grid;grid-template-columns:1fr;gap:2px"></div></section>
+<section class="card full"><h2>Racks summary</h2><div id="sum"></div>
+<p class="mut">Stranded capacity = free U in a rack that cannot be filled because the rack's power budget ran out first. Click a placed device to remove it.</p></section>
+</main><script src="app.js"></script></body></html>

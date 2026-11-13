@@ -1,0 +1,90 @@
+{
+  "horizon": 14,
+  "forecast": [
+    {
+      "date": "2025-12-31",
+      "forecast_kw": 752.4,
+      "lower_kw": 730.8,
+      "upper_kw": 774.0
+    },
+    {
+      "date": "2026-01-01",
+      "forecast_kw": 749.8,
+      "lower_kw": 719.2,
+      "upper_kw": 780.4
+    },
+    {
+      "date": "2026-01-02",
+      "forecast_kw": 747.8,
+      "lower_kw": 710.3,
+      "upper_kw": 785.2
+    },
+    {
+      "date": "2026-01-03",
+      "forecast_kw": 648.8,
+      "lower_kw": 605.6,
+      "upper_kw": 692.1
+    },
+    {
+      "date": "2026-01-04",
+      "forecast_kw": 650.8,
+      "lower_kw": 602.5,
+      "upper_kw": 699.1
+    },
+    {
+      "date": "2026-01-05",
+      "forecast_kw": 761.9,
+      "lower_kw": 708.9,
+      "upper_kw": 814.8
+    },
+    {
+      "date": "2026-01-06",
+      "forecast_kw": 760.8,
+      "lower_kw": 703.6,
+      "upper_kw": 818.0
+    },
+    {
+      "date": "2026-01-07",
+      "forecast_kw": 768.3,
+      "lower_kw": 707.2,
+      "upper_kw": 829.5
+    },
+    {
+      "date": "2026-01-08",
+      "forecast_kw": 765.7,
+      "lower_kw": 700.9,
+      "upper_kw": 830.6
+    },
+    {
+      "date": "2026-01-09",
+      "forecast_kw": 763.7,
+      "lower_kw": 695.3,
+      "upper_kw": 832.0
+    },
+    {
+      "date": "2026-01-10",
+      "forecast_kw": 664.8,
+      "lower_kw": 593.1,
+      "upper_kw": 736.5
+    },
+    {
+      "date": "2026-01-11",
+      "forecast_kw": 666.7,
+      "lower_kw": 591.8,
+      "upper_kw": 741.6
+    },
+    {
+      "date": "2026-01-12",
+      "forecast_kw": 777.8,
+      "lower_kw": 699.9,
+      "upper_kw": 855.7
+    },
+    {
+      "date": "2026-01-13",
+      "forecast_kw": 776.8,
+      "lower_kw": 695.9,
+      "upper_kw": 857.7
+    }
+  ],
+  "residual_sigma_kw": 11.03
+}

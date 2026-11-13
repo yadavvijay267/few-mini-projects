@@ -1,0 +1,5 @@
+{
+  "description": "Example 10 km G.652D link, 1550 nm",
+  "length_km": 10, "fiber": "SM", "wavelength_nm": 1550,
+  "splices": 4, "connectors": 2, "margin_db": 3.0, "tx_dbm": 0, "rx_sensitivity_dbm": -28
+}

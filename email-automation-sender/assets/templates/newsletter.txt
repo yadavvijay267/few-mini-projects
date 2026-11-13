@@ -1,0 +1,12 @@
+Subject: ${company} newsletter — ${month} edition
+
+Hi ${name},
+
+Here is your ${month} update from ${company}:
+- Feature of the month: faster dashboards
+- Tip: check your ${plan} plan benefits in your account
+
+Read more: https://example.com/news
+
+Thanks for reading,
+The Team

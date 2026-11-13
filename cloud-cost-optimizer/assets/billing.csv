@@ -1,0 +1,19 @@
+date,service,region,tag, cost_usd
+2026-10-01,EC2,ap-south-1,prod,180.40
+2026-10-01,RDS,ap-south-1,prod,96.20
+2026-10-01,S3,ap-south-1,prod,12.10
+2026-10-01,Lambda,ap-south-1,prod,3.40
+2026-10-01,CloudFront,ap-south-1,prod,8.90
+2026-10-15,EC2,ap-south-1,prod,175.10
+2026-10-15,RDS,ap-south-1,prod,96.20
+2026-10-15,S3,ap-south-1,prod,11.80
+2026-10-15,EC2,us-east-1,dev,42.00
+2026-10-15,NAT Gateway,ap-south-1,prod,32.40
+2026-11-01,EC2,ap-south-1,prod,182.60
+2026-11-01,RDS,ap-south-1,prod,96.20
+2026-11-01,S3,ap-south-1,prod,13.20
+2026-11-01,Lambda,ap-south-1,prod,4.10
+2026-11-01,CloudFront,ap-south-1,prod,9.30
+2026-11-01,EC2,us-east-1,dev,44.50
+2026-11-01,NAT Gateway,ap-south-1,prod,32.40
+2026-11-01,CloudWatch,ap-south-1,prod,6.70

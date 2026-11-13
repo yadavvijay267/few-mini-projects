@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Solar System — Clamor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><h1>☀️ 3D Solar System</h1><p>Drag to orbit · Scroll to zoom · Click a planet for facts</p></header>
+<div class="layout">
+  <div id="sceneWrap"><canvas id="scene"></canvas><p id="fallback" class="fallback hidden">Three.js could not load (offline or blocked CDN). The planet data table below still works — reconnect and reload for the 3D view.</p></div>
+  <aside class="panel">
+    <div class="time-controls">
+      <button id="pauseBtn" class="btn">⏸ Pause</button>
+      <button id="slowerBtn" class="btn">− Slower</button>
+      <button id="fasterBtn" class="btn">+ Faster</button>
+      <button id="reverseBtn" class="btn">⇄ Reverse</button>
+      <span id="speedLabel">Speed: 1×</span>
+    </div>
+    <button id="compareBtn" class="btn primary wide">🔍 Compare sizes</button>
+    <div id="info" class="info"><h2>The Sun</h2><p>Click any planet to see its facts here.</p></div>
+    <table id="planetTable"><thead><tr><th>Planet</th><th>Diameter (km)</th><th>Day</th><th>Moons</th></tr></thead><tbody></tbody></table>
+  </aside>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "collaborative-doc-editor",
+  "version": "1.0.0",
+  "description": "Real-Time Collaborative Document Editor",
+  "main": "src/server/server.js",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "test": "node tests/test.js"
+  },
+  "license": "MIT"
+}

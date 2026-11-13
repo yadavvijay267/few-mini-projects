@@ -1,0 +1,5 @@
+timestamp,device,power_w
+2026-11-12T10:00,Air conditioner,1450
+2026-11-12T10:00,Fridge,140
+2026-11-12T10:00,TV + set-top box,12
+2026-11-12T10:00,Wi-Fi router,10

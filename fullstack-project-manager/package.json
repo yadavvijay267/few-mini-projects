@@ -1,0 +1,11 @@
+{
+  "name": "fullstack-project-manager",
+  "version": "1.0.0",
+  "description": "Project Management App (Full Stack)",
+  "main": "src/server/server.js",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "test": "node tests/test.js"
+  },
+  "license": "MIT"
+}

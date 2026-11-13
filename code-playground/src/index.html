@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Playground — Mini CodePen</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header>
+  <h1>Code Playground</h1>
+  <div class="toolbar">
+    <button id="runBtn">▶ Run</button>
+    <label><input type="checkbox" id="autoRun" checked> Live update</label>
+    <input id="snippetName" placeholder="Snippet name" value="My snippet">
+    <button id="saveBtn">Save</button>
+    <select id="savedList" aria-label="Saved snippets"><option value="">Saved snippets…</option></select>
+    <button id="shareBtn">Share (URL)</button>
+    <button id="clearConsoleBtn">Clear console</button>
+    <span id="shareMsg" role="status"></span>
+  </div>
+</header>
+<main>
+  <section class="editors">
+    <div class="pane"><label for="htmlEd">HTML</label><textarea id="htmlEd" spellcheck="false">&lt;h1&gt;Hello, playground!&lt;/h1&gt;
+&lt;p id="msg"&gt;Edit the code and watch it run.&lt;/p&gt;
+&lt;button onclick="sayHi()"&gt;Say hi&lt;/button&gt;</textarea></div>
+    <div class="pane"><label for="cssEd">CSS</label><textarea id="cssEd" spellcheck="false">body { font-family: system-ui, sans-serif; background: #f0f9ff; color: #0c4a6e; padding: 1rem; }
+h1 { color: #0369a1; }
+button { padding: .5rem 1rem; cursor: pointer; }</textarea></div>
+    <div class="pane"><label for="jsEd">JavaScript</label><textarea id="jsEd" spellcheck="false">console.log('Playground ready');
+function sayHi() {
+  document.getElementById('msg').textContent = 'Hi from JavaScript!';
+  console.log('Button clicked at', new Date().toLocaleTimeString());
+}</textarea></div>
+  </section>
+  <section class="preview-wrap">
+    <h2>Preview</h2>
+    <iframe id="preview" title="Live preview" sandbox="allow-scripts"></iframe>
+    <h2>Console</h2>
+    <pre id="consoleOut" aria-live="polite"></pre>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

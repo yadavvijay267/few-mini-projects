@@ -1,0 +1,4 @@
+{
+  "description": "Example 20 kVA telecom site, 30 min autonomy",
+  "load_kva": 20, "pf": 0.9, "autonomy_min": 30, "dc_bus_v": 480, "battery": "VRLA"
+}

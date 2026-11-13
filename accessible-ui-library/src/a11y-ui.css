@@ -1,0 +1,23 @@
+/* Accessible UI Library — visible focus is a feature, not an afterthought. */
+:root { --focus: #2563eb; --accent: #1d4ed8; }
+*:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.a11y-btn { padding: .55rem 1rem; border-radius: 6px; border: 1px solid #1e293b; background: var(--accent); color: #fff; cursor: pointer; font-size: 1rem; }
+.a11y-btn[aria-disabled="true"], .a11y-btn:disabled { opacity: .5; cursor: not-allowed; }
+.a11y-btn--secondary { background: #fff; color: #1e293b; }
+.a11y-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; z-index: 50; }
+.a11y-modal { background: #fff; color: #111; border-radius: 10px; padding: 1.5rem; max-width: 480px; width: 90%; }
+.a11y-tabs [role="tablist"] { display: flex; gap: .25rem; border-bottom: 2px solid #cbd5e1; }
+.a11y-tabs [role="tab"] { padding: .6rem 1rem; background: none; border: none; cursor: pointer; font-size: 1rem; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+.a11y-tabs [role="tab"][aria-selected="true"] { border-bottom-color: var(--accent); font-weight: 700; }
+.a11y-accordion button { width: 100%; text-align: left; padding: .8rem; font-size: 1rem; cursor: pointer; background: #f1f5f9; border: 1px solid #cbd5e1; }
+.a11y-accordion [role="region"] { padding: .8rem; border: 1px solid #cbd5e1; border-top: none; }
+.a11y-tooltip { position: relative; display: inline-block; }
+.a11y-tooltip [role="tooltip"] { position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: .4rem .6rem; border-radius: 4px; white-space: nowrap; z-index: 10; }
+.a11y-toggle { display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; }
+.a11y-toggle .track { width: 44px; height: 24px; border-radius: 999px; background: #94a3b8; position: relative; transition: background .2s; }
+.a11y-toggle .track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: left .2s; }
+.a11y-toggle[aria-checked="true"] .track { background: var(--accent); }
+.a11y-toggle[aria-checked="true"] .track::after { left: 22px; }
+.a11y-toast-region { position: fixed; bottom: 1rem; right: 1rem; display: flex; flex-direction: column; gap: .5rem; z-index: 60; }
+.a11y-toast { background: #111; color: #fff; padding: .7rem 1rem; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

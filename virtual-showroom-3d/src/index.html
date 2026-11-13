@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Virtual Showroom (3D)</title>
+<style>body{margin:0;font-family:system-ui;overflow:hidden}
+#hud{position:fixed;top:12px;left:12px;background:rgba(0,0,0,.65);color:#fff;padding:10px 14px;border-radius:8px;z-index:2}
+#panel{position:fixed;top:12px;right:12px;background:#fff;padding:12px;border-radius:8px;width:240px;display:none;z-index:2}
+#shortlist{position:fixed;bottom:12px;left:12px;background:#fff;padding:10px;border-radius:8px;z-index:2;max-width:300px}
+button{padding:8px 12px;margin-top:6px;cursor:pointer}</style></head><body>
+<div id="hud"><b>Virtual Showroom</b><br>Click a hotspot to move · click a product to inspect<br>
+<button id="daynight">Switch to night</button></div>
+<div id="panel"></div><div id="shortlist"><b>Shortlist (0)</b><div id="items"></div></div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const PRODS = await (await fetch('../assets/products.json')).json();
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0xbfd9ff);
+const camera = new THREE.PerspectiveCamera(70, innerWidth/innerHeight, .1, 200);
+camera.position.set(0, 2, 10);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight); document.body.appendChild(renderer.domElement);
+const sun = new THREE.DirectionalLight(0xfff2cc, 1.2); sun.position.set(5,10,5); scene.add(sun);
+scene.add(new THREE.AmbientLight(0xffffff, .6));
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(24,20), new THREE.MeshStandardMaterial({color:0xd6c9b8}));
+floor.rotation.x=-Math.PI/2; scene.add(floor);
+// rooms: living (blue rug) / dining (green rug)
+const rug = (x,z,c)=>{ const m=new THREE.Mesh(new THREE.PlaneGeometry(9,8), new THREE.MeshStandardMaterial({color:c}));
+  m.rotation.x=-Math.PI/2; m.position.set(x,.02,z); scene.add(m); };
+rug(-3,-2,0x93c5fd); rug(2,4,0x86efac);
+const ray=new THREE.Raycaster(), mouse=new THREE.Vector2(), pickables=[];
+const panel=document.getElementById('panel'), items=document.getElementById('items');
+const shortlist=[];
+function renderShortlist(){ document.querySelector('#shortlist b').textContent=`Shortlist (${shortlist.length})`;
+  items.innerHTML = shortlist.map(p=>`${p.name} — ₹${p.price_inr.toLocaleString('en-IN')}`).join('<br>') || ''; }
+for(const p of PRODS.products){
+  const mesh=new THREE.Mesh(new THREE.BoxGeometry(1.4,1.4,1.4), new THREE.MeshStandardMaterial({color:0xf59e0b}));
+  mesh.position.set(p.x,.7,p.z); mesh.userData=p; scene.add(mesh); pickables.push(mesh);
+  const ring=new THREE.Mesh(new THREE.RingGeometry(.9,1.1,24), new THREE.MeshBasicMaterial({color:0x0ea5e9,side:THREE.DoubleSide}));
+  ring.rotation.x=-Math.PI/2; ring.position.set(p.x,.03,p.z); scene.add(ring); ring.userData={hotspot:true,x:p.x,z:p.z}; pickables.push(ring);
+}
+addEventListener('click', e=>{ mouse.set(e.clientX/innerWidth*2-1, -(e.clientY/innerHeight)*2+1);
+  ray.setFromCamera(mouse,camera); const hit=ray.intersectObjects(pickables)[0]; if(!hit) return;
+  const u=hit.object.userData;
+  if(u.hotspot){ camera.position.set(u.x, 2, u.z+4); camera.lookAt(u.x,1,u.z); return; }
+  panel.style.display='block';
+  panel.innerHTML=`<b>${u.name}</b><br>₹${u.price_inr.toLocaleString('en-IN')} · ${u.room} room<br>${u.desc}<br><button id="add">Add to shortlist</button>`;
+  document.getElementById('add').onclick=()=>{ if(!shortlist.find(p=>p.id===u.id)) shortlist.push(u); renderShortlist(); }; });
+let night=false;
+document.getElementById('daynight').onclick=e=>{ night=!night;
+  scene.background.set(night?0x0f172a:0xbfd9ff); sun.intensity=night?.15:1.2;
+  e.target.textContent=night?'Switch to day':'Switch to night'; };
+function tick(){ requestAnimationFrame(tick); renderer.render(scene,camera); } tick();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+</script></body></html>

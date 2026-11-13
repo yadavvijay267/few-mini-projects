@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Home Dashboard (MQTT)</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><h1>Smart Home Dashboard (MQTT)</h1><p>Live device state, rules and control — simulated feed, real-broker ready.</p></header>
+<main>
+<section class="card"><h2>Rooms &amp; sensors</h2><div id="sensors"></div>
+<h2 style="margin-top:16px">Broker</h2>
+<label>Broker URL (ws://host:9001) — leave empty for simulator<input id="broker" placeholder="ws://localhost:9001"></label>
+<button onclick="connectBroker()">Connect to broker</button>
+<p class="mut" id="brokerStatus">Mode: simulated MQTT feed (no hardware needed).</p></section>
+<section class="card"><h2>Devices</h2><div id="devices"></div></section>
+<section class="card"><h2>Automation rules</h2><div id="rules"></div>
+<button class="sec" onclick="addRule()">Add rule: temp &gt; 28&deg;C &rarr; fan ON</button>
+<p class="mut">Rules are evaluated on every sensor tick; fired actions appear in the log.</p></section>
+<section class="card"><h2>MQTT log</h2><div id="log" style="font-size:.85rem;max-height:220px;overflow:auto"></div></section>
+</main><script src="app.js"></script></body></html>

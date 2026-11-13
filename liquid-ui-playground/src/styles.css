@@ -1,0 +1,25 @@
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:#0f172a;color:#e2e8f0}
+header{padding:20px;text-align:center}header h1{margin:0}header p{color:#94a3b8}
+main{max-width:1000px;margin:0 auto;padding:0 20px 30px;display:grid;gap:18px}
+.stage{background:#111827;border-radius:16px;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.blob{width:240px;height:240px;background:#0ea5e9;border-radius:55% 45% 60% 40%/55% 40% 60% 45%;box-shadow:0 0 30px rgba(14,165,233,.5);animation:morph 8s ease-in-out infinite}
+@keyframes morph{0%,100%{border-radius:55% 45% 60% 40%/55% 40% 60% 45%}33%{border-radius:40% 60% 45% 55%/60% 45% 55% 40%}66%{border-radius:60% 40% 55% 45%/45% 60% 40% 55%}}
+.controls{background:#1e293b;border-radius:16px;padding:18px;display:grid;gap:12px}
+.controls label{display:grid;grid-template-columns:130px 1fr 60px;gap:10px;align-items:center}
+.presets{display:flex;gap:8px;align-items:center}
+.presets button,.btn{padding:8px 14px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e2e8f0;cursor:pointer}
+.btn.primary{background:#38bdf8;color:#082f49;border-color:transparent;font-weight:600}
+.code{background:#020617;border-radius:10px;padding:12px;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;min-height:40px}
+.demos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.demo{background:#1e293b;border-radius:16px;padding:18px}
+.demo h2{margin-top:0}
+.goo-row{display:flex;gap:14px;padding:10px}
+.goo-btn{background:#0ea5e9;color:#fff;border:0;border-radius:50%;width:64px;height:64px;font-weight:700;cursor:pointer;transition:transform .25s}
+.goo-btn:hover{transform:scale(1.15)}
+.goo-btn.big{width:72px;height:72px;font-size:1.6rem;position:relative;z-index:2}
+.goo-menu{display:flex;gap:10px;align-items:center;padding:10px}
+.goo-menu .small{transform:scale(0);transition:transform .3s}
+.goo-menu.open .small{transform:scale(1)}
+.liquid-bg{height:150px;border-radius:14px;background:#111827;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.liquid-bg .drop{position:absolute;border-radius:50%;opacity:.7;pointer-events:none;transition:transform 1s}
+.liquid-bg span{position:relative;z-index:2;color:#e2e8f0;font-weight:600}

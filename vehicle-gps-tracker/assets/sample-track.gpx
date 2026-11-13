@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="vehicle-gps-tracker">
+  <trk><name>Delivery run — Noida Sector 62 to 18</name>
+    <trkseg>
+      <trkpt lat="28.5355" lon="77.3910"><time>2026-11-12T08:00:00Z</time></trkpt>
+      <trkpt lat="28.5450" lon="77.3950"><time>2026-11-12T08:06:00Z</time></trkpt>
+      <trkpt lat="28.5560" lon="77.4020"><time>2026-11-12T08:13:00Z</time></trkpt>
+      <trkpt lat="28.5700" lon="77.4100"><time>2026-11-12T08:21:00Z</time></trkpt>
+      <trkpt lat="28.5830" lon="77.4150"><time>2026-11-12T08:30:00Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

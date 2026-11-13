@@ -1,0 +1,61 @@
+{
+  "name": "Commercial Building \u2014 11 kV incomer",
+  "incomer": {
+    "voltage_kv": 11,
+    "source": "Utility grid",
+    "breaker_a": 630
+  },
+  "transformer": {
+    "kva": 1000,
+    "primary_kv": 11,
+    "secondary_v": 415
+  },
+  "panels": [
+    {
+      "name": "Main DB",
+      "breaker_a": 800,
+      "loads": [
+        {
+          "name": "HVAC chillers",
+          "kw": 120
+        },
+        {
+          "name": "Lighting",
+          "kw": 45
+        },
+        {
+          "name": "Lifts",
+          "kw": 60
+        }
+      ]
+    },
+    {
+      "name": "Floor DB-1",
+      "breaker_a": 250,
+      "loads": [
+        {
+          "name": "Workstations",
+          "kw": 55
+        },
+        {
+          "name": " pantry",
+          "kw": 8
+        }
+      ]
+    },
+    {
+      "name": "Floor DB-2",
+      "breaker_a": 250,
+      "loads": [
+        {
+          "name": "Workstations",
+          "kw": 50
+        },
+        {
+          "name": "Server room",
+          "kw": 40
+        }
+      ]
+    }
+  ]
+}

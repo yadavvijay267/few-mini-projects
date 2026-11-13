@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Tasks — Microservices Demo</title>
+<style>body{font-family:system-ui;max-width:600px;margin:40px auto;padding:0 16px}</style></head><body>
+<h1>Tasks</h1><ul id="list"></ul>
+<input id="t" placeholder="New task…"> <button onclick="add()">Add</button>
+<script>async function load(){const r=await fetch('/api/tasks');const j=await r.json();
+document.getElementById('list').innerHTML=j.map(t=>`<li>${t.id}. ${t.title} — ${t.status}</li>`).join('');}
+async function add(){const title=document.getElementById('t').value;
+await fetch('/api/tasks',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title})});load();}
+load();</script></body></html>

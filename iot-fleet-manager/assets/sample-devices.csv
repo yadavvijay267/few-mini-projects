@@ -1,0 +1,7 @@
+device_id,name,group,firmware,battery_pct,signal_dbm,last_seen
+dev-001,sensor-01,warehouse,2.3.1,82,-61,2026-11-12T07:25:00Z
+dev-002,sensor-02,warehouse,2.3.1,77,-68,2026-11-12T07:26:00Z
+dev-003,thermostat-01,office,2.3.1,91,-55,2026-11-12T07:24:00Z
+dev-004,door-01,office,2.2.0,64,-72,2026-11-12T07:10:00Z
+dev-005,meter-01,plant,2.3.1,58,-80,2026-11-12T06:58:00Z
+dev-006,meter-02,plant,2.3.1,73,-66,2026-11-12T07:27:00Z

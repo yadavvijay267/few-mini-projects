@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "name": "Website Redesign",
+      "description": "Rebuild the company marketing site",
+      "status": "Active",
+      "owner": "Demo User",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "p2",
+      "name": "Mobile App v2",
+      "description": "Offline mode and new onboarding",
+      "status": "Active",
+      "owner": "Ana Sharma",
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "p3",
+      "name": "Data Migration",
+      "description": "Move legacy data to the new platform",
+      "status": "On hold",
+      "owner": "Ravi Patel",
+      "createdAt": "2026-11-03T00:00:00.000Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Design new homepage",
+      "projectId": "p1",
+      "assignee": "Ana Sharma",
+      "status": "In Progress",
+      "priority": "High",
+      "dueDate": "2026-11-20",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "t2",
+      "title": "Write migration script",
+      "projectId": "p3",
+      "assignee": "Ravi Patel",
+      "status": "Todo",
+      "priority": "Critical",
+      "dueDate": "2026-10-20",
+      "createdAt": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "t3",
+      "title": "Set up CI pipeline",
+      "projectId": "p2",
+      "assignee": "Demo User",
+      "status": "Done",
+      "priority": "Medium",
+      "dueDate": "2026-11-05",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "t4",
+      "title": "User testing round 1",
+      "projectId": "p1",
+      "assignee": "Ana Sharma",
+      "status": "Todo",
+      "priority": "Medium",
+      "dueDate": "2026-11-25",
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "t5",
+      "title": "Fix login bug",
+      "projectId": "p2",
+      "assignee": "Ravi Patel",
+      "status": "Review",
+      "priority": "High",
+      "dueDate": "2026-11-12",
+      "createdAt": "2026-11-03T00:00:00.000Z"
+    }
+  ],
+  "members": [
+    {
+      "id": "m1",
+      "name": "Ana Sharma",
+      "role": "Designer",
+      "email": "ana@example.com",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "m2",
+      "name": "Ravi Patel",
+      "role": "Backend Developer",
+      "email": "ravi@example.com",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "m3",
+      "name": "Demo User",
+      "role": "Project Manager",
+      "email": "demo@example.com",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": "c1",
+      "taskId": "t1",
+      "author": "Demo User",
+      "text": "Homepage mockups approved \u2014 proceed to build.",
+      "createdAt": "2026-11-05T00:00:00.000Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": "a1",
+      "action": "Project created: Website Redesign",
+      "projectId": "p1",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ]
+}

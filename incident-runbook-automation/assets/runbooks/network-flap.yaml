@@ -1,0 +1,22 @@
+id: network-flap
+title: Network link flapping
+severity: 2
+description: An inter-switch link is flapping. Identify the link, fail over, then isolate.
+steps:
+  - id: check-link
+    type: check
+    name: Check core link status
+    check: link_flapping
+  - id: failover
+    type: command
+    name: Fail over to backup link
+    command: failover-to-backup-link
+  - id: notify-noc
+    type: notify
+    name: Notify NOC
+    channel: noc
+    message: "Link flap on core link A. Traffic failed over to backup link."
+  - id: confirm-stable
+    type: manual
+    name: Confirm backup link stable for 5 minutes
+    prompt: "Has the backup link been stable for 5 minutes? (y/n)"

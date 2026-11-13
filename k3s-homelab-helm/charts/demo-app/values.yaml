@@ -1,0 +1,23 @@
+replicaCount: 2
+image:
+  repository: nginx
+  tag: "1.27-alpine"
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: true
+  className: traefik
+  host: demo.example.local
+  tls: true
+resources:
+  limits: { cpu: 250m, memory: 128Mi }
+  requests: { cpu: 100m, memory: 64Mi }
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70
+config:
+  message: "Hello from the K3s homelab"

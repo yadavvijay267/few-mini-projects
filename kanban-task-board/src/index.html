@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanban Task Board — Clamor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Kanban Board</h1>
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search cards, labels, assignees..." aria-label="Search cards">
+    <select id="labelFilter" aria-label="Filter by label"><option value="">All labels</option></select>
+    <button id="addBtn" class="btn primary">+ New card</button>
+    <button id="resetBtn" class="btn">Reset demo data</button>
+  </div>
+</header>
+<main id="board" class="board"></main>
+<p class="hint">Drag cards between columns or reorder within a column. Columns show a WIP limit — exceeding it turns the counter red and warns you.</p>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <form id="cardForm" class="modal-card">
+    <h2 id="modalTitle">New card</h2>
+    <label>Title <input name="title" required maxlength="120"></label>
+    <label>Description <textarea name="desc" rows="3"></textarea></label>
+    <label>Label <select name="label"><option>Design</option><option>QC</option><option>Dev</option><option>Docs</option><option>Ops</option></select></label>
+    <label>Assignee <input name="assignee" placeholder="e.g. Clamor"></label>
+    <label>Due date <input name="due" type="date"></label>
+    <label>Checklist (one item per line) <textarea name="checklist" rows="3" placeholder="Review splicing report&#10;Update route map"></textarea></label>
+    <div class="modal-actions"><button type="submit" class="btn primary">Save card</button><button type="button" id="cancelBtn" class="btn">Cancel</button></div>
+  </form>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

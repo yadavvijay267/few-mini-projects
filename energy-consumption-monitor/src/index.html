@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Energy Consumption Monitor (IoT)</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><h1>Energy Consumption Monitor (IoT)</h1><p>Per-device power, cost and vampire loads — simulated smart-plug feed.</p></header>
+<main>
+<section class="card"><h2>Live totals</h2><div id="totals"></div>
+<label>Tariff (Rs/kWh)<input id="tar" type="number" value="8" step="0.5" onchange="render()"></label>
+<div id="alerts"></div></section>
+<section class="card"><h2>Devices (live W)</h2><div id="devs"></div></section>
+<section class="card full"><h2>Daily energy (kWh) — this week</h2><canvas id="chart" height="180"></canvas></section>
+<section class="card"><h2>Vampire-load report</h2><div id="vamp"></div></section>
+<section class="card"><h2>Biggest consumer</h2><div id="big"></div></section>
+</main><script src="app.js"></script></body></html>

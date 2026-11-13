@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-Time Chat UI — Clamor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <button id="menuBtn" class="menu-btn" aria-label="Open channels">☰</button>
+  <aside id="sidebar" class="sidebar">
+    <h1>Chat</h1>
+    <input id="msgSearch" type="search" placeholder="Search messages..." aria-label="Search messages">
+    <div id="roomList" class="rooms"></div>
+    <p class="note">Simulated live feed — no backend needed. Replies arrive from teammates automatically.</p>
+  </aside>
+  <main class="chat">
+    <header class="chat-head"><h2 id="roomName"></h2><span id="roomMeta"></span>
+      <button id="jumpUnread" class="btn hidden">↓ Jump to unread</button></header>
+    <div id="messages" class="messages" tabindex="0"></div>
+    <div id="typing" class="typing hidden"></div>
+    <form id="composer" class="composer">
+      <button type="button" id="emojiBtn" aria-label="Insert emoji">😀</button>
+      <input id="msgInput" placeholder="Message..." autocomplete="off" aria-label="Message">
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+    <div id="emojiBar" class="emoji-bar hidden"></div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

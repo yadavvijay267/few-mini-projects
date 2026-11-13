@@ -1,0 +1,11 @@
+replicaCount: 1
+ingress:
+  host: demo.dev.local
+  tls: false
+autoscaling:
+  enabled: false
+resources:
+  limits: { cpu: 100m, memory: 64Mi }
+  requests: { cpu: 50m, memory: 32Mi }
+config:
+  message: "Hello from DEV"

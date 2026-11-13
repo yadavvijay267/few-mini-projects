@@ -1,0 +1,94 @@
+# CI/CD pipeline for the demo app.
+# Flow: every PR -> test + lint (merge blocked on failure).
+#        merge to main -> build + push Docker image -> deploy to STAGING.
+#        release tag (v*) -> deploy to PRODUCTION after a manual approval gate.
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  packages: write   # push images to GitHub Container Registry
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}/demo-app
+
+jobs:
+  # ---- 1. Test + lint on every PR and push. Merge is blocked if this fails. ----
+  test:
+    name: Test & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+
+  # ---- 2. Build the Docker image and push it to GHCR (main + tags only). ----
+  build:
+    name: Build & Push Image
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=sha
+            type=ref,event=tag
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  # ---- 3. Deploy to staging on every merge to main. ----
+  deploy-staging:
+    name: Deploy to Staging
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://staging.example.com
+    steps:
+      - run: echo "Deploying ${{ needs.build.outputs.image-tag }} to staging"
+      # Replace with a real deploy step, e.g. Render/Vercel deploy hook:
+      # - run: curl -X POST "$RENDER_DEPLOY_HOOK_STAGING"
+      - run: ./scripts/deploy.sh staging ${{ needs.build.outputs.image-tag }}
+
+  # ---- 4. Production: only on release tags, behind a manual approval gate. ----
+  # The `production` environment is configured in the repo settings with
+  # "Required reviewers" — the job waits for a human to approve it.
+  deploy-production:
+    name: Deploy to Production
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://example.com
+    steps:
+      - run: echo "Deploying ${{ needs.build.outputs.image-tag }} to production"
+      - run: ./scripts/deploy.sh production ${{ needs.build.outputs.image-tag }}

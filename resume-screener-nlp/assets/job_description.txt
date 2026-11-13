@@ -1,0 +1,18 @@
+Data Analyst — E-Commerce Analytics Team
+
+We are looking for a Data Analyst to join our e-commerce analytics team.
+You will turn transaction data into decisions: build dashboards, run
+segmentation analyses, and present findings to marketing and product teams.
+
+Required skills:
+- Strong Python and SQL for querying and analysing large datasets.
+- Hands-on experience with pandas and data analysis.
+- Statistics fundamentals: distributions, hypothesis testing, A/B tests.
+- Data visualisation: clear charts and dashboards that non-technical
+  stakeholders can read.
+- Good communication and problem solving skills.
+
+Nice to have:
+- Machine learning with scikit-learn.
+- Experience with Excel, Git, Docker or AWS.
+- Natural language processing (NLP) for customer feedback analysis.

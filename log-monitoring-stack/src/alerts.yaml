@@ -1,0 +1,25 @@
+# Alert rules — every alert links to its runbook (the stand-out twist).
+groups:
+  - name: app-alerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) > 0.01
+        for: 5m
+        labels: { severity: page }
+        annotations:
+          summary: "Error rate above 1% for 5 minutes"
+          runbook_url: "docs/RUNBOOK.md#high-error-rate"
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, http_request_duration_seconds) > 0.5
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "p95 latency above 500ms for 5 minutes"
+          runbook_url: "docs/RUNBOOK.md#high-latency"
+      - alert: ServiceDown
+        expr: up{job="demo-app"} == 0
+        for: 1m
+        labels: { severity: page }
+        annotations:
+          summary: "Service is down"
+          runbook_url: "docs/RUNBOOK.md#service-down"

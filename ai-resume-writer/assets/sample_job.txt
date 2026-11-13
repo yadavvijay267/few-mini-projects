@@ -1,0 +1,6 @@
+Data Analyst — E-Commerce Analytics Team
+
+We need a Data Analyst who can work with Python and SQL to analyse
+transaction data, build dashboards with pandas, and present findings.
+Experience with data visualisation, statistics, A/B testing and
+machine learning is valued. Strong communication skills required.

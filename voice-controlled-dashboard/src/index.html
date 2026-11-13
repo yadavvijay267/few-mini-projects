@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voice-Controlled Dashboard</title><link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script></head>
+<body>
+<header><h1>Voice-Controlled Dashboard</h1>
+<button id="mic" aria-label="Start listening">🎙 Start listening</button>
+<button id="read" aria-label="Read values aloud">🔊 Read values aloud</button>
+<button id="theme" aria-label="Toggle theme">🌙 Dark mode</button></header>
+<main>
+<section class="panels">
+  <article class="panel active" data-panel="sales"><h2>Sales</h2><strong class="value" id="v-sales">$48,290</strong><canvas id="chart-sales"></canvas></article>
+  <article class="panel" data-panel="users"><h2>Users</h2><strong class="value" id="v-users">12,480</strong><canvas id="chart-users"></canvas></article>
+  <article class="panel" data-panel="revenue"><h2>Revenue</h2><strong class="value" id="v-revenue">$128,400</strong><canvas id="chart-revenue"></canvas></article>
+</section>
+<section class="voice">
+  <h2>Voice control</h2>
+  <p id="support"></p>
+  <div id="transcript" aria-live="polite"><em>Nothing heard yet — tap “Start listening” and say a command.</em></div>
+  <p>Heard with confidence: <strong id="confidence">–</strong> <span id="didyoumean"></span></p>
+  <h3>Commands</h3>
+  <ul id="commands">
+    <li><code>show sales</code> / <code>show users</code> / <code>show revenue</code></li>
+    <li><code>next panel</code> / <code>previous panel</code></li>
+    <li><code>dark mode</code> / <code>light mode</code></li>
+    <li><code>read values</code> — speaks the current numbers aloud</li>
+    <li><code>stop listening</code></li>
+  </ul>
+  <form id="typed-form"><input id="typed" type="text" placeholder="Type a command instead, e.g. show users" aria-label="Type a command">
+  <button type="submit">Run</button></form>
+  <p class="note">Speech recognition needs Chrome/Edge + microphone permission and is online-only. The typed box works everywhere, offline.</p>
+</section>
+</main>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Power Load &amp; Demand Calculator</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><h1>Power Load &amp; Demand Calculator</h1><p>Load schedule, total demand and transformer sizing for a building or site.</p></header>
+<main>
+<section class="card"><h2>Add a load</h2>
+<label>Load name<input id="nm" value="AHU-1"></label>
+<label>Category <select id="cat"><option>Lighting</option><option selected>HVAC</option><option>Motors</option><option>IT</option><option>Other</option></select></label>
+<label>Connected load (kW)<input id="kw" type="number" value="15" step="0.5"></label>
+<label>Demand factor (0–1)<input id="df" type="number" value="0.8" step="0.05" min="0" max="1"></label>
+<label>Quantity<input id="qty" type="number" value="1" min="1"></label>
+<button onclick="addLoad()">Add load</button>
+<label>Power factor<input id="pf" type="number" value="0.9" step="0.01" onchange="render()"></label>
+<label>Diversity factor (0–1)<input id="div" type="number" value="0.85" step="0.05" onchange="render()"></label>
+<button class="sec" onclick="exportCSV()">Export schedule (CSV)</button>
+<button class="sec" onclick="clearAll()">Clear schedule</button></section>
+<section class="card"><h2>Demand summary</h2><div id="out"></div>
+<h2 style="margin-top:16px">What-if: extra HVAC units</h2>
+<label><span id="wifLab">+0 units of 15 kW</span><input id="wif" type="range" min="0" max="5" value="0" oninput="render()"></label>
+<div id="wifOut"></div></section>
+<section class="card full"><h2>Load schedule</h2><div id="tbl"></div><canvas id="chart" height="180"></canvas></section>
+</main><script src="app.js"></script></body></html>

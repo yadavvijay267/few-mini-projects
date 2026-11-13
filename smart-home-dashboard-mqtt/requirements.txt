@@ -1,0 +1,5 @@
+# Pure web project: no Python dependencies.
+# Tests use pytest (install: pip install pytest)
+pytest>=8.0
+# Optional: real-broker client only
+# paho-mqtt>=2.0

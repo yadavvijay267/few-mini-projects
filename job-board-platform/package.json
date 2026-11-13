@@ -1,0 +1,11 @@
+{
+  "name": "job-board-platform",
+  "version": "1.0.0",
+  "description": "Job Board Platform",
+  "main": "src/server/server.js",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "test": "node tests/test.js"
+  },
+  "license": "MIT"
+}

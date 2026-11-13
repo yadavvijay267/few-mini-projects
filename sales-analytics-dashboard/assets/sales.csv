@@ -1,0 +1,183 @@
+date,order_id,product,category,region,quantity,unit_price
+2026-08-15,1001,Wireless Mouse,Electronics,North,3,29.00
+2026-08-15,1002,USB-C Hub,Electronics,South,2,49.00
+2026-08-15,1003,Bookshelf,Furniture,North,5,129.00
+2026-08-16,1004,A4 Paper Ream,Stationery,West,1,6.00
+2026-08-17,1005,Wireless Mouse,Electronics,South,2,29.00
+2026-08-18,1006,A4 Paper Ream,Stationery,North,5,6.00
+2026-08-18,1007,USB-C Hub,Electronics,West,2,49.00
+2026-08-18,1008,Notebook Set,Stationery,East,1,12.00
+2026-08-19,1009,Bookshelf,Furniture,West,3,129.00
+2026-08-20,1010,Noise-Cancel Headphones,Electronics,South,3,149.00
+2026-08-20,1011,Wireless Mouse,Electronics,North,4,29.00
+2026-08-21,1012,Standing Desk,Furniture,East,5,349.00
+2026-08-22,1013,Laptop Pro 14,Electronics,West,5,899.00
+2026-08-22,1014,Wireless Mouse,Electronics,West,1,29.00
+2026-08-23,1015,Office Chair,Furniture,East,5,199.00
+2026-08-23,1016,USB-C Hub,Electronics,North,1,49.00
+2026-08-23,1017,Monitor 27in,Electronics,South,3,279.00
+2026-08-24,1018,USB-C Hub,Electronics,North,4,49.00
+2026-08-25,1019,Notebook Set,Stationery,East,2,12.00
+2026-08-25,1020,Standing Desk,Furniture,East,2,349.00
+2026-08-26,1021,Office Chair,Furniture,North,5,199.00
+2026-08-26,1022,Monitor 27in,Electronics,South,5,279.00
+2026-08-26,1023,Bookshelf,Furniture,South,2,129.00
+2026-08-27,1024,Desk Lamp,Furniture,East,5,39.00
+2026-08-27,1025,USB-C Hub,Electronics,East,1,49.00
+2026-08-28,1026,Laptop Pro 14,Electronics,East,4,899.00
+2026-08-29,1027,Wireless Mouse,Electronics,South,5,29.00
+2026-08-29,1028,Bookshelf,Furniture,East,2,129.00
+2026-08-30,1029,Notebook Set,Stationery,West,4,12.00
+2026-08-30,1030,Noise-Cancel Headphones,Electronics,East,2,149.00
+2026-08-30,1031,USB-C Hub,Electronics,East,5,49.00
+2026-08-31,1032,A4 Paper Ream,Stationery,West,3,6.00
+2026-08-31,1033,USB-C Hub,Electronics,South,5,49.00
+2026-09-01,1034,Wireless Mouse,Electronics,North,1,29.00
+2026-09-01,1035,Noise-Cancel Headphones,Electronics,South,4,149.00
+2026-09-02,1036,Wireless Mouse,Electronics,West,4,29.00
+2026-09-02,1037,A4 Paper Ream,Stationery,West,5,6.00
+2026-09-02,1038,Office Chair,Furniture,North,1,199.00
+2026-09-03,1039,Gel Pen Pack,Stationery,East,3,8.00
+2026-09-03,1040,Wireless Mouse,Electronics,East,4,29.00
+2026-09-03,1041,Noise-Cancel Headphones,Electronics,West,1,149.00
+2026-09-04,1042,Bookshelf,Furniture,East,5,129.00
+2026-09-04,1043,Noise-Cancel Headphones,Electronics,North,3,149.00
+2026-09-04,1044,Monitor 27in,Electronics,South,2,279.00
+2026-09-05,1045,Noise-Cancel Headphones,Electronics,North,5,149.00
+2026-09-05,1046,Standing Desk,Furniture,West,1,349.00
+2026-09-06,1047,Standing Desk,Furniture,East,2,349.00
+2026-09-07,1048,USB-C Hub,Electronics,North,1,49.00
+2026-09-08,1049,Notebook Set,Stationery,North,5,12.00
+2026-09-08,1050,Noise-Cancel Headphones,Electronics,South,4,149.00
+2026-09-08,1051,Gel Pen Pack,Stationery,South,3,8.00
+2026-09-09,1052,A4 Paper Ream,Stationery,West,2,6.00
+2026-09-09,1053,Gel Pen Pack,Stationery,South,3,8.00
+2026-09-09,1054,Desk Lamp,Furniture,East,4,39.00
+2026-09-10,1055,Notebook Set,Stationery,North,2,12.00
+2026-09-10,1056,USB-C Hub,Electronics,North,3,49.00
+2026-09-10,1057,Laptop Pro 14,Electronics,South,5,899.00
+2026-09-11,1058,Laptop Pro 14,Electronics,North,1,899.00
+2026-09-12,1059,Wireless Mouse,Electronics,North,3,29.00
+2026-09-13,1060,Gel Pen Pack,Stationery,South,3,8.00
+2026-09-14,1061,Notebook Set,Stationery,South,5,12.00
+2026-09-14,1062,Noise-Cancel Headphones,Electronics,West,2,149.00
+2026-09-14,1063,Notebook Set,Stationery,West,2,12.00
+2026-09-15,1064,Wireless Mouse,Electronics,West,3,29.00
+2026-09-16,1065,Desk Lamp,Furniture,West,1,39.00
+2026-09-16,1066,Monitor 27in,Electronics,North,1,279.00
+2026-09-17,1067,Bookshelf,Furniture,East,1,129.00
+2026-09-17,1068,USB-C Hub,Electronics,South,2,49.00
+2026-09-18,1069,Notebook Set,Stationery,South,4,12.00
+2026-09-18,1070,Noise-Cancel Headphones,Electronics,East,4,149.00
+2026-09-18,1071,USB-C Hub,Electronics,North,4,49.00
+2026-09-19,1072,Wireless Mouse,Electronics,North,5,29.00
+2026-09-19,1073,Laptop Pro 14,Electronics,North,2,899.00
+2026-09-19,1074,Noise-Cancel Headphones,Electronics,West,4,149.00
+2026-09-20,1075,USB-C Hub,Electronics,West,1,49.00
+2026-09-20,1076,Noise-Cancel Headphones,Electronics,West,1,149.00
+2026-09-21,1077,Office Chair,Furniture,West,3,199.00
+2026-09-21,1078,Desk Lamp,Furniture,West,2,39.00
+2026-09-22,1079,Office Chair,Furniture,South,1,199.00
+2026-09-23,1080,Bookshelf,Furniture,North,3,129.00
+2026-09-23,1081,Laptop Pro 14,Electronics,North,5,899.00
+2026-09-23,1082,Notebook Set,Stationery,South,1,12.00
+2026-09-24,1083,Wireless Mouse,Electronics,South,1,29.00
+2026-09-24,1084,A4 Paper Ream,Stationery,North,2,6.00
+2026-09-24,1085,Desk Lamp,Furniture,North,5,39.00
+2026-09-25,1086,A4 Paper Ream,Stationery,North,5,6.00
+2026-09-26,1087,Desk Lamp,Furniture,East,3,39.00
+2026-09-27,1088,Monitor 27in,Electronics,East,2,279.00
+2026-09-28,1089,Desk Lamp,Furniture,South,3,39.00
+2026-09-28,1090,Notebook Set,Stationery,East,1,12.00
+2026-09-29,1091,Notebook Set,Stationery,North,1,12.00
+2026-09-30,1092,USB-C Hub,Electronics,East,2,49.00
+2026-09-30,1093,Standing Desk,Furniture,North,2,349.00
+2026-09-30,1094,Standing Desk,Furniture,East,2,349.00
+2026-10-01,1095,Gel Pen Pack,Stationery,East,5,8.00
+2026-10-01,1096,Monitor 27in,Electronics,North,5,279.00
+2026-10-02,1097,Monitor 27in,Electronics,North,2,279.00
+2026-10-02,1098,Office Chair,Furniture,North,1,199.00
+2026-10-03,1099,Gel Pen Pack,Stationery,South,3,8.00
+2026-10-03,1100,Office Chair,Furniture,South,3,199.00
+2026-10-03,1101,USB-C Hub,Electronics,East,5,49.00
+2026-10-04,1102,Office Chair,Furniture,North,1,199.00
+2026-10-04,1103,Monitor 27in,Electronics,West,3,279.00
+2026-10-05,1104,Laptop Pro 14,Electronics,East,2,899.00
+2026-10-06,1105,Office Chair,Furniture,South,4,199.00
+2026-10-06,1106,Gel Pen Pack,Stationery,West,5,8.00
+2026-10-06,1107,Laptop Pro 14,Electronics,North,1,899.00
+2026-10-07,1108,Noise-Cancel Headphones,Electronics,North,3,149.00
+2026-10-07,1109,A4 Paper Ream,Stationery,South,4,6.00
+2026-10-07,1110,Noise-Cancel Headphones,Electronics,North,3,149.00
+2026-10-08,1111,Laptop Pro 14,Electronics,East,2,899.00
+2026-10-08,1112,Monitor 27in,Electronics,South,1,279.00
+2026-10-09,1113,Gel Pen Pack,Stationery,West,5,8.00
+2026-10-09,1114,Bookshelf,Furniture,South,2,129.00
+2026-10-10,1115,Noise-Cancel Headphones,Electronics,West,1,149.00
+2026-10-11,1116,Bookshelf,Furniture,East,4,129.00
+2026-10-12,1117,Bookshelf,Furniture,South,3,129.00
+2026-10-12,1118,Noise-Cancel Headphones,Electronics,North,4,149.00
+2026-10-12,1119,Laptop Pro 14,Electronics,West,2,899.00
+2026-10-13,1120,Notebook Set,Stationery,East,3,12.00
+2026-10-14,1121,USB-C Hub,Electronics,North,2,49.00
+2026-10-15,1122,Standing Desk,Furniture,East,1,349.00
+2026-10-15,1123,Office Chair,Furniture,East,5,199.00
+2026-10-16,1124,Monitor 27in,Electronics,East,1,279.00
+2026-10-16,1125,Wireless Mouse,Electronics,East,2,29.00
+2026-10-17,1126,Office Chair,Furniture,North,1,199.00
+2026-10-17,1127,A4 Paper Ream,Stationery,West,3,6.00
+2026-10-17,1128,Bookshelf,Furniture,East,4,129.00
+2026-10-18,1129,Gel Pen Pack,Stationery,North,4,8.00
+2026-10-18,1130,A4 Paper Ream,Stationery,South,3,6.00
+2026-10-18,1131,Laptop Pro 14,Electronics,West,1,899.00
+2026-10-19,1132,Gel Pen Pack,Stationery,South,3,8.00
+2026-10-19,1133,Desk Lamp,Furniture,North,3,39.00
+2026-10-19,1134,A4 Paper Ream,Stationery,East,1,6.00
+2026-10-20,1135,Office Chair,Furniture,East,4,199.00
+2026-10-20,1136,Standing Desk,Furniture,West,3,349.00
+2026-10-20,1137,Gel Pen Pack,Stationery,South,2,8.00
+2026-10-21,1138,Monitor 27in,Electronics,West,2,279.00
+2026-10-21,1139,A4 Paper Ream,Stationery,East,4,6.00
+2026-10-22,1140,Laptop Pro 14,Electronics,East,3,899.00
+2026-10-22,1141,USB-C Hub,Electronics,West,5,49.00
+2026-10-22,1142,A4 Paper Ream,Stationery,East,4,6.00
+2026-10-23,1143,Notebook Set,Stationery,South,5,12.00
+2026-10-23,1144,Notebook Set,Stationery,South,1,12.00
+2026-10-24,1145,Gel Pen Pack,Stationery,East,1,8.00
+2026-10-24,1146,USB-C Hub,Electronics,East,2,49.00
+2026-10-25,1147,Noise-Cancel Headphones,Electronics,North,1,149.00
+2026-10-26,1148,Notebook Set,Stationery,North,4,12.00
+2026-10-27,1149,Monitor 27in,Electronics,South,4,279.00
+2026-10-27,1150,Notebook Set,Stationery,West,2,12.00
+2026-10-28,1151,Monitor 27in,Electronics,North,1,279.00
+2026-10-29,1152,USB-C Hub,Electronics,South,5,49.00
+2026-10-29,1153,Notebook Set,Stationery,North,5,12.00
+2026-10-30,1154,Wireless Mouse,Electronics,West,2,29.00
+2026-10-31,1155,Monitor 27in,Electronics,East,4,279.00
+2026-10-31,1156,A4 Paper Ream,Stationery,West,5,6.00
+2026-11-01,1157,Noise-Cancel Headphones,Electronics,West,4,149.00
+2026-11-01,1158,Office Chair,Furniture,South,3,199.00
+2026-11-02,1159,Notebook Set,Stationery,South,3,12.00
+2026-11-02,1160,Notebook Set,Stationery,North,3,12.00
+2026-11-02,1161,USB-C Hub,Electronics,East,3,49.00
+2026-11-03,1162,Gel Pen Pack,Stationery,North,2,8.00
+2026-11-03,1163,Noise-Cancel Headphones,Electronics,South,4,149.00
+2026-11-04,1164,Noise-Cancel Headphones,Electronics,South,1,149.00
+2026-11-04,1165,Desk Lamp,Furniture,West,3,39.00
+2026-11-04,1166,Gel Pen Pack,Stationery,West,4,8.00
+2026-11-05,1167,USB-C Hub,Electronics,West,4,49.00
+2026-11-06,1168,Bookshelf,Furniture,North,5,129.00
+2026-11-06,1169,Desk Lamp,Furniture,West,1,39.00
+2026-11-06,1170,Standing Desk,Furniture,East,4,349.00
+2026-11-07,1171,Gel Pen Pack,Stationery,South,4,8.00
+2026-11-07,1172,USB-C Hub,Electronics,East,4,49.00
+2026-11-08,1173,Laptop Pro 14,Electronics,West,3,899.00
+2026-11-08,1174,Monitor 27in,Electronics,West,2,279.00
+2026-11-09,1175,Noise-Cancel Headphones,Electronics,North,4,149.00
+2026-11-09,1176,A4 Paper Ream,Stationery,North,1,6.00
+2026-11-10,1177,Desk Lamp,Furniture,South,4,39.00
+2026-11-10,1178,Noise-Cancel Headphones,Electronics,North,3,149.00
+2026-11-10,1179,Desk Lamp,Furniture,East,2,39.00
+2026-11-11,1180,Standing Desk,Furniture,East,4,349.00
+2026-11-11,1181,Office Chair,Furniture,West,3,199.00
+2026-11-12,1182,Notebook Set,Stationery,North,5,12.00

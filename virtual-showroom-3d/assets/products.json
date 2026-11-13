@@ -1,0 +1,6 @@
+{"products": [
+  {"id": "P1", "name": "Aurora Lounge Chair", "price_inr": 24999, "room": "living", "x": -4, "z": -3, "desc": "Fabric lounge chair, oak legs."},
+  {"id": "P2", "name": "Halo Floor Lamp", "price_inr": 8999, "room": "living", "x": 3, "z": -4, "desc": "Dimmable LED floor lamp."},
+  {"id": "P3", "name": "Terra Dining Table", "price_inr": 42999, "room": "dining", "x": 0, "z": 4, "desc": "6-seater solid wood table."},
+  {"id": "P4", "name": "Nimbus Pendant Light", "price_inr": 12999, "room": "dining", "x": -5, "z": 5, "desc": "Brass pendant, warm white."}
+]}

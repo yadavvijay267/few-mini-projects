@@ -1,0 +1,11 @@
+name = "serverless-api-workers"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+[triggers]
+crons = ["0 7 * * *"] # daily summary at 07:00 UTC
+
+# Production: bind KV for persistence instead of the in-memory store:
+# [[kv_namespaces]]
+# binding = "TASKS_KV"
+# id = "<your-kv-namespace-id>"

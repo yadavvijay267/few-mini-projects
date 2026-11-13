@@ -1,0 +1,3 @@
+# Pure HTML/CSS/vanilla-JS project — no Python dependencies.
+# Node.js (for the test script) is the only requirement; no npm packages needed.
+# Production path (per docs/ARCHITECTURE.md): React + TypeScript + Storybook + axe-core.

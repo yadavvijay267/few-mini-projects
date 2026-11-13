@@ -1,0 +1,8 @@
+symbol,name,asset_type,quantity,buy_price,buy_date
+RELIANCE,Reliance Industries,Stock,10,2450.00,2025-06-02
+TCS,Tata Consultancy Services,Stock,5,3800.00,2025-07-15
+INFY,Infosys,Stock,20,1500.00,2025-08-01
+HDFCBANK,HDFC Bank,Stock,15,1700.00,2025-05-20
+NIFTYBEES,Nippon India ETF Nifty BeES,ETF,50,250.00,2025-09-10
+GOLDBEES,Nippon India ETF Gold BeES,ETF,40,55.00,2025-04-05
+SBIN,State Bank of India,Stock,25,800.00,2026-01-12

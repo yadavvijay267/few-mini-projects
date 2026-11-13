@@ -1,0 +1,7 @@
+{"hall": "Noida DC — Hall A", "racks": [
+  {"id": "R-01", "aisle": "cold", "x": -6, "z": -4, "kw": 6.2, "temp_c": 22, "load_pct": 71, "servers": 18},
+  {"id": "R-02", "aisle": "cold", "x": -6, "z": 0, "kw": 7.8, "temp_c": 24, "load_pct": 88, "servers": 24},
+  {"id": "R-03", "aisle": "hot", "x": 6, "z": -4, "kw": 5.1, "temp_c": 31, "load_pct": 58, "servers": 14},
+  {"id": "R-04", "aisle": "hot", "x": 6, "z": 0, "kw": 8.0, "temp_c": 33, "load_pct": 92, "servers": 26},
+  {"id": "CRAC-1", "aisle": "cooling", "x": 0, "z": -8, "kw": 12.0, "temp_c": 18, "load_pct": 64, "servers": 0}
+]}

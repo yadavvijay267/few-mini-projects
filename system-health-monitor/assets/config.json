@@ -1,0 +1,8 @@
+{
+  "cpu_percent": 80,
+  "memory_percent": 85,
+  "disk_percent": 90,
+  "interval_seconds": 5,
+  "log_file": "health_log.csv",
+  "alerts_log": "alerts.log"
+}

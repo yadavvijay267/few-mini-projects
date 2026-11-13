@@ -1,0 +1,2 @@
+# Pure web project — no Python dependencies.
+# Open src/index.html in a browser; no build step required.

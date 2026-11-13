@@ -1,0 +1,185 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "warehouses": [
+    {
+      "id": "w1",
+      "name": "Noida Main",
+      "location": "Noida, India",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "w2",
+      "name": "Delhi North",
+      "location": "Delhi, India",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "items": [
+    {
+      "id": "i1",
+      "name": "Fiber Optic Cable (1km reel)",
+      "sku": "FOC-1KM",
+      "category": "Cables",
+      "price": 4500,
+      "reorderPoint": 5,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "i2",
+      "name": "RJ45 Connector (pack of 100)",
+      "sku": "RJ45-100",
+      "category": "Connectors",
+      "price": 899,
+      "reorderPoint": 10,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "i3",
+      "name": "Network Switch 24-port",
+      "sku": "SW-24P",
+      "category": "Hardware",
+      "price": 12500,
+      "reorderPoint": 3,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "i4",
+      "name": "UPS Battery 12V 7Ah",
+      "sku": "BAT-12V7",
+      "category": "Power",
+      "price": 1450,
+      "reorderPoint": 8,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "i5",
+      "name": "Patch Panel 24-port",
+      "sku": "PP-24P",
+      "category": "Hardware",
+      "price": 3200,
+      "reorderPoint": 4,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "stock": [
+    {
+      "id": "st1",
+      "itemId": "i1",
+      "warehouseId": "w1",
+      "quantity": 12,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "st2",
+      "itemId": "i1",
+      "warehouseId": "w2",
+      "quantity": 4,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "st3",
+      "itemId": "i2",
+      "warehouseId": "w1",
+      "quantity": 3,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "st4",
+      "itemId": "i3",
+      "warehouseId": "w1",
+      "quantity": 2,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "st5",
+      "itemId": "i4",
+      "warehouseId": "w2",
+      "quantity": 20,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "st6",
+      "itemId": "i5",
+      "warehouseId": "w1",
+      "quantity": 6,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "movements": [
+    {
+      "id": "mv1",
+      "itemId": "i2",
+      "warehouseId": "w1",
+      "change": -2,
+      "reason": "Used in install job #104",
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    },
+    {
+      "id": "mv2",
+      "itemId": "i2",
+      "warehouseId": "w1",
+      "change": -2,
+      "reason": "Used in install job #109",
+      "createdAt": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "mv3",
+      "itemId": "i3",
+      "warehouseId": "w1",
+      "change": -1,
+      "reason": "Sold to customer",
+      "createdAt": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "mv4",
+      "itemId": "i1",
+      "warehouseId": "w1",
+      "change": -1,
+      "reason": "Used in install job #111",
+      "createdAt": "2026-11-10T00:00:00.000Z"
+    }
+  ],
+  "purchaseOrders": [
+    {
+      "id": "po1",
+      "itemId": "i2",
+      "supplier": "CableWorld Supplies",
+      "quantity": 50,
+      "status": "Ordered",
+      "createdAt": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "po2",
+      "itemId": "i3",
+      "supplier": "NetGear Distributors",
+      "quantity": 5,
+      "status": "Draft",
+      "createdAt": "2026-11-11T00:00:00.000Z"
+    }
+  ]
+}

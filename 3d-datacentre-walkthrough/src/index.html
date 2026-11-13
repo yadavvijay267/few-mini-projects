@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>3D Data Centre Walkthrough</title>
+<style>body{margin:0;font-family:system-ui;overflow:hidden}
+#hud{position:fixed;top:12px;left:12px;background:rgba(0,0,0,.65);color:#fff;padding:10px 14px;border-radius:8px;z-index:2}
+#panel{position:fixed;top:12px;right:12px;background:#fff;padding:12px;border-radius:8px;width:230px;display:none;z-index:2}
+#map{position:fixed;bottom:12px;left:12px;border:1px solid #999;background:#fff;z-index:2}
+button{padding:8px 12px;margin-top:6px;cursor:pointer}</style></head><body>
+<div id="hud"><b>Data Hall A — Noida DC</b><br>WASD / arrows to walk · click a rack for details<br>
+<button id="tour">Guided tour</button> <button id="reset">Reset view</button></div>
+<div id="panel"></div><canvas id="map" width="160" height="110"></canvas>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const HALL = await (await fetch('../assets/hall.json')).json();
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0b1220);
+const camera = new THREE.PerspectiveCamera(70, innerWidth/innerHeight, .1, 200);
+camera.position.set(0, 2.2, 12);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight); document.body.appendChild(renderer.domElement);
+scene.add(new THREE.AmbientLight(0xffffff, .7));
+const dl = new THREE.DirectionalLight(0xffffff, .8); dl.position.set(5,10,5); scene.add(dl);
+// floor: cold aisle blue, hot aisle red
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(30,22), new THREE.MeshStandardMaterial({color:0x1e293b}));
+floor.rotation.x = -Math.PI/2; scene.add(floor);
+const cold = new THREE.Mesh(new THREE.PlaneGeometry(6,22), new THREE.MeshStandardMaterial({color:0x2563eb,transparent:true,opacity:.35}));
+cold.rotation.x = -Math.PI/2; cold.position.set(-6,.01,0); scene.add(cold);
+const hot = new THREE.Mesh(new THREE.PlaneGeometry(6,22), new THREE.MeshStandardMaterial({color:0xdc2626,transparent:true,opacity:.35}));
+hot.rotation.x = -Math.PI/2; hot.position.set(6,.01,0); scene.add(hot);
+// airflow arrows (hot aisle -> CRAC)
+const arrowMat = new THREE.MeshBasicMaterial({color:0x38bdf8});
+for (let i=0;i<5;i++){ const a=new THREE.Mesh(new THREE.ConeGeometry(.25,.8,8), arrowMat);
+  a.rotation.x=Math.PI/2; a.position.set(2+i*1.2, 1.2, -6); scene.add(a); }
+// racks (clickable)
+const ray = new THREE.Raycaster(), mouse = new THREE.Vector2(), pickables = [];
+const panel = document.getElementById('panel');
+for (const r of HALL.racks){
+  const color = r.aisle==='cold'?0x3b82f6 : r.aisle==='hot'?0xef4444 : 0x22c55e;
+  const box = new THREE.Mesh(new THREE.BoxGeometry(2,4.4,1.2), new THREE.MeshStandardMaterial({color}));
+  box.position.set(r.x, 2.2, r.z); box.userData = r; scene.add(box); pickables.push(box);
+  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(box.geometry), new THREE.LineBasicMaterial({color:0xffffff}));
+  edges.position.copy(box.position); scene.add(edges);
+}
+addEventListener('click', e=>{ mouse.set(e.clientX/innerWidth*2-1, -(e.clientY/innerHeight)*2+1);
+  ray.setFromCamera(mouse, camera);
+  const hit = ray.intersectObjects(pickables)[0];
+  if(hit){ const r=hit.object.userData;
+    panel.style.display='block';
+    panel.innerHTML=`<b>${r.id}</b> (${r.aisle} aisle)<br>Power: ${r.kw} kW · Load: ${r.load_pct}%<br>Temp: ${r.temp_c}°C · Servers: ${r.servers}<br><small>Click elsewhere to close</small>`;
+  } else panel.style.display='none'; });
+// WASD movement
+const keys={}; addEventListener('keydown',e=>keys[e.key.toLowerCase()]=true);
+addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
+let touring=false, tourT=0;
+document.getElementById('tour').onclick=()=>{touring=true;tourT=0;};
+document.getElementById('reset').onclick=()=>{camera.position.set(0,2.2,12);touring=false;};
+const map=document.getElementById('map').getContext('2d');
+function drawMap(){ map.clearRect(0,0,160,110); map.fillStyle='#e2e8f0'; map.fillRect(0,0,160,110);
+  map.fillStyle='#3b82f6'; map.fillRect(40,0,40,110); map.fillStyle='#ef4444'; map.fillRect(100,0,40,110);
+  for(const r of HALL.racks){ map.fillStyle='#0f172a'; map.fillRect(80+r.x*4-4, 55+r.z*4-3, 8, 6); }
+  map.fillStyle='#f59e0b'; map.beginPath(); map.arc(80+camera.position.x*4, 55+camera.position.z*4, 4, 0, 7); map.fill(); }
+function tick(){ requestAnimationFrame(tick);
+  const sp=.12;
+  if(touring){ tourT+=.003; camera.position.set(Math.sin(tourT*2)*10, 3, Math.cos(tourT*2)*10-2);
+    camera.lookAt(0,1.5,0); if(tourT>3.2) touring=false; }
+  else { if(keys['w']||keys['arrowup']) camera.translateZ(-sp); if(keys['s']||keys['arrowdown']) camera.translateZ(sp);
+    if(keys['a']||keys['arrowleft']) camera.translateX(-sp); if(keys['d']||keys['arrowright']) camera.translateX(sp); }
+  camera.position.x=Math.max(-14,Math.min(14,camera.position.x));
+  camera.position.z=Math.max(-10,Math.min(10,camera.position.z));
+  drawMap(); renderer.render(scene,camera); }
+tick();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+</script></body></html>

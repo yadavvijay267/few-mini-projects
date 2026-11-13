@@ -1,0 +1,100 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "sv1",
+      "name": "Haircut",
+      "duration": 30,
+      "price": 499,
+      "description": "Cut and style.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "sv2",
+      "name": "Dental Checkup",
+      "duration": 45,
+      "price": 999,
+      "description": "Routine dental examination.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "sv3",
+      "name": "Consultation Call",
+      "duration": 60,
+      "price": 1499,
+      "description": "One-hour expert consultation.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "sv4",
+      "name": "Massage Therapy",
+      "duration": 60,
+      "price": 1999,
+      "description": "Full-body relaxation massage.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "providers": [
+    {
+      "id": "pv1",
+      "name": "Ana Sharma",
+      "service": "Haircut",
+      "email": "ana@example.com",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "pv2",
+      "name": "Dr. Ravi Patel",
+      "service": "Dental Checkup",
+      "email": "ravi@example.com",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "b1",
+      "serviceId": "sv1",
+      "provider": "Ana Sharma",
+      "customerName": "Demo User",
+      "date": "2026-11-20",
+      "time": "10:00",
+      "status": "Confirmed",
+      "createdAt": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "b2",
+      "serviceId": "sv2",
+      "provider": "Dr. Ravi Patel",
+      "customerName": "Ana Sharma",
+      "date": "2026-11-21",
+      "time": "11:00",
+      "status": "Confirmed",
+      "createdAt": "2026-11-06T00:00:00.000Z"
+    }
+  ]
+}

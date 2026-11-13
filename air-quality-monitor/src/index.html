@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Air Quality Monitor — AQI Dashboard</title>
+<style>body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8fafc;color:#0f172a}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin:14px 0}
+.aqi{font-size:56px;font-weight:800;padding:10px 22px;border-radius:12px;display:inline-block}
+button{background:#0369a1;color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;margin-right:6px}
+canvas{width:100%;height:200px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #e2e8f0;padding:6px;text-align:left;font-size:14px}</style></head>
+<body><h1>🌫️ Air Quality Monitor</h1>
+<p>Indoor vs outdoor AQI, live-simulated feed — and whether opening a window helps or hurts.</p>
+<div class="card">
+<span class="aqi" id="aqiBadge">—</span>
+<span id="aqiText" style="font-size:18px;margin-left:12px"></span>
+<p id="advice"></p>
+<p><b>Ventilation: </b><span id="vent"></span></p>
+<p>PM2.5 indoor <b id="pmIn"></b> µg/m³ · outdoor <b id="pmOut"></b> µg/m³ · CO₂ indoor <b id="co2"></b> ppm</p>
+<button onclick="spike()">🔥 Simulate pollution spike</button>
+<button onclick="purifier()">🌀 Run purifier (30 s)</button></div>
+<div class="card"><h3>24-hour trend — PM2.5 (µg/m³)</h3><canvas id="trend" width="880" height="200"></canvas>
+<p style="color:#64748b;font-size:13px">Outdoor peaks morning/evening (traffic + inversion); indoor tracks it with a lag.</p></div>
+<div class="card"><h3>🚨 Alerts</h3><div id="alerts"><p>No alerts yet.</p></div></div>
+<script>
+const PM25_BP=[[0,12,0,50],[12.1,35.4,51,100],[35.5,55.4,101,150],[55.5,150.4,151,200],[150.5,250.4,201,300],[250.5,500.4,301,500]];
+function aqi(c){for(const [lo,hi,ilo,ihi] of PM25_BP)if(c>=lo&&c<=hi)return Math.round((ihi-ilo)/(hi-lo)*(c-lo)+ilo);return 500;}
+function cat(a){return a<=50?['Good','#00e400','Air quality is satisfactory.']:a<=100?['Moderate','#ffff00','Acceptable; sensitive people should reduce prolonged exertion.']:a<=150?['Unhealthy for sensitive groups','#ff7e00','Sensitive groups: reduce prolonged or heavy exertion.']:a<=200?['Unhealthy','#ff0000','Everyone may feel effects; avoid prolonged exertion.']:a<=300?['Very unhealthy','#8f3f97','Health alert: serious effects possible.']:['Hazardous','#7e0023','Emergency conditions; avoid all outdoor exertion.'];}
+let indoor=42, outdoor=118, co2=820, purify=0, spikeV=0, alerts=[], prevCat='';
+function tick(){
+  const h=new Date().getHours();
+  outdoor=Math.max(25,110+55*Math.sin((h-9)/12*Math.PI)+ (Math.random()-0.5)*15+spikeV);
+  indoor=Math.max(15,indoor*0.92+outdoor*0.08+(Math.random()-0.5)*3-(purify?4:0));
+  co2=Math.max(600,co2+(Math.random()-0.5)*30);
+  const ia=aqi(indoor),oa=aqi(outdoor),[name,col,adv]=cat(ia);
+  const b=document.getElementById('aqiBadge');b.textContent=ia;b.style.background=col;b.style.color=(col==='#ffff00'||col==='#00e400')?'#0f172a':'#fff';
+  document.getElementById('aqiText').textContent=name+' (indoor) · outdoor AQI '+oa;
+  document.getElementById('advice').textContent=adv;
+  document.getElementById('pmIn').textContent=indoor.toFixed(0);
+  document.getElementById('pmOut').textContent=outdoor.toFixed(0);
+  document.getElementById('co2').textContent=co2.toFixed(0);
+  document.getElementById('vent').textContent=oa<ia-10?'🪟 Open windows — outdoor air is cleaner.':oa>ia+10?'🌀 Keep windows shut, run the purifier — outdoor air is worse.':'Similar inside and out — purifier on low, ventilate briefly.';
+  if(name!==prevCat&&ia>100){alerts.unshift(new Date().toLocaleTimeString()+' — Indoor AQI crossed into "'+name+'" ('+ia+')');prevCat=name;
+    document.getElementById('alerts').innerHTML=alerts.map(a=>'<div>'+a+'</div>').join('');}
+  drawTrend();
+}
+function drawTrend(){
+  const c=document.getElementById('trend'),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);
+  const mk=(base,amp,col)=>{ctx.strokeStyle=col;ctx.lineWidth=2;ctx.beginPath();
+    for(let h=0;h<24;h++){const v=base+amp*Math.sin((h-9)/12*Math.PI)+20*Math.sin(h*1.7);
+      const x=20+h/23*(c.width-40),y=190-Math.max(0,v)/220*170;h?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();};
+  mk(110,55,'#dc2626');mk(45,15,'#0369a1');
+  ctx.fillStyle='#dc2626';ctx.fillText('— outdoor',20,16);ctx.fillStyle='#0369a1';ctx.fillText('— indoor',110,16);
+}
+function spike(){spikeV=120;setTimeout(()=>spikeV=0,30000);tick();}
+function purifier(){purify=1;setTimeout(()=>purify=0,30000);tick();}
+tick();setInterval(tick,3000);
+</script></body></html>

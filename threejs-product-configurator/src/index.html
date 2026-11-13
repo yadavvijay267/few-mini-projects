@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aura Chair — 3D Configurator</title><link rel="stylesheet" href="styles.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head><body>
+<header><h1>Aura Chair — 3D Configurator</h1><p>Drag to rotate · scroll to zoom · configure below</p></header>
+<main>
+  <div id="viewport"><div id="fallback" hidden>Three.js could not load (CDN unreachable). Check your connection and reload — the configurator below still works and updates the price.</div></div>
+  <aside id="panel">
+    <h2>Configure</h2>
+    <fieldset><legend>Colour</legend><div id="colors" class="swatches"></div></fieldset>
+    <fieldset><legend>Material</legend>
+      <label><input type="radio" name="material" value="fabric" checked> Fabric (+$0)</label>
+      <label><input type="radio" name="material" value="leather"> Leather (+$120)</label>
+      <label><input type="radio" name="material" value="mesh"> Mesh (+$60)</label>
+    </fieldset>
+    <fieldset><legend>Accessories</legend>
+      <label><input type="checkbox" id="acc-headrest"> Headrest (+$45)</label>
+      <label><input type="checkbox" id="acc-lumbar"> Lumbar support (+$35)</label>
+      <label><input type="checkbox" id="acc-armrests"> 4D armrests (+$80)</label>
+    </fieldset>
+    <div class="price">Total <strong id="price">$349</strong></div>
+    <div class="actions">
+      <button id="autorotate">⏸ Pause auto-rotate</button>
+      <button id="screenshot">📷 Screenshot</button>
+      <button id="share">🔗 Copy share link</button>
+    </div>
+    <p id="share-msg"></p>
+  </aside>
+</main>
+<script type="module" src="app.js"></script>
+</body></html>

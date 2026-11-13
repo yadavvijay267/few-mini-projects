@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DCIM Asset Inventory</title><style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:20px auto;padding:0 16px;color:#16233a}h1{color:#0b5cad}table{border-collapse:collapse;width:100%}td,th{border:1px solid #d7e0ea;padding:6px 8px;text-align:left;font-size:14px}.card{border:1px solid #d7e0ea;border-radius:12px;padding:14px;margin:12px 0}.row{display:flex;gap:8px;flex-wrap:wrap}input,select,button{padding:8px;border:1px solid #c8d3de;border-radius:8px}button{background:#0b5cad;color:#fff;cursor:pointer}.alert{background:#fff4e0}.eol{background:#fde8e8}</style></head>
+<body><h1>DCIM Asset Inventory</h1>
+<div class="row"><input id="q" placeholder="Search assets…" size="30"><select id="type"><option value="">All types</option><option>server</option><option>switch</option><option>pdu</option><option>ups</option></select><select id="status"><option value="">All statuses</option><option>in-service</option><option>maintenance</option><option>spare</option><option>end-of-life</option></select><button onclick="load()">Search</button><button onclick="location.href='/api/export.csv'">Export CSV</button></div>
+<div class="card" id="alerts"><b>Alerts</b><div id="alertList">Loading…</div></div>
+<div class="card" id="capacity"><b>Rack capacity</b><div id="capList">Loading…</div></div>
+<div class="card"><table><thead><tr><th>ID</th><th>Type</th><th>Model</th><th>Room</th><th>Rack</th><th>U</th><th>Owner</th><th>Status</th><th>Power W</th><th>Warranty end</th><th>Label</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="card"><h3>Add asset</h3><div class="row">
+<input id="f-id" placeholder="ID e.g. SRV-010"><input id="f-type" placeholder="type"><input id="f-model" placeholder="model"><input id="f-room" placeholder="room"><input id="f-rack" placeholder="rack"><input id="f-u" placeholder="U start" type="number"><input id="f-h" placeholder="U height" type="number"><input id="f-owner" placeholder="owner"><input id="f-status" placeholder="status"><input id="f-power" placeholder="power W" type="number"><input id="f-warranty" placeholder="warranty YYYY-MM-DD"><input id="f-purchase" placeholder="purchase YYYY-MM-DD"><input id="f-serial" placeholder="serial"><button onclick="addAsset()">Add</button></div><p id="addMsg"></p></div>
+<script>
+async function load(){
+ const q=document.getElementById('q').value, t=document.getElementById('type').value, s=document.getElementById('status').value;
+ const res=await fetch(`/api/assets?q=${encodeURIComponent(q)}&type=${t}&status=${s}`); const data=await res.json();
+ document.getElementById('rows').innerHTML=data.map(a=>`<tr><td>${a.id}</td><td>${a.type}</td><td>${a.model}</td><td>${a.room}</td><td>${a.rack}</td><td>${a.u_start}${a.u_height?'-'+(a.u_start+a.u_height-1):''}</td><td>${a.owner}</td><td>${a.status}</td><td>${a.power_w}</td><td>${a.warranty_end}</td><td><a href="/api/label/${a.id}" target="_blank">label</a></td></tr>`).join('')||'<tr><td colspan="11">No assets match.</td></tr>';
+ const al=await (await fetch('/api/alerts')).json();
+ document.getElementById('alertList').innerHTML=al.length?al.map(a=>`<div class="${a.alert==='end-of-life'?'eol':'alert'}">${a.id} — ${a.alert} (${a.days_left} days, warranty ${a.warranty_end})</div>`).join(''):'No alerts.';
+ const cap=await (await fetch('/api/capacity')).json();
+ document.getElementById('capList').innerHTML=Object.entries(cap).map(([r,c])=>`<div>${r} (${c.room}): ${c.u_used}/${c.u_total}U (${c.u_pct}%), ${c.power_used_w}/${c.power_capacity_w}W (${c.power_pct}%) ${c.over_85pct?'⚠️ over 85%':''}</div>`).join('');
+}
+async function addAsset(){
+ const g=id=>document.getElementById('f-'+id).value;
+ const body={id:g('id'),type:g('type'),model:g('model'),room:g('room'),rack:g('rack'),u_start:+g('u')||0,u_height:+g('h')||0,owner:g('owner'),status:g('status')||'in-service',power_w:+g('power')||0,warranty_end:g('warranty'),purchase_date:g('purchase'),serial:g('serial')};
+ const res=await fetch('/api/assets',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ const data=await res.json(); document.getElementById('addMsg').textContent=res.ok?'Added '+body.id:'Error: '+JSON.stringify(data);
+ if(res.ok) load();
+}
+load();
+</script></body></html>

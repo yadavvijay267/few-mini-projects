@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Data Centre Thermal Map — Airflow Lite</title>
+<style>body{font-family:system-ui,sans-serif;max-width:1000px;margin:0 auto;padding:20px;background:#0f172a;color:#e2e8f0}
+.card{background:#1e293b;border-radius:10px;padding:16px;margin:14px 0}
+input[type=range]{width:100%}
+canvas{width:100%;background:#0f172a;border-radius:8px}
+.hot{color:#f87171;font-weight:700}.ok{color:#4ade80}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #334155;padding:6px;text-align:left;font-size:14px}
+.legend span{display:inline-block;width:18px;height:12px;margin-right:4px;border-radius:2px;vertical-align:middle}</style></head>
+<body><h1>🌡️ Data Centre Thermal Map</h1>
+<p>Hall A — 12 racks, hot/cold aisle layout. Drag the slider to replay the day and watch hotspots form.</p>
+<div class="card">
+<label>Time: <b id="clock">14:00</b> &nbsp;·&nbsp; Hall average: <b id="avg"></b></label>
+<input type="range" id="hour" min="0" max="23" value="14" oninput="render()">
+<div class="legend">Colour scale:
+<span style="background:#3b82f6"></span>≤20 °C <span style="background:#22c55e"></span>22 °C
+<span style="background:#eab308"></span>25 °C <span style="background:#f97316"></span>27 °C
+<span style="background:#ef4444"></span>≥29 °C &nbsp;·&nbsp; ⚠ = hotspot (&gt;27 °C)</div>
+<canvas id="map" width="920" height="380"></canvas></div>
+<div class="card"><h3>🔥 Hotspot report</h3><div id="report"></div></div>
+<script>
+// Simulated 24 h inlet temps (°C), 12 racks. Diurnal load curve + per-rack offsets.
+const RACKS=['R01','R02','R03','R04','R05','R06','R07','R08','R09','R10','R11','R12'];
+const BASE=[21.2,21.5,21.0,21.8,22.0,21.4,21.1,21.6,21.3,21.7,21.2,21.5];
+const PEAK=[5.0,5.6,4.9,6.0,6.9,5.2,4.9,5.9,5.2,6.2,5.1,5.5]; // extra °C at 15:00
+function tempAt(r,h){const day=Math.max(0,Math.sin((h-6)/24*Math.PI*2))*1; // 0 at night, 1 mid-afternoon
+  const shape=Math.pow(Math.max(0,Math.sin((h-5)/19*Math.PI)),1.2);
+  return BASE[r]+PEAK[r]*shape+(Math.sin(h*2.1+r)*0.15);}
+function color(t){ // blue -> green -> amber -> red
+  if(t<=20)return '#3b82f6'; if(t<=23)return '#22c55e'; if(t<=25)return '#84cc16';
+  if(t<=27)return '#eab308'; if(t<=29)return '#f97316'; return '#ef4444';}
+function render(){
+  const h=+document.getElementById('hour').value;
+  document.getElementById('clock').textContent=String(h).padStart(2,'0')+':00';
+  const temps=RACKS.map((_,r)=>tempAt(r,h));
+  document.getElementById('avg').textContent=(temps.reduce((a,b)=>a+b,0)/12).toFixed(1)+' °C';
+  const c=document.getElementById('map'),ctx=c.getContext('2d');
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle='#94a3b8';ctx.font='13px sans-serif';
+  ctx.fillText('COLD AISLE (supply air)',360,24); ctx.fillText('HOT AISLE (return air)',370,196);
+  ctx.fillText('COLD AISLE (supply air)',360,368);
+  // two rows of 6 racks each, cold aisle between them
+  temps.forEach((t,i)=>{
+    const row=i<6?0:1, col=i%6, x=60+col*140, y=row===0?40:210;
+    ctx.fillStyle=color(t); ctx.fillRect(x,y,120,120);
+    if(t>27){ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.strokeRect(x,y,120,120);}
+    ctx.fillStyle='#0f172a';ctx.font='bold 15px sans-serif';
+    ctx.fillText(RACKS[i],x+10,y+26); ctx.font='22px sans-serif';
+    ctx.fillText(t.toFixed(1)+'°C',x+10,y+58);
+    ctx.font='13px sans-serif'; ctx.fillText(t>27?'⚠ HOTSPOT':'inlet',x+10,y+84);
+  });
+  // hotspot report
+  const ranked=RACKS.map((r,i)=>({r,t:temps[i]})).sort((a,b)=>b.t-a.t);
+  const hot=ranked.filter(x=>x.t>27);
+  let html=hot.length? '<p class="hot">'+hot.length+' hotspot(s) at '+String(h).padStart(2,'0')+':00</p><table><tr><th>Rack</th><th>Inlet</th><th>Suggested action</th></tr>':'<p class="ok">No hotspots at this hour — all racks within the 27 °C ASHRAE limit.</p>';
+  hot.forEach(x=>{html+='<tr><td>'+x.r+'</td><td class="hot">'+x.t.toFixed(1)+' °C</td><td>'+(x.t>28.5?'Check CRAC airflow + blanking panels; consider load rebalance':'Check blanking panels and cable cut-out sealing')+'</td></tr>';});
+  if(hot.length)html+='</table>';
+  html+='<p style="color:#94a3b8">Hottest rack overall: '+ranked[0].r+' at '+ranked[0].t.toFixed(1)+' °C. Coolest: '+ranked[11].r+' at '+ranked[11].t.toFixed(1)+' °C.</p>';
+  document.getElementById('report').innerHTML=html;
+}
+render();
+</script></body></html>

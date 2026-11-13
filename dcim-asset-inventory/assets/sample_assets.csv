@@ -1,0 +1,4 @@
+name,type,room,rack,u,owner,warranty,status
+Dell PowerEdge R750,server,A,R-12,10,NOC,2027-06-01,active
+APC AP8858 PDU,pdu,A,R-12,1,Facilities,2026-12-15,active
+Cisco Nexus 9316,switch,A,R-14,22,Network,2028-01-20,active

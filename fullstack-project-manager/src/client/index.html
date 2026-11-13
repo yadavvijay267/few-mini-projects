@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Management App (Full Stack)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><h1>Project Management App (Full Stack)</h1><p>Projects, task boards, team members, deadlines and a live activity feed — with a computed project-health score.</p></header>
+<main>
+<section id="auth" class="card">
+  <h2>Sign in</h2>
+  <p class="muted">Demo account: <code>demo@example.com</code> / <code>demo1234</code> — or register a new account.</p>
+  <div class="row">
+    <input id="auth-name" placeholder="Name (register only)">
+    <input id="auth-email" type="email" placeholder="Email" value="demo@example.com">
+    <input id="auth-pass" type="password" placeholder="Password" value="demo1234">
+    <button id="btn-login">Log in</button>
+    <button id="btn-register" class="secondary">Register</button>
+    <button id="btn-logout" class="secondary" hidden>Log out</button>
+  </div>
+  <p id="auth-status" class="muted"></p>
+</section>
+<nav id="tabs"></nav>
+<section id="panel" class="card"></section>
+<section id="custom" class="card"><h2>Project health score</h2><p>Health = 100 − 15 per overdue task − 5 per stalled task (Todo for over 7 days). A metric managers actually use.</p><div class="row"><input id="health-pid" placeholder="Project ID (try p1)" value="p1"><button id="custom-run">Compute health</button><button id="dash-run" class="secondary">Dashboard digest</button></div><pre id="custom-out">Log in, then press a button.</pre></section>
+</main>
+<footer><p>Project Management App (Full Stack) — built by Clamor. MIT licensed.</p></footer>
+<script>window.SCHEMA = {"projects": {"label": "Projects", "singular": "project", "fields": [{"key": "name", "label": "Name", "type": "text"}, {"key": "description", "label": "Description", "type": "textarea"}, {"key": "status", "label": "Status", "type": "select", "options": ["Active", "On hold", "Completed"]}, {"key": "owner", "label": "Owner", "type": "text"}]}, "tasks": {"label": "Tasks", "singular": "task", "fields": [{"key": "title", "label": "Title", "type": "text"}, {"key": "projectId", "label": "Project ID", "type": "text"}, {"key": "assignee", "label": "Assignee", "type": "text"}, {"key": "status", "label": "Status", "type": "select", "options": ["Todo", "In Progress", "Review", "Done"]}, {"key": "priority", "label": "Priority", "type": "select", "options": ["Low", "Medium", "High", "Critical"]}, {"key": "dueDate", "label": "Due date", "type": "date"}]}, "members": {"label": "Team members", "singular": "member", "fields": [{"key": "name", "label": "Name", "type": "text"}, {"key": "role", "label": "Role", "type": "text"}, {"key": "email", "label": "Email", "type": "text"}]}, "comments": {"label": "Comments", "singular": "comment", "fields": [{"key": "taskId", "label": "Task ID", "type": "text"}, {"key": "author", "label": "Author", "type": "text"}, {"key": "text", "label": "Comment", "type": "textarea"}]}, "activities": {"label": "Activity feed", "singular": "activity", "fields": [{"key": "action", "label": "Action", "type": "text"}, {"key": "projectId", "label": "Project ID", "type": "text"}]}}; window.CUSTOM_TAB = { run: function () { var out = document.getElementById('custom-out'); var run = document.getElementById('custom-run'); if (run) run.onclick = async function () { try { var id = document.getElementById('health-pid').value || 'p1'; var r = await api('/api/projects/' + id + '/health'); out.textContent = JSON.stringify(r, null, 2); } catch (e) { out.textContent = 'Error: ' + e.message; } }; var d = document.getElementById('dash-run'); if (d) d.onclick = async function () { try { var r = await api('/api/dashboard'); out.textContent = JSON.stringify(r, null, 2); } catch (e) { out.textContent = 'Error: ' + e.message; } }; } };</script>
+<script src="/app.js"></script>
+</body>
+</html>

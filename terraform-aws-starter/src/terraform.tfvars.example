@@ -1,0 +1,6 @@
+aws_region = "ap-south-1"
+environment = "dev"
+instance_type = "t2.micro"
+# db_password = "set-via-TF_VAR_db_password-or-secrets-manager"
+allowed_ssh_cidr = "0.0.0.0/0"  # tighten to your IP before apply
+enable_rds = true

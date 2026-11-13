@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>RAG Chatbot</title><style>body{font-family:system-ui;max-width:720px;margin:40px auto;padding:0 16px}
+#log{border:1px solid #ccc;border-radius:8px;padding:12px;min-height:200px;white-space:pre-wrap}
+input{width:75%;padding:8px}button{padding:8px 14px}</style></head><body>
+<h1>RAG Chatbot</h1><p>Ask about the uploaded documents — every answer cites its source.</p>
+<div id="log"></div><p><input id="q" placeholder="Ask a question…">
+<button onclick="ask()">Ask</button></p>
+<script>async function ask(){const q=document.getElementById('q').value;
+const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q})});
+const j=await r.json();
+document.getElementById('log').textContent+='\nQ: '+q+'\nA ('+j.confidence+'): '+j.answer+'\nSources: '+JSON.stringify(j.sources)+'\n';}
+</script></body></html>

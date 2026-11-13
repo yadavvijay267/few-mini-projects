@@ -1,0 +1,2 @@
+# Pure HTML/CSS/vanilla-JS project — no Python dependencies.
+# Node.js (for the test script) is the only requirement; no npm packages needed.

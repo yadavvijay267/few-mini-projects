@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Terraform / cloud state (NEVER commit real state)
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+.terraform.lock.hcl
+crash.log
+
+# Helm / Kubernetes
+*.tgz
+charts/*/charts/
+
+# Secrets & local config
+.env
+*.pem
+*.key
+kubeconfig
+*.kubeconfig
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+dist/
+build/
+*.log

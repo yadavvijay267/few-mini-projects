@@ -1,0 +1,15 @@
+name: terraform-plan
+on: [pull_request]
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform -chdir=src fmt -check
+      - run: terraform -chdir=src init -backend=false
+      - run: terraform -chdir=src validate
+      - run: python3 scripts/cost_estimate.py
+      # Cost comment on the PR (stand-out twist):
+      - name: cost comment
+        run: python3 scripts/cost_estimate.py > /tmp/cost.txt && echo "Estimated bill:" && cat /tmp/cost.txt

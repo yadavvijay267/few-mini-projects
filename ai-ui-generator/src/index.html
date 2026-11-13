@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>AI UI Generator</title>
+<script src="https://cdn.tailwindcss.com"></script></head><body class="p-6 max-w-4xl mx-auto">
+<h1 class="text-3xl font-bold">AI UI Generator</h1>
+<p class="text-gray-600">Describe a UI — get a working mockup. No key needed (template mode); set GEMINI_API_KEY on the server for LLM mode.</p>
+<textarea id="prompt" class="w-full border rounded p-3 mt-4" rows="2">a pricing page for a gym</textarea>
+<div class="mt-2"><button class="px-4 py-2 bg-blue-600 text-white rounded" onclick="gen()">Generate</button>
+<button class="px-4 py-2 bg-gray-200 rounded" onclick="toggleDevice()">Desktop / Mobile</button>
+<button class="px-4 py-2 bg-gray-200 rounded" onclick="exportHtml()">Export .html</button></div>
+<input id="refine" class="w-full border rounded p-2 mt-2" placeholder="Refine: e.g. make the header darker">
+<div class="mt-4 border rounded overflow-hidden"><iframe id="preview" class="w-full" style="height:480px"></iframe></div>
+<script>
+let current='';
+function mockup(prompt){ const biz=(prompt.match(/gym|cafe|salon|school|clinic|saas|shop|studio/i)||['business'])[0];
+  const isPricing=/pricing/i.test(prompt);
+  return `<!doctype html><html><head><script src="https://cdn.tailwindcss.com"><\/script></head><body>
+  <header class="bg-blue-600 text-white p-6"><h1 class="text-3xl font-bold">${biz} — ${isPricing?'Pricing':'Landing'}</h1></header>
+  <main class="p-6">${isPricing?['Basic ₹499/mo','Pro ₹999/mo','Team ₹1999/mo'].map(t=>`<div class="p-4 border rounded mb-2">${t}</div>`).join(''):'<p>Welcome to your '+biz+' page.</p>'}</main></body></html>`; }
+function gen(){ current=mockup(document.getElementById('prompt').value);
+  document.getElementById('preview').srcdoc=current; }
+function toggleDevice(){ const f=document.getElementById('preview'); f.style.width=f.style.width==='380px'?'100%':'380px'; }
+function exportHtml(){ if(!current) gen();
+  let r=document.getElementById('refine').value;
+  if(/darker/i.test(r)&&/header/i.test(r)) current=current.replace('bg-blue-600','bg-slate-900');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([current],{type:'text/html'}));
+  a.download='mockup.html'; a.click(); }
+gen();
+</script></body></html>

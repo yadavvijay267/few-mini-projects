@@ -1,0 +1,8 @@
+{
+  "image": "/home/hatch/workspace/remaining-projects/object-detection-dashboard/assets/samples/rack_scene.png",
+  "detector": "contour/blob baseline (NOT YOLO)",
+  "zone": null,
+  "counts": {},
+  "total": 0,
+  "detections": []
+}

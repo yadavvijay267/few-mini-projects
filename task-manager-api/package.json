@@ -1,0 +1,15 @@
+{
+  "name": "task-manager-api",
+  "version": "1.0.0",
+  "description": "REST API for a Task Manager \u2014 CRUD, filtering, pagination, JWT auth.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/test.js",
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

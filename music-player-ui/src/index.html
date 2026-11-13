@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Player UI — Clamor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header><h1>♪ Waveform Player</h1><p class="note">Tracks are synthesized live with the Web Audio API — no audio files needed. Click play and watch the visualiser.</p></header>
+  <canvas id="viz" width="900" height="140" aria-label="Audio visualiser"></canvas>
+  <section class="now">
+    <div class="cover" id="cover">♪</div>
+    <div class="now-info"><h2 id="nowTitle">—</h2><p id="nowArtist">Pick a track below</p>
+      <input id="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+      <div class="times"><span id="tCur">0:00</span><span id="tTot">0:00</span></div></div>
+    <div class="controls">
+      <button id="shuffleBtn" aria-label="Shuffle">🔀</button>
+      <button id="prevBtn" aria-label="Previous">⏮</button>
+      <button id="playBtn" class="play" aria-label="Play or pause">▶</button>
+      <button id="nextBtn" aria-label="Next">⏭</button>
+      <button id="repeatBtn" aria-label="Repeat mode">🔁</button>
+    </div>
+    <div class="vol"><label>🔊 <input id="vol" type="range" min="0" max="100" value="80" aria-label="Volume"></label></div>
+  </section>
+  <section class="lists">
+    <div class="playlist">
+      <div class="list-head"><h2>Playlist</h2><input id="search" type="search" placeholder="Search tracks..." aria-label="Search tracks">
+      <select id="sort" aria-label="Sort tracks"><option value="title">Title A–Z</option><option value="bpm">Tempo</option><option value="dur">Duration</option></select></div>
+      <ul id="trackList"></ul>
+    </div>
+    <div class="queue"><h2>Up next</h2><ol id="queueList"></ol><button id="clearQueue" class="btn">Clear queue</button></div>
+  </section>
+  <button id="miniBtn" class="btn">Mini-player mode</button>
+  <p class="hint">Keyboard shortcuts: Space = play/pause · ←/→ = seek 5s · ↑/↓ = volume · N = next track</p>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

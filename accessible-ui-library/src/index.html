@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible UI Library — Demo</title><link rel="stylesheet" href="a11y-ui.css">
+<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:0 auto;padding:1.5rem}section{margin:2rem 0;border-top:1px solid #cbd5e1;padding-top:1rem}.skip-link{position:absolute;left:-999px}.skip-link:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;z-index:100}</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header><h1>Accessible UI Library</h1><p>WCAG 2.1 AA components: keyboard-navigable, visible focus, proper ARIA. Try everything with a keyboard only.</p></header>
+<main id="main">
+  <section><h2>Button</h2>
+    <button class="a11y-btn" id="demoBtn">Primary button</button>
+    <button class="a11y-btn a11y-btn--secondary">Secondary</button>
+    <button class="a11y-btn" disabled>Disabled</button>
+  </section>
+  <section><h2>Modal (focus trap + Escape)</h2>
+    <button class="a11y-btn" id="openModal">Open modal</button>
+    <div class="a11y-modal-backdrop" hidden>
+      <div class="a11y-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
+        <h3 id="modalTitle">Confirm action</h3>
+        <p id="modalDesc">Focus is trapped here until you close the dialog. Press Escape or Tab through the buttons.</p>
+        <button class="a11y-btn" data-close data-autofocus>Confirm</button>
+        <button class="a11y-btn a11y-btn--secondary" data-close>Cancel</button>
+      </div>
+    </div>
+  </section>
+  <section class="a11y-tabs" id="tabsDemo"><h2>Tabs (arrow keys)</h2>
+    <div role="tablist" aria-label="Demo tabs">
+      <button role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1">Overview</button>
+      <button role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1">Details</button>
+      <button role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1">Settings</button>
+    </div>
+    <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0"><p>Overview panel. Use ← → to move between tabs, Home/End to jump.</p></div>
+    <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden><p>Details panel content.</p></div>
+    <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden><p>Settings panel content.</p></div>
+  </section>
+  <section class="a11y-accordion" id="accDemo"><h2>Accordion</h2>
+    <h3><button aria-expanded="false" aria-controls="acc-1" id="acc-btn-1">What is this library?</button></h3>
+    <div role="region" id="acc-1" aria-labelledby="acc-btn-1" hidden><p>A small set of components built to WCAG 2.1 AA from the start.</p></div>
+    <h3><button aria-expanded="false" aria-controls="acc-2" id="acc-btn-2">How is it tested?</button></h3>
+    <div role="region" id="acc-2" aria-labelledby="acc-btn-2" hidden><p>Automated ARIA/keyboard checks in tests/ plus the manual checklist in docs/ACCESSIBILITY_CHECKLIST.md.</p></div>
+  </section>
+  <section><h2>Tooltip (hover + focus)</h2>
+    <span class="a11y-tooltip"><button class="a11y-btn" aria-describedby="tip-1">Save</button><span role="tooltip" id="tip-1">Saves your work</span></span>
+  </section>
+  <section><h2>Toggle switch</h2>
+    <span class="a11y-toggle" id="notifToggle" aria-checked="false"><span class="track" aria-hidden="true"></span><span>Enable notifications</span></span>
+  </section>
+  <section><h2>Toast</h2>
+    <button class="a11y-btn" id="toastBtn">Show toast</button>
+    <p>Toasts are announced via an <code>aria-live="polite"</code> region.</p>
+  </section>
+</main>
+<script src="a11y-ui.js"></script>
+<script>
+  A11yUI.initModal(document.getElementById('openModal'), document.querySelector('[role="dialog"]'));
+  A11yUI.initTabs(document.getElementById('tabsDemo'));
+  A11yUI.initAccordion(document.getElementById('accDemo'));
+  document.querySelectorAll('.a11y-tooltip').forEach(el => A11yUI.initTooltip(el));
+  A11yUI.initToggle(document.getElementById('notifToggle'));
+  document.getElementById('toastBtn').addEventListener('click', () => A11yUI.toast('Saved successfully'));
+  document.getElementById('demoBtn').addEventListener('click', () => A11yUI.toast('Primary button clicked'));
+</script>
+</body>
+</html>

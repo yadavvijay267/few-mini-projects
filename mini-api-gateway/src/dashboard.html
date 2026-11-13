@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Gateway — Quota Dashboard</title>
+<style>body{font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:1rem}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:.5rem;text-align:left}
+.bar{height:12px;background:#e5e7eb;border-radius:6px;overflow:hidden}.bar>div{height:100%;background:#2563eb}
+code{background:#f1f5f9;padding:.1rem .3rem}</style></head>
+<body>
+<h1>API Gateway — Live Quota Dashboard</h1>
+<p>Per-key usage against its limit, updated every 2 seconds. Try: <code>curl -H "X-Api-Key: demo-key-123" localhost:3003/api/users</code></p>
+<table><thead><tr><th>Key</th><th>Limit</th><th>Allowed</th><th>Blocked (429)</th><th>Usage</th></tr></thead><tbody id="rows"></tbody></table>
+<h2>Recent access log</h2><pre id="logs"></pre>
+<script>
+async function refresh() {
+  const q = await (await fetch('/quota')).json();
+  document.getElementById('rows').innerHTML = q.map(k => {
+    const total = k.usage.allowed + k.usage.blocked;
+    const pct = k.limit ? Math.min(100, Math.round(k.usage.allowed / k.limit * 100)) : 0;
+    return `<tr><td>${k.name} (${k.key})</td><td>${k.limit} burst / ${k.refillPerSecond}/s</td><td>${k.usage.allowed}</td><td>${k.usage.blocked}</td><td><div class="bar"><div style="width:${pct}%"></div></div></td></tr>`;
+  }).join('');
+  const logs = await (await fetch('/logs')).json();
+  document.getElementById('logs').textContent = logs.slice(-15).map(l => `${l.ts} ${l.method} ${l.path} -> ${l.status} (${l.ms}ms) key=${l.key}`).join('\n');
+}
+setInterval(refresh, 2000); refresh();
+</script>
+</body></html>

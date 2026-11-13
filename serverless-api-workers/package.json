@@ -1,0 +1,16 @@
+{
+  "name": "serverless-api-workers",
+  "version": "1.0.0",
+  "description": "Serverless API on Cloudflare Workers and AWS Lambda (shared router).",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/test.js",
+    "start": "node src/index.js",
+    "dev": "node scripts/dev.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

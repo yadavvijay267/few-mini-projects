@@ -1,0 +1,54 @@
+{
+  "accuracy": 0.785,
+  "precision": 0.7821,
+  "recall": 0.7487,
+  "f1": 0.765,
+  "roc_auc": 0.8636,
+  "confusion_matrix": [
+    [
+      174,
+      39
+    ],
+    [
+      47,
+      140
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.7873303167420814,
+      "recall": 0.8169014084507042,
+      "f1-score": 0.8018433179723502,
+      "support": 213.0
+    },
+    "1": {
+      "precision": 0.7821229050279329,
+      "recall": 0.7486631016042781,
+      "f1-score": 0.7650273224043715,
+      "support": 187.0
+    },
+    "accuracy": 0.785,
+    "macro avg": {
+      "precision": 0.7847266108850072,
+      "recall": 0.7827822550274912,
+      "f1-score": 0.7834353201883608,
+      "support": 400.0
+    },
+    "weighted avg": {
+      "precision": 0.784895851765717,
+      "recall": 0.785,
+      "f1-score": 0.7846318400443202,
+      "support": 400.0
+    }
+  },
+  "feature_importance": {
+    "vibration": 0.1792,
+    "temperature": 0.1797,
+    "runtime_hours": 0.3259,
+    "load": 0.0843,
+    "cycles_since_service": 0.2309
+  },
+  "n_train": 1600,
+  "n_test": 400,
+  "model": "RandomForestClassifier(n_estimators=200)"
+}

@@ -1,0 +1,2 @@
+# No Python dependencies beyond the standard library for tests.
+# PyYAML is used by tests if available; the test falls back to a regex parser.

@@ -1,0 +1,28 @@
+:root{--bg:#0f172a;--panel:#1e293b;--card:#f8fafc;--ink:#0f172a;--muted:#94a3b8;--accent:#38bdf8;--warn:#f87171}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:#e2e8f0}
+.topbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:16px 20px;background:#0b1220}
+.topbar h1{margin:0;font-size:1.4rem}.controls{display:flex;gap:8px;flex-wrap:wrap}
+input,select,textarea{padding:8px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;cursor:pointer}
+.btn.primary{background:var(--accent);color:#082f49;border-color:transparent;font-weight:600}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:18px;align-items:start}
+@media(max-width:900px){.board{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.board{grid-template-columns:1fr}}
+.column{background:var(--panel);border-radius:12px;padding:12px;min-height:200px}
+.column.over{outline:2px dashed var(--accent)}
+.col-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.col-head h2{margin:0;font-size:1rem}.wip{font-size:.8rem;color:var(--muted)}
+.wip.over{color:var(--warn);font-weight:700}
+.card{background:var(--card);color:var(--ink);border-radius:10px;padding:12px;margin-bottom:10px;cursor:grab;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.card.dragging{opacity:.4}.card h3{margin:0 0 6px;font-size:.95rem}
+.card p{margin:0 0 8px;font-size:.85rem;color:#475569}
+.meta{display:flex;gap:6px;flex-wrap:wrap;font-size:.75rem;align-items:center}
+.tag{background:#e0f2fe;color:#075985;border-radius:20px;padding:2px 8px;font-weight:600}
+.due{color:#475569}.due.overdue{color:#dc2626;font-weight:700}
+.checks{font-size:.8rem;color:#475569;margin-top:6px}
+.card .del{float:right;border:0;background:none;cursor:pointer;font-size:1rem;color:#94a3b8}
+.hint{padding:0 20px 20px;color:var(--muted);font-size:.85rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
+.modal.hidden{display:none}.modal-card{background:#1e293b;padding:20px;border-radius:12px;width:min(480px,92vw);display:grid;gap:10px}
+.modal-card input,.modal-card select,.modal-card textarea{width:100%}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}

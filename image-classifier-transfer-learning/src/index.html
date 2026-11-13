@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Classifier — Demo</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#16233a}h1{color:#0b5cad}.card{border:1px solid #d7e0ea;border-radius:12px;padding:16px;margin:12px 0}.tag{display:inline-block;background:#e8f1fb;color:#0b5cad;border-radius:999px;padding:2px 10px;margin:2px;font-size:13px}</style></head>
+<body><h1>Image Classifier — QC Defect Detection</h1>
+<p>Classes: <span class="tag">cable_ok</span><span class="tag">cable_defect</span><span class="tag">connector</span></p>
+<div class="card"><h2>Try it (CLI)</h2><pre>pip install -r requirements.txt
+python3 src/train.py
+python3 src/predict.py --image assets/samples/cable_defect_00.png</pre></div>
+<div class="card"><h2>Honesty note</h2><p>The shipped model is a LogisticRegression baseline on hand-built features — it is <b>not</b> a frozen MobileNetV2 backbone. The transfer-learning production path is documented in <code>docs/ARCHITECTURE.md</code>.</p></div>
+<div class="card"><h2>What it reports</h2><p>Top-3 predictions with confidence, test accuracy, per-class precision/recall, confusion matrix and a learning curve — all in <code>models/metrics.json</code>.</p></div>
+</body></html>

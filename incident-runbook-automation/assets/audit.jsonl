@@ -1,0 +1,16 @@
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:18:28"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:18:28"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:20:11"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:20:11"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:22:00"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:22:00"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:22:10"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:22:10"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:24:59"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:24:59"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:25:26"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:25:26"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:26:34"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:26:34"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": true, "statuses": ["dry-run-skipped", "dry-run-skipped", "dry-run-skipped"], "ts": "2026-11-12T02:27:06"}
+{"event": "runbook_run", "runbook": "ups-on-battery", "operator": "operator", "dry_run": false, "statuses": ["awaiting-confirmation", "done", "awaiting-confirmation"], "ts": "2026-11-12T02:27:06"}

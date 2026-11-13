@@ -1,0 +1,116 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "j1",
+      "title": "Frontend Developer",
+      "company": "TechNova",
+      "location": "Noida",
+      "salaryMin": 600000,
+      "salaryMax": 900000,
+      "remote": "Yes",
+      "tags": "React, JavaScript, CSS",
+      "description": "Build responsive UIs for our SaaS product.",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "j2",
+      "title": "Backend Developer",
+      "company": "DataCore",
+      "location": "Bengaluru",
+      "salaryMin": 800000,
+      "salaryMax": 1200000,
+      "remote": "No",
+      "tags": "Node.js, PostgreSQL, APIs",
+      "description": "Design and scale our APIs.",
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "j3",
+      "title": "Fiber Design Engineer",
+      "company": "AMSYS IT Service Pvt Ltd",
+      "location": "Noida",
+      "salaryMin": 500000,
+      "salaryMax": 750000,
+      "remote": "No",
+      "tags": "AutoCAD, Fiber, GIS",
+      "description": "Plan fiber routes and prepare design documents.",
+      "createdAt": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "j4",
+      "title": "Data Analyst",
+      "company": "Insight Labs",
+      "location": "Remote",
+      "salaryMin": 700000,
+      "salaryMax": 1000000,
+      "remote": "Yes",
+      "tags": "Python, SQL, Dashboards",
+      "description": "Turn data into decisions.",
+      "createdAt": "2026-11-04T00:00:00.000Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "ap1",
+      "jobId": "j1",
+      "applicantName": "Ana Sharma",
+      "email": "ana@example.com",
+      "skills": "React, JavaScript, CSS, HTML",
+      "status": "Shortlisted",
+      "createdAt": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "ap2",
+      "jobId": "j1",
+      "applicantName": "Ravi Patel",
+      "email": "ravi@example.com",
+      "skills": "Python, SQL",
+      "status": "Applied",
+      "createdAt": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "ap3",
+      "jobId": "j2",
+      "applicantName": "Demo User",
+      "email": "demo@example.com",
+      "skills": "Node.js, PostgreSQL, APIs",
+      "status": "Interview",
+      "createdAt": "2026-11-07T00:00:00.000Z"
+    }
+  ],
+  "savedSearches": [
+    {
+      "id": "s1",
+      "query": "Frontend Developer",
+      "location": "Noida",
+      "remote": "Yes",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ]
+}

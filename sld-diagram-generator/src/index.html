@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>SLD Generator — Single-Line Diagram from JSON</title>
+<style>body{font-family:system-ui,sans-serif;margin:0;background:#0f172a;color:#e2e8f0}
+header{padding:14px 20px;background:#1e293b}h1{margin:0;font-size:20px}
+main{display:flex;gap:16px;padding:16px;flex-wrap:wrap}
+.panel{background:#1e293b;border-radius:10px;padding:14px}
+#editor{flex:1;min-width:320px}#editor textarea{width:100%;height:340px;background:#0f172a;color:#a5f3fc;border:1px solid #334155;border-radius:6px;font-family:monospace;font-size:12px}
+#canvas{flex:2;min-width:420px;background:#fff;border-radius:10px;padding:8px}
+#canvas svg{width:100%;height:auto;display:block}
+button{background:#0ea5e9;color:#fff;border:0;border-radius:6px;padding:8px 14px;margin:4px 4px 0 0;cursor:pointer}
+button.ghost{background:#334155}label{font-size:12px;color:#94a3b8}
+input,select{width:100%;padding:6px;margin:4px 0 10px;border-radius:6px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+#warn{color:#fbbf24;font-size:13px;min-height:18px}</style></head>
+<body>
+<header><h1>⚡ Single-Line Diagram Generator</h1><p style="margin:4px 0 0;color:#94a3b8">Describe the system in JSON — the SLD draws itself. Click any component to edit it.</p></header>
+<main>
+<section class="panel" id="editor">
+<h3>System JSON</h3>
+<textarea id="json"></textarea><br>
+<button onclick="redraw()">Redraw</button>
+<button class="ghost" onclick="loadSample()">Load sample</button>
+<button class="ghost" onclick="exportSVG()">Export SVG</button>
+<button class="ghost" onclick="exportPNG()">Export PNG</button>
+<div id="warn"></div>
+<h3>Edit selected component</h3>
+<div id="editPanel"><p style="color:#94a3b8">Click a symbol in the diagram.</p></div>
+</section>
+<section id="canvas"><svg id="sld" viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg"></svg></section>
+</main>
+<script src="app.js"></script>
+</body></html>

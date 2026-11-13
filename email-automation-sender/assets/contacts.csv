@@ -1,0 +1,6 @@
+name,email,company,plan
+Asha Verma,asha@example.com,Acme Corp,Pro
+Rohan Iyer,rohan@example.com,Beta Labs,Free
+Asha Verma,asha@example.com,Acme Corp,Pro
+Priya Nair,priya@example.com,Gamma Ltd,Pro
+bad-contact,not-an-email,Nowhere,Free

@@ -1,0 +1,5 @@
+Fiber Installation SOP. Single-mode fiber loss budget is 0.35 dB per km at 1310 nm.
+Each splice adds 0.1 dB and each connector adds 0.5 dB. Always clean connectors
+before testing with an OTDR. The OTDR trace must show no reflective event above
+-40 dB. Label every splice closure with its route ID and date. A fiber link is
+accepted only when the measured loss is within the calculated budget.

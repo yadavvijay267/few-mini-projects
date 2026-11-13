@@ -1,0 +1,79 @@
+{
+  "accuracy": 1.0,
+  "labels": [
+    "cable_defect",
+    "cable_ok",
+    "connector"
+  ],
+  "classification_report": {
+    "cable_defect": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 8.0
+    },
+    "cable_ok": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 8.0
+    },
+    "connector": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 8.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 24.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 24.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      0
+    ],
+    [
+      0,
+      8,
+      0
+    ],
+    [
+      0,
+      0,
+      8
+    ]
+  ],
+  "learning_curve": [
+    {
+      "train_size": 24,
+      "accuracy": 1.0
+    },
+    {
+      "train_size": 48,
+      "accuracy": 1.0
+    },
+    {
+      "train_size": 72,
+      "accuracy": 1.0
+    },
+    {
+      "train_size": 96,
+      "accuracy": 1.0
+    }
+  ],
+  "n_train": 96,
+  "n_test": 24,
+  "model": "LogisticRegression on 280 hand-built features (baseline, NOT a frozen backbone)"
+}

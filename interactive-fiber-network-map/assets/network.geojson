@@ -1,0 +1,296 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POP-1",
+        "kind": "pop",
+        "name": "Noida POP 1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.35,
+          28.57
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POP-2",
+        "kind": "pop",
+        "name": "Noida POP 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.36,
+          28.57
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SC-1",
+        "kind": "splice",
+        "name": "Splice Closure 1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.35,
+          28.59
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SC-2",
+        "kind": "splice",
+        "name": "Splice Closure 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.37,
+          28.59
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SC-3",
+        "kind": "splice",
+        "name": "Splice Closure 3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.38,
+          28.59
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CUST-A",
+        "kind": "customer",
+        "name": "Customer A \u2014 Sector 62"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.35,
+          28.61
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CUST-B",
+        "kind": "customer",
+        "name": "Customer B \u2014 Sector 63"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.38,
+          28.6
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L1",
+        "kind": "link",
+        "from": "POP-1",
+        "to": "SC-1",
+        "length_km": 2.4,
+        "splices": 4,
+        "connectors": 2,
+        "customers": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.35,
+            28.57
+          ],
+          [
+            77.35,
+            28.59
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L2",
+        "kind": "link",
+        "from": "SC-2",
+        "to": "SC-1",
+        "length_km": 3.0,
+        "splices": 3,
+        "connectors": 2,
+        "customers": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.37,
+            28.59
+          ],
+          [
+            77.35,
+            28.59
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L3",
+        "kind": "link",
+        "from": "POP-2",
+        "to": "SC-2",
+        "length_km": 4.1,
+        "splices": 4,
+        "connectors": 2,
+        "customers": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.36,
+            28.57
+          ],
+          [
+            77.37,
+            28.59
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L4",
+        "kind": "link",
+        "from": "SC-2",
+        "to": "CUST-B",
+        "length_km": 2.2,
+        "splices": 2,
+        "connectors": 2,
+        "customers": [
+          "CUST-B"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.37,
+            28.59
+          ],
+          [
+            77.38,
+            28.6
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L5",
+        "kind": "link",
+        "from": "SC-1",
+        "to": "CUST-A",
+        "length_km": 1.8,
+        "splices": 2,
+        "connectors": 2,
+        "customers": [
+          "CUST-A"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.35,
+            28.59
+          ],
+          [
+            77.35,
+            28.61
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L6",
+        "kind": "link",
+        "from": "SC-2",
+        "to": "SC-3",
+        "length_km": 2.6,
+        "splices": 3,
+        "connectors": 2,
+        "customers": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.37,
+            28.59
+          ],
+          [
+            77.38,
+            28.59
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L7",
+        "kind": "link",
+        "from": "POP-1",
+        "to": "POP-2",
+        "length_km": 1.5,
+        "splices": 2,
+        "connectors": 2,
+        "customers": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.35,
+            28.57
+          ],
+          [
+            77.36,
+            28.57
+          ]
+        ]
+      }
+    }
+  ]
+}

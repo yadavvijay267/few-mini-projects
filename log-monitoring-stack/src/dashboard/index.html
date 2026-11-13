@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Log Monitoring — Dashboard</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header><h1>Log Monitoring Dashboard</h1><p>Search logs, watch error rate &amp; latency. Sample data ships with the repo; in production this reads Loki.</p></header>
+<main>
+<section id="stats" class="cards">
+  <div class="card"><span>Total requests</span><strong id="stat-total">–</strong></div>
+  <div class="card"><span>Error rate</span><strong id="stat-errors">–</strong></div>
+  <div class="card"><span>p50 latency</span><strong id="stat-p50">–</strong></div>
+  <div class="card"><span>p95 latency</span><strong id="stat-p95">–</strong></div>
+  <div class="card alert"><span>Active alerts</span><strong id="stat-alerts">–</strong></div>
+</section>
+<section class="controls">
+  <input id="q" type="search" placeholder="Search logs (path, status, message)…">
+  <select id="level"><option value="">All levels</option><option>INFO</option><option>WARN</option><option>ERROR</option></select>
+  <select id="service"><option value="">All services</option><option>web</option><option>api</option><option>worker</option></select>
+  <button id="load-sample">Load sample logs</button>
+  <label>Upload parsed.jsonl <input id="file" type="file" accept=".jsonl,.json"></label>
+</section>
+<section id="alerts"></section>
+<table><thead><tr><th>Level</th><th>Service</th><th>Path / message</th><th>Status</th><th>Latency</th></tr></thead>
+<tbody id="rows"><tr><td colspan="5">Load sample logs or upload parsed.jsonl to begin.</td></tr></tbody></table>
+</main>
+<script src="app.js"></script>
+</body></html>

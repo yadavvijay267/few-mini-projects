@@ -1,0 +1,2 @@
+# Terraform is the only dependency (install from terraform.io).
+# Python 3.8+ for the validation / cost scripts (stdlib only).

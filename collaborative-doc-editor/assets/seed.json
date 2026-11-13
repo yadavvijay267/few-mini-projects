@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "documents": [
+    {
+      "id": "d1",
+      "title": "Product Launch Plan",
+      "content": "Launch goals\n\nShip v2 by December with offline mode.\n\nMarketing\n\nAnnounce on the blog and newsletter in week one.",
+      "owner": "Demo User",
+      "shareToken": "share-d1",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "d2",
+      "title": "Team Meeting Notes",
+      "content": "Decisions\n\nWeekly demo moves to Friday.\n\nActions\n\nAna owns the new homepage mockups.",
+      "owner": "Ana Sharma",
+      "shareToken": "share-d2",
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    }
+  ],
+  "versions": [
+    {
+      "id": "v1",
+      "docId": "d1",
+      "content": "Launch goals\n\nShip v2 by December.",
+      "author": "Demo User",
+      "note": "Initial version",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ]
+}

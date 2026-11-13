@@ -1,0 +1,15 @@
+{
+  "name": "realtime-notification-service",
+  "version": "1.0.0",
+  "description": "Real-time notification service: SSE, multi-channel delivery, queue, digest mode.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/test.js",
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

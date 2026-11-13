@@ -1,0 +1,5 @@
+Load,Category,Connected kW,Qty,Demand factor,Demand kW
+LED lighting,Lighting,20,1,0.9,18.0
+AHU-1,HVAC,15,2,0.8,24.0
+Chiller pump,Motors,11,1,0.75,8.25
+Server rack,IT,8,3,0.9,21.6

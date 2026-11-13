@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clamor — AR Business Card</title><link rel="stylesheet" href="styles.css">
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head><body>
+<div id="ui">
+  <h1>Clamor — AR Business Card</h1>
+  <p>Point your phone camera at the printed marker (<a href="../assets/marker.html" target="_blank">print it here</a>). No camera? Use the 3D preview.</p>
+  <div class="buttons">
+    <button id="btn-ar">📷 Start AR camera</button>
+    <button id="btn-preview">🃏 3D card preview (no camera)</button>
+  </div>
+  <p id="status">AR needs HTTPS + camera permission. The preview works anywhere.</p>
+</div>
+<div id="preview" hidden><canvas id="preview-canvas"></canvas><p>Drag to rotate the card. <button id="btn-close-preview">Close preview</button></p></div>
+<a-scene id="scene" embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false" hidden>
+  <a-marker preset="hiro">
+    <a-entity id="card3d" position="0 0.6 0">
+      <a-box position="0 0.5 0" width="1.6" height="0.9" depth="0.05" color="#0f172a"></a-box>
+      <a-text value="Clamor" position="0 0.62 0.05" align="center" color="#38bdf8" width="3"></a-text>
+      <a-text value="QC Engineer - Telecom & Data Centre" position="0 0.42 0.05" align="center" color="#e2e8f0" width="2.4"></a-text>
+      <a-cylinder position="-0.55 0.62 0.05" radius="0.12" height="0.02" rotation="90 0 0" color="#0ea5e9"></a-cylinder>
+      <a-plane id="btn-web" position="-0.45 0.15 0.05" width="0.45" height="0.18" color="#0ea5e9" class="clickable"></a-plane>
+      <a-text value="Website" position="-0.45 0.15 0.06" align="center" color="#ffffff" width="1.6"></a-text>
+      <a-plane id="btn-mail" position="0.45 0.15 0.05" width="0.45" height="0.18" color="#059669" class="clickable"></a-plane>
+      <a-text value="Email" position="0.45 0.15 0.06" align="center" color="#ffffff" width="1.6"></a-text>
+    </a-entity>
+  </a-marker>
+  <a-entity camera></a-entity>
+</a-scene>
+<script src="app.js"></script>
+</body></html>

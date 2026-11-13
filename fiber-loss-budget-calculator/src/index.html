@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fiber Optic Loss Budget Calculator</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><h1>Fiber Optic Loss Budget Calculator</h1><p>End-to-end optical loss vs. power budget — FTTH &amp; backbone fiber design.</p></header>
+<main>
+<section class="card"><h2>Link inputs</h2>
+<label>Link length (km)<input id="len" type="number" value="10" step="0.1" min="0"></label>
+<label>Fiber type <select id="fiber"><option value="SM">Single-mode (G.652D / G.657A)</option><option value="MM">Multimode (OM1–OM4)</option></select></label>
+<label>Wavelength (nm) <select id="wl"><option>1310</option><option selected>1550</option><option>850</option><option>1300</option></select></label>
+<label>Number of splices<input id="sp" type="number" value="4" min="0"></label>
+<label>Number of connectors<input id="cn" type="number" value="2" min="0"></label>
+<label>Splice loss (dB each)<input id="sl" type="number" value="0.05" step="0.01"></label>
+<label>Connector loss (dB each)<input id="cl" type="number" value="0.30" step="0.05"></label>
+<label>Safety margin (dB)<input id="mg" type="number" value="3" step="0.5"></label>
+<label>Tx launch power (dBm)<input id="tx" type="number" value="0" step="0.5"></label>
+<label>Rx sensitivity (dBm)<input id="rx" type="number" value="-28" step="0.5"></label>
+<button onclick="calc()">Calculate loss budget</button>
+<button class="sec" onclick="window.print()">Export report (print / PDF)</button></section>
+<section class="card"><h2>Result</h2><div id="out"><p class="mut">Enter the link details and calculate.</p></div></section>
+<section class="card full"><h2>How it works</h2><p class="mut">Total loss = length &times; attenuation + splices &times; splice loss + connectors &times; connector loss + margin. Attenuation: SM 1310 nm 0.35 dB/km, SM 1550 nm 0.22 dB/km, MM 850 nm 3.0 dB/km, MM 1300 nm 1.0 dB/km. Power budget = Tx power &minus; Rx sensitivity. The link passes when total loss &le; power budget.</p></section>
+</main><script src="app.js"></script></body></html>

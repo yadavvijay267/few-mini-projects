@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Vehicle GPS Tracker</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>body{font-family:system-ui,sans-serif;max-width:1000px;margin:0 auto;padding:20px;background:#f8fafc;color:#0f172a}
+#map{height:420px;border-radius:10px;border:1px solid #e2e8f0}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin:14px 0}
+button{background:#0369a1;color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;margin-right:6px}
+input[type=range]{width:100%}textarea{width:100%;height:90px;font-family:monospace}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #e2e8f0;padding:6px;text-align:left;font-size:14px}
+#offline{display:none;background:#fef3c7;padding:10px;border-radius:6px}</style></head>
+<body><h1>🛰️ Vehicle GPS Tracker</h1>
+<p>Simulated fleet around Noida — live map, route replay, geofence alerts. Paste real NMEA / GPX to replay a real track.</p>
+<div id="offline">⚠ Map tiles could not load (offline?). Positions, speeds and geofence alerts below still work — reconnect for the map.</div>
+<div id="map"></div>
+<div class="card"><h3>Route replay — <span id="rclock">08:00</span></h3>
+<input type="range" id="replay" min="0" max="100" value="0" oninput="scrub()">
+<button onclick="playReplay()">▶ Replay day (30×)</button>
+<button onclick="resetSim()">Reset simulation</button></div>
+<div class="card"><h3>Fleet</h3><div id="fleet"></div></div>
+<div class="card"><h3>Import real GPS data</h3>
+<p style="color:#64748b;font-size:13px">Paste NMEA $GPGGA/$GPRMC sentences or a GPX track. Parsed points replace vehicle V-101's simulated route.</p>
+<textarea id="importBox" placeholder="$GPGGA,080000.00,2832.1300,N,07723.4600,E,..."></textarea><br><br>
+<button onclick="importData()">Import track</button>
+<button onclick="loadSampleTrack()">Load sample GPX</button>
+<span id="importMsg"></span></div>
+<div class="card"><h3>🔔 Geofence alerts — depot, 500 m radius</h3><div id="alerts"><p>No geofence events yet.</p></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const DEPOT=[28.5355,77.3910];
+function haversine(a,b){const R=6371000,dLa=(b[0]-a[0])*Math.PI/180,dLo=(b[1]-a[1])*Math.PI/180;
+  const h=Math.sin(dLa/2)**2+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dLo/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));}
+const ROUTES={
+ 'V-101':[[28.5355,77.3910],[28.5450,77.3950],[28.5560,77.4020],[28.5700,77.4100],[28.5830,77.4150],[28.5900,77.4050]],
+ 'V-102':[[28.5355,77.3910],[28.5300,77.3800],[28.5200,77.3700],[28.5100,77.3600],[28.5050,77.3750]],
+ 'V-103':[[28.5355,77.3910],[28.5400,77.4100],[28.5450,77.4300],[28.5500,77.4450],[28.5450,77.4550]]};
+let vehicles={}, map=null, markers={}, lines={}, alerts=[];
+Object.keys(ROUTES).forEach(id=>{vehicles[id]={route:ROUTES[id],idx:0,pos:ROUTES[id][0],speed:0,inside:true,history:[ROUTES[id][0]]};});
+function initMap(){
+  if(typeof L==='undefined'){document.getElementById('offline').style.display='block';return;}
+  map=L.map('map').setView(DEPOT,12);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  L.circle(DEPOT,{radius:500,color:'red',fillOpacity:0.08}).addTo(map).bindPopup('Depot geofence — 500 m');
+  L.marker(DEPOT).addTo(map).bindPopup('Depot');
+  Object.keys(vehicles).forEach(id=>{
+    markers[id]=L.marker(vehicles[id].pos).addTo(map).bindPopup(id);
+    lines[id]=L.polyline(vehicles[id].history,{color:id==='V-101'?'#0369a1':id==='V-102'?'#15803d':'#b45309'}).addTo(map);
+  });
+}
+function tick(){
+  Object.keys(vehicles).forEach(id=>{
+    const v=vehicles[id];
+    if(v.idx<v.route.length-1){
+      const from=v.route[v.idx],to=v.route[v.idx+1];
+      const d=haversine(from,to);
+      v.speed=d/60*3.6; // segment driven in ~60 s
+      v.idx++; v.pos=to; v.history.push(to);
+      const inside=haversine(to,DEPOT)<=500;
+      if(inside!==v.inside){alerts.unshift(new Date().toLocaleTimeString()+' — '+id+(inside?' ENTERED':' LEFT')+' depot geofence');
+        document.getElementById('alerts').innerHTML=alerts.map(a=>'<div>'+a+'</div>').join('');v.inside=inside;}
+      if(markers[id]){markers[id].setLatLng(to);lines[id].setLatLngs(v.history);}
+    } else v.speed=0;
+  });
+  renderFleet();
+}
+function renderFleet(){
+  document.getElementById('fleet').innerHTML='<table><tr><th>Vehicle</th><th>Position</th><th>Speed</th><th>Distance from depot</th><th>Status</th></tr>'+
+   Object.keys(vehicles).map(id=>{const v=vehicles[id];
+    return '<tr><td>'+id+'</td><td>'+v.pos[0].toFixed(4)+', '+v.pos[1].toFixed(4)+'</td><td>'+v.speed.toFixed(0)+' km/h</td><td>'+(haversine(v.pos,DEPOT)/1000).toFixed(2)+' km</td><td>'+(v.inside?'Inside geofence':'Outside geofence')+'</td></tr>';}).join('')+'</table>';
+}
+function scrub(){const p=+document.getElementById('replay').value;
+  document.getElementById('rclock').textContent='08:'+String(Math.round(p*0.6)).padStart(2,'0')+' (+'+p+'% of day)';
+  Object.keys(vehicles).forEach(id=>{const v=vehicles[id],n=Math.max(1,Math.round(v.route.length*p/100));
+    v.pos=v.route[Math.min(n-1,v.route.length-1)];v.history=v.route.slice(0,n);
+    if(markers[id]){markers[id].setLatLng(v.pos);lines[id].setLatLngs(v.history);}});renderFleet();}
+let replayTimer=null;
+function playReplay(){let p=0;clearInterval(replayTimer);
+  replayTimer=setInterval(()=>{p+=2;if(p>100){clearInterval(replayTimer);return;}
+    document.getElementById('replay').value=p;scrub();},200);}
+function resetSim(){Object.keys(ROUTES).forEach(id=>{vehicles[id]={route:ROUTES[id],idx:0,pos:ROUTES[id][0],speed:0,inside:true,history:[ROUTES[id][0]]};});
+  if(map){Object.keys(vehicles).forEach(id=>{markers[id].setLatLng(vehicles[id].pos);lines[id].setLatLngs([vehicles[id].pos]);});}renderFleet();}
+function nmeaLat(s,hemi){const d=parseFloat(s.slice(0,2)),m=parseFloat(s.slice(2));const v=d+m/60;return hemi==='S'?-v:v;}
+function nmeaLon(s,hemi){const d=parseFloat(s.slice(0,3)),m=parseFloat(s.slice(3));const v=d+m/60;return hemi==='W'?-v:v;}
+function importData(){
+  const txt=document.getElementById('importBox').value, pts=[];
+  txt.split(/\n/).forEach(line=>{
+    const p=line.trim().split(',');
+    if(p[0]==='$GPGGA'&&p[2]&&p[4])pts.push([nmeaLat(p[2],p[3]),nmeaLon(p[4],p[5])]);
+    if(p[0]==='$GPRMC'&&p[3]&&p[5])pts.push([nmeaLat(p[3],p[4]),nmeaLon(p[5],p[6])]);
+  });
+  const gpx=[...txt.matchAll(/trkpt lat="([\d.]+)" lon="([\d.]+)"/g)].map(m=>[+m[1],+m[2]]);
+  const all=pts.concat(gpx);
+  if(!all.length){document.getElementById('importMsg').textContent='No valid fixes found.';return;}
+  vehicles['V-101'].route=all;vehicles['V-101'].idx=0;vehicles['V-101'].pos=all[0];vehicles['V-101'].history=[all[0]];
+  document.getElementById('importMsg').textContent='Imported '+all.length+' fixes into V-101.';
+  if(map){markers['V-101'].setLatLng(all[0]);lines['V-101'].setLatLngs([all[0]]);}renderFleet();
+}
+async function loadSampleTrack(){try{const r=await fetch('../assets/sample-track.gpx');
+  document.getElementById('importBox').value=await r.text();importData();}
+  catch(e){document.getElementById('importMsg').textContent='Could not fetch sample (open via a local server).';}}
+initMap();renderFleet();setInterval(tick,3000);
+</script></body></html>

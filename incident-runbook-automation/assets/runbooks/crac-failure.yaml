@@ -1,0 +1,22 @@
+id: crac-failure
+title: CRAC unit failure
+severity: 2
+description: A cooling unit has failed. Start within 5 minutes; watch rack inlet temperatures.
+steps:
+  - id: check-temp
+    type: check
+    name: Check hottest rack inlet temperature
+    check: temperature_rising
+  - id: start-standby
+    type: command
+    name: Start standby CRAC unit
+    command: start-standby-crac
+  - id: notify-noc
+    type: notify
+    name: Notify facilities team
+    channel: facilities
+    message: "CRAC failure in Hall A. Standby unit started. Monitoring inlet temperatures."
+  - id: confirm-temp-falling
+    type: manual
+    name: Confirm temperatures falling
+    prompt: "Are rack inlet temperatures falling back below 27 C? (y/n)"

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Notification Service — Live Demo</title>
+<style>body{font-family:system-ui,sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem;background:#0f172a;color:#e2e8f0}
+input,select,button{padding:.5rem;margin:.25rem 0;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0}
+button{background:#0891b2;cursor:pointer}li{background:#1e293b;padding:.6rem;border-radius:6px;margin:.4rem 0;list-style:none}
+ul{padding:0}.low{opacity:.75}</style></head>
+<body>
+<h1>🔔 Real-Time Notification Service</h1>
+<p>Live demo client (Server-Sent Events). Open this page twice with different user IDs to see per-user delivery.</p>
+<label>User ID <input id="uid" value="alice"></label>
+<button id="connect">Connect SSE</button>
+<span id="status">disconnected</span>
+<h2>Send a notification</h2>
+<select id="type"><option>welcome</option><option>order-shipped</option><option>alert</option><option>reminder</option></select>
+<select id="priority"><option>normal</option><option>high</option><option>low</option></select>
+<input id="msg" placeholder="message / orderId" style="width:220px">
+<button id="send">Send</button>
+<button id="digest">Send daily digest</button>
+<h2>Live feed</h2><ul id="feed"></ul>
+<h2>Delivery log</h2><button id="log">Refresh log</button><ul id="dlog"></ul>
+<script>
+let es;
+const feed=document.getElementById('feed');
+function add(li,parent){const el=document.createElement('li');el.textContent=li;parent.prepend(el);}
+document.getElementById('connect').onclick=()=>{
+  const uid=document.getElementById('uid').value.trim()||'alice';
+  if(es)es.close();
+  es=new EventSource('/events?userId='+encodeURIComponent(uid));
+  es.onopen=()=>document.getElementById('status').textContent='connected as '+uid;
+  es.onmessage=e=>{const n=JSON.parse(e.data);add('['+n.priority+'] '+n.type+': '+n.message,feed);};
+  es.onerror=()=>document.getElementById('status').textContent='reconnecting…';
+};
+document.getElementById('send').onclick=async()=>{
+  const uid=document.getElementById('uid').value.trim()||'alice';
+  const type=document.getElementById('type').value, priority=document.getElementById('priority').value;
+  const v=document.getElementById('msg').value;
+  await fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({userId:uid,type,priority,data:{message:v,orderId:v,name:uid}})});
+};
+document.getElementById('digest').onclick=async()=>{
+  const uid=document.getElementById('uid').value.trim()||'alice';
+  const r=await fetch('/api/digest/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId:uid})});
+  add('digest sent: '+JSON.stringify(await r.json()),feed);
+};
+document.getElementById('log').onclick=async()=>{
+  const r=await fetch('/api/delivery-log');const j=await r.json();
+  document.getElementById('dlog').innerHTML='';
+  j.log.slice(0,10).forEach(e=>add(e.userId+' · '+e.channel+' · '+e.status,document.getElementById('dlog')));
+};
+</script></body></html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Media App (Mini)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><h1>Social Media App (Mini)</h1><p>Posts, likes, comments, reposts, follows, notifications and a ranked feed.</p></header>
+<main>
+<section id="auth" class="card">
+  <h2>Sign in</h2>
+  <p class="muted">Demo account: <code>demo@example.com</code> / <code>demo1234</code> — or register a new account.</p>
+  <div class="row">
+    <input id="auth-name" placeholder="Name (register only)">
+    <input id="auth-email" type="email" placeholder="Email" value="demo@example.com">
+    <input id="auth-pass" type="password" placeholder="Password" value="demo1234">
+    <button id="btn-login">Log in</button>
+    <button id="btn-register" class="secondary">Register</button>
+    <button id="btn-logout" class="secondary" hidden>Log out</button>
+  </div>
+  <p id="auth-status" class="muted"></p>
+</section>
+<nav id="tabs"></nav>
+<section id="panel" class="card"></section>
+<section id="custom" class="card"><h2>Ranked feed</h2><p>Score = likes × 2 + reposts × 3 + comments × 3 + recency (up to 48 points, decaying over 48h). A viral old post can lose to a fresh, engaging one.</p><div class="row"><button id="custom-run">Show ranked feed</button><button id="follow-run" class="secondary">Follow Ravi Patel</button><button id="like-run" class="secondary">Like post po1</button></div><pre id="custom-out">Log in, then show the feed.</pre></section>
+</main>
+<footer><p>Social Media App (Mini) — built by Clamor. MIT licensed.</p></footer>
+<script>window.SCHEMA = {"posts": {"label": "Posts", "singular": "post", "fields": [{"key": "author", "label": "Author", "type": "text"}, {"key": "content", "label": "Content", "type": "textarea"}, {"key": "likes", "label": "Likes", "type": "number"}, {"key": "reposts", "label": "Reposts", "type": "number"}]}, "comments": {"label": "Comments", "singular": "comment", "fields": [{"key": "postId", "label": "Post ID", "type": "text"}, {"key": "author", "label": "Author", "type": "text"}, {"key": "text", "label": "Comment", "type": "textarea"}]}, "follows": {"label": "Follows", "singular": "follow", "fields": [{"key": "follower", "label": "Follower", "type": "text"}, {"key": "following", "label": "Following", "type": "text"}]}, "notifications": {"label": "Notifications", "singular": "notification", "fields": [{"key": "user", "label": "For user", "type": "text"}, {"key": "text", "label": "Text", "type": "text"}, {"key": "type", "label": "Type", "type": "text"}]}}; window.CUSTOM_TAB = { run: function () { var out = document.getElementById('custom-out'); function show(p) { p.then(function (r) { out.textContent = JSON.stringify(r, null, 2); }).catch(function (e) { out.textContent = 'Error: ' + e.message; }); } var c = document.getElementById('custom-run'); if (c) c.onclick = function () { show(api('/api/feed')); }; var f = document.getElementById('follow-run'); if (f) f.onclick = function () { show(api('/api/follow', { method: 'POST', body: JSON.stringify({ following: 'Ravi Patel' }) })); }; var l = document.getElementById('like-run'); if (l) l.onclick = function () { show(api('/api/posts/po1/like', { method: 'POST', body: '{}' })); }; } };</script>
+<script src="/app.js"></script>
+</body>
+</html>

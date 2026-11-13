@@ -1,0 +1,2 @@
+# Static Leaflet + Three.js site — no Python dependencies.
+# Python tests use only the standard library.

@@ -1,0 +1,16 @@
+body{font-family:system-ui,sans-serif;margin:0;background:#f1f5f9;color:#0f172a}
+header{padding:1rem 2rem;background:#0f172a;color:#fff}h1{margin:0;font-size:1.4rem}header p{margin:.25rem 0 0;color:#94a3b8}
+main{display:grid;grid-template-columns:1fr 320px;gap:1rem;padding:1rem;max-width:1200px;margin:auto}
+#viewport{height:70vh;min-height:420px;background:#e2e8f0;border-radius:12px;overflow:hidden;position:relative}
+#viewport canvas{display:block;width:100%;height:100%}
+#fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;background:#fef3c7;color:#92400e}
+#panel{background:#fff;border-radius:12px;padding:1rem;height:fit-content}
+fieldset{border:1px solid #e2e8f0;border-radius:8px;margin-bottom:1rem}
+label{display:block;margin:.4rem 0}.swatches{display:flex;gap:.5rem;flex-wrap:wrap}
+.swatch{width:36px;height:36px;border-radius:50%;border:3px solid transparent;cursor:pointer}
+.swatch.selected{border-color:#0f172a}
+.price{font-size:1.3rem;margin:1rem 0}.price strong{font-size:1.8rem}
+.actions{display:flex;flex-direction:column;gap:.5rem}
+button{padding:.6rem;border-radius:8px;border:1px solid #cbd5e1;background:#0f172a;color:#fff;cursor:pointer}
+#share-msg{color:#059669;font-size:.9rem}
+@media(max-width:800px){main{grid-template-columns:1fr}#viewport{height:55vh}}

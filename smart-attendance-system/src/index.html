@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Smart Attendance System</title>
+<style>body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8fafc;color:#0f172a}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin:14px 0}
+button{background:#0369a1;color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;margin:4px}
+.cardBtn{background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #e2e8f0;padding:6px;text-align:left;font-size:14px}
+.note{background:#fef9c3;padding:10px;border-radius:6px;font-size:14px}
+.late{color:#b45309;font-weight:700}.ok{color:#15803d}</style></head>
+<body><h1>🪪 Smart Attendance System</h1>
+<p>RFID check-in demo with a live log and daily report. Face recognition is a documented integration — see the Face tab.</p>
+<div class="card"><h3>Tap an RFID card (simulated)</h3>
+<button class="cardBtn" onclick="tap('Asha Verma','A1B2C3D4')">💳 Asha Verma</button>
+<button class="cardBtn" onclick="tap('Rohit Kumar','E5F6A7B8')">💳 Rohit Kumar</button>
+<button class="cardBtn" onclick="tap('Meera Singh','C9D0E1F2')">💳 Meera Singh</button>
+<button class="cardBtn" onclick="tap('Arjun Patel','11223344')">💳 Arjun Patel</button>
+<button onclick="manual()">✍️ Manual check-in (lost card)</button></div>
+<div class="card"><h3>📷 Face recognition</h3>
+<div class="note"><b>Real face recognition needs a camera + a recognition model</b> (face_recognition/dlib or OpenCV, ~500 MB of native libraries).
+This demo simulates the flow: press <b>Simulate face scan</b> and the system "recognises" an enrolled employee with a confidence score.
+In production, only a 128-d numeric embedding is stored locally — never a photo — and any employee can delete their face data on request.</div>
+<br><button onclick="faceScan()">📷 Simulate face scan</button> <span id="faceOut"></span></div>
+<div class="card"><h3>Live log</h3><div id="log"><p>No check-ins yet today.</p></div></div>
+<div class="card"><h3>Daily report — today</h3><div id="report"></div></div>
+<script>
+const EMPS=[{name:'Asha Verma',rfid:'A1B2C3D4'},{name:'Rohit Kumar',rfid:'E5F6A7B8'},{name:'Meera Singh',rfid:'C9D0E1F2'},{name:'Arjun Patel',rfid:'11223344'}];
+let log=[];
+function now(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
+function tap(name,rfid){
+  const rec=log.find(l=>l.name===name&&!l.out);
+  if(rec){rec.out=now();rec.hours=((new Date()-rec.t0)/3600000).toFixed(2);}
+  else log.unshift({name,rfid,in:now(),out:null,method:'RFID',t0:new Date(),late:new Date().getHours()>9||(new Date().getHours()===9&&new Date().getMinutes()>30)});
+  render();
+}
+function manual(){const n=prompt('Employee name:');if(!n)return;tap(n,'manual');}
+function faceScan(){
+  const e=EMPS[Math.floor(Math.random()*2)]; // only Asha/Rohit have face enrolled
+  const conf=(92+Math.random()*6).toFixed(1);
+  document.getElementById('faceOut').textContent='✓ Recognised '+e.name+' — confidence '+conf+'% (simulated)';
+  tap(e.name,e.rfid);
+}
+function render(){
+  document.getElementById('log').innerHTML=log.map(l=>'<div>'+l.in+' — '+l.name+' checked '+(l.out?'out at '+l.out+' ('+l.hours+' h)':'in')+' via '+l.method+(l.late?' <span class="late">LATE</span>':'')+'</div>').join('')||'<p>No check-ins yet today.</p>';
+  document.getElementById('report').innerHTML='<table><tr><th>Employee</th><th>Status</th><th>In</th><th>Out</th><th>Hours</th></tr>'+
+   EMPS.map(e=>{const l=log.find(x=>x.name===e.name);
+    return '<tr><td>'+e.name+'</td><td class="'+(l?(l.late?'late':'ok'):'')+'">'+(l?(l.late?'LATE':'PRESENT'):'ABSENT')+'</td><td>'+(l?l.in:'—')+'</td><td>'+(l?(l.out||'—'):'—')+'</td><td>'+(l?(l.hours||'—'):'—')+'</td></tr>';}).join('')+'</table>';
+}
+render();
+</script></body></html>

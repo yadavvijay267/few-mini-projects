@@ -1,0 +1,22 @@
+{
+  "A-01": {
+    "room": "Hall A",
+    "u_total": 42,
+    "power_capacity_w": 8000
+  },
+  "A-02": {
+    "room": "Hall A",
+    "u_total": 42,
+    "power_capacity_w": 8000
+  },
+  "B-01": {
+    "room": "Hall B",
+    "u_total": 42,
+    "power_capacity_w": 8000
+  },
+  "A-00": {
+    "room": "Hall A",
+    "u_total": 42,
+    "power_capacity_w": 40000
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cloud Cost Optimizer</title><link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script></head>
+<body>
+<header><h1>Cloud Cost Optimizer</h1><p>FinOps dashboard — spend by service, waste detection, and the savings number.</p></header>
+<main>
+<section class="cards">
+  <div class="card"><span>Total spend</span><strong id="total">–</strong></div>
+  <div class="card save"><span>You can save</span><strong id="saving">–</strong></div>
+  <div class="card"><span>Budget alerts</span><strong id="alerts">–</strong></div>
+</section>
+<label>Monthly budget $ <input id="budget" type="number" value="500" min="1"></label>
+<section class="charts"><div><h2>Spend by service</h2><canvas id="svc"></canvas></div>
+<div><h2>Spend over time</h2><canvas id="trend"></canvas></div></section>
+<h2>Recommendations (ranked by savings)</h2>
+<table><thead><tr><th>Resource</th><th>Issue</th><th>Action</th><th>Save / mo</th></tr></thead><tbody id="rows"></tbody></table>
+<p class="note">Data: <code>assets/billing.csv</code> + <code>assets/resources.csv</code> via <code>python3 src/analyzer.py --json data/report.json</code>. Charts need the Chart.js CDN; the table works offline.</p>
+</main>
+<script src="app.js"></script>
+</body></html>

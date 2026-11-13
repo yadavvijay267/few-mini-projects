@@ -1,0 +1,9 @@
+body{font-family:system-ui,sans-serif;margin:0;background:#f8fafc;color:#0f172a}
+header{padding:1.5rem 2rem;background:#0f172a;color:#fff}h1{margin:0 0 .25rem}header p{margin:0;color:#94a3b8}
+main{padding:1.5rem 2rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}
+.card{background:#fff;border:1px solid #e2e8f0;padding:1rem;border-radius:10px}.card span{color:#64748b;font-size:.85rem;display:block}
+.card strong{font-size:1.6rem}.card.save strong{color:#059669}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+.charts>div{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:1rem}
+table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:.6rem .8rem;border-bottom:1px solid #e2e8f0;text-align:left}
+.note{color:#64748b;font-size:.9rem}

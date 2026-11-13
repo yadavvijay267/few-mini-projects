@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real-Time Collaborative Document Editor</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><h1>Real-Time Collaborative Document Editor</h1><p>Google-Docs-lite: live editing, presence avatars, version history, sharing links and offline-first sync.</p></header>
+<main>
+<section id="auth" class="card">
+  <h2>Sign in</h2>
+  <p class="muted">Demo account: <code>demo@example.com</code> / <code>demo1234</code> — or register a new account.</p>
+  <div class="row">
+    <input id="auth-name" placeholder="Name (register only)">
+    <input id="auth-email" type="email" placeholder="Email" value="demo@example.com">
+    <input id="auth-pass" type="password" placeholder="Password" value="demo1234">
+    <button id="btn-login">Log in</button>
+    <button id="btn-register" class="secondary">Register</button>
+    <button id="btn-logout" class="secondary" hidden>Log out</button>
+  </div>
+  <p id="auth-status" class="muted"></p>
+</section>
+<nav id="tabs"></nav>
+<section id="panel" class="card"></section>
+<section id="custom" class="card"><h2>Live editor</h2><p>Paragraphs sync via SSE (server pushes the document every 2s). Edits are last-writer-wins <em>per paragraph</em>. If you go offline, edits queue in localStorage and sync on reconnect — see docs/ARCHITECTURE.md for the honest CRDT note.</p><div class="row"><input id="ed-doc" value="d1" placeholder="Document ID"><button id="ed-load">Load doc</button><button id="ed-presence" class="secondary">Who is here?</button><button id="ed-share" class="secondary">Create share link</button></div><textarea id="ed-text" rows="8" placeholder="Document content (paragraphs separated by a blank line)"></textarea><div class="row"><input id="ed-para" type="number" value="0" placeholder="Paragraph #"><button id="ed-save">Save paragraph edit</button></div><pre id="custom-out">Log in, then load a document.</pre></section>
+</main>
+<footer><p>Real-Time Collaborative Document Editor — built by Clamor. MIT licensed.</p></footer>
+<script>window.SCHEMA = {"documents": {"label": "Documents", "singular": "document", "fields": [{"key": "title", "label": "Title", "type": "text"}, {"key": "content", "label": "Content", "type": "textarea"}, {"key": "owner", "label": "Owner", "type": "text"}, {"key": "shareToken", "label": "Share token", "type": "text"}]}, "versions": {"label": "Version history", "singular": "version", "fields": [{"key": "docId", "label": "Document ID", "type": "text"}, {"key": "content", "label": "Content", "type": "textarea"}, {"key": "author", "label": "Author", "type": "text"}, {"key": "note", "label": "Note", "type": "text"}]}}; window.CUSTOM_TAB = { run: function () { var out = document.getElementById('custom-out'); function show(p) { p.then(function (r) { out.textContent = JSON.stringify(r, null, 2); }).catch(function (e) { out.textContent = 'Error: ' + e.message; }); } var load = document.getElementById('ed-load'); if (load) load.onclick = async function () { try { var d = await api('/api/documents/' + document.getElementById('ed-doc').value); document.getElementById('ed-text').value = d.content || ''; out.textContent = 'Loaded: ' + d.title; await api('/api/docs/' + d.id + '/presence', { method: 'POST', body: JSON.stringify({ name: 'Demo User', cursor: 0 }) }); } catch (e) { out.textContent = 'Error: ' + e.message; } }; var save = document.getElementById('ed-save'); if (save) save.onclick = async function () { var id = document.getElementById('ed-doc').value; var paras = document.getElementById('ed-text').value.split('\n\n'); var idx = Number(document.getElementById('ed-para').value) || 0; try { var r = await api('/api/docs/' + id + '/edit', { method: 'POST', body: JSON.stringify({ paragraph: idx, text: paras[idx] || '' }) }); out.textContent = 'Saved paragraph ' + idx + '. Updated at ' + (r.updatedAt || ''); } catch (e) { var q = JSON.parse(localStorage.getItem('offline-queue') || '[]'); q.push({ doc: id, paragraph: idx, text: paras[idx] || '' }); localStorage.setItem('offline-queue', JSON.stringify(q)); out.textContent = 'Offline — edit queued in localStorage (' + q.length + ' queued). It will sync on reconnect.'; } }; var pr = document.getElementById('ed-presence'); if (pr) pr.onclick = function () { show(api('/api/docs/' + document.getElementById('ed-doc').value + '/presence')); }; var sh = document.getElementById('ed-share'); if (sh) sh.onclick = function () { show(api('/api/docs/' + document.getElementById('ed-doc').value + '/share', { method: 'POST', body: '{}' })); }; window.addEventListener('online', async function () { var q = JSON.parse(localStorage.getItem('offline-queue') || '[]'); if (!q.length) return; for (var i = 0; i < q.length; i++) { try { await api('/api/docs/' + q[i].doc + '/edit', { method: 'POST', body: JSON.stringify({ paragraph: q[i].paragraph, text: q[i].text }) }); } catch (e) {} } localStorage.removeItem('offline-queue'); out.textContent = 'Reconnected — ' + q.length + ' queued edit(s) synced.'; }); } };</script>
+<script src="/app.js"></script>
+</body>
+</html>

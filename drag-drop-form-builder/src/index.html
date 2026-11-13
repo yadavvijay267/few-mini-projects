@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Builder — Drag &amp; Drop</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><h1>Form Builder</h1><p>Drag fields onto the canvas, configure them, preview, and export.</p></header>
+<main class="layout">
+  <aside class="palette" aria-label="Field palette">
+    <h2>Fields</h2>
+    <div class="field-item" draggable="true" data-type="text">Text Input</div>
+    <div class="field-item" draggable="true" data-type="email">Email</div>
+    <div class="field-item" draggable="true" data-type="textarea">Textarea</div>
+    <div class="field-item" draggable="true" data-type="select">Select</div>
+    <div class="field-item" draggable="true" data-type="checkbox">Checkbox</div>
+    <div class="field-item" draggable="true" data-type="radio">Radio Group</div>
+    <div class="field-item" draggable="true" data-type="date">Date</div>
+    <div class="field-item" draggable="true" data-type="file">File Upload</div>
+    <div class="field-item" draggable="true" data-type="number">Number</div>
+    <p class="hint">Drag a field onto the canvas, or click it to append.</p>
+  </aside>
+  <section class="canvas-wrap">
+    <h2>Canvas <span id="count"></span></h2>
+    <div id="canvas" class="canvas" aria-label="Form canvas. Drop fields here."><p class="empty">Drop fields here to build your form.</p></div>
+    <div class="actions">
+      <button id="previewBtn">Live Preview</button>
+      <button id="exportJsonBtn">Export JSON</button>
+      <button id="exportHtmlBtn">Export Standalone HTML</button>
+      <button id="importBtn">Import JSON</button>
+      <button id="clearBtn">Clear</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden>
+    </div>
+    <label>Form title <input id="formTitle" value="Contact Form"></label>
+    <textarea id="jsonOut" rows="8" placeholder="JSON schema appears here — edit it and click Import JSON to load it." aria-label="JSON schema output"></textarea>
+  </section>
+  <aside class="settings" aria-label="Field settings">
+    <h2>Field Settings</h2>
+    <div id="settingsBody"><p>Select a field on the canvas to edit it.</p></div>
+  </aside>
+</main>
+<section id="previewSection" hidden>
+  <h2>Live Preview</h2>
+  <form id="previewForm" novalidate></form>
+  <div id="previewResult" role="status"></div>
+</section>
+<script src="app.js"></script>
+</body>
+</html>

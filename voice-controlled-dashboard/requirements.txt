@@ -1,0 +1,2 @@
+# No Python dependencies beyond the standard library.
+# Install dev/test tools with: pip install -r requirements.txt

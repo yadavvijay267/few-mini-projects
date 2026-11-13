@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard UI Kit — Clamor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar" class="sidebar">
+    <div class="brand">⬡ AdminKit <button id="collapseBtn" aria-label="Collapse sidebar">⟨</button></div>
+    <nav id="nav"></nav>
+    <div class="role-switch"><label>Role <select id="role"><option value="admin">Admin</option><option value="viewer">Viewer</option></select></label></div>
+  </aside>
+  <div class="main">
+    <header class="topbar"><button id="menuBtn" aria-label="Menu">☰</button>
+      <nav id="crumbs" class="crumbs" aria-label="Breadcrumb"></nav>
+      <div class="top-actions"><button id="themeBtn" class="btn">🌙 Dark</button><span class="user">Clamor · <span id="roleLabel">Admin</span></span></div>
+    </header>
+    <main id="page"></main>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

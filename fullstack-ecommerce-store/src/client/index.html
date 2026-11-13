@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-Commerce Store (Full Stack)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><h1>E-Commerce Store (Full Stack)</h1><p>Catalogue, cart, simulated Stripe test checkout, orders and an admin panel with low-stock alerts.</p></header>
+<main>
+<section id="auth" class="card">
+  <h2>Sign in</h2>
+  <p class="muted">Demo account: <code>demo@example.com</code> / <code>demo1234</code> — or register a new account.</p>
+  <div class="row">
+    <input id="auth-name" placeholder="Name (register only)">
+    <input id="auth-email" type="email" placeholder="Email" value="demo@example.com">
+    <input id="auth-pass" type="password" placeholder="Password" value="demo1234">
+    <button id="btn-login">Log in</button>
+    <button id="btn-register" class="secondary">Register</button>
+    <button id="btn-logout" class="secondary" hidden>Log out</button>
+  </div>
+  <p id="auth-status" class="muted"></p>
+</section>
+<nav id="tabs"></nav>
+<section id="panel" class="card"></section>
+<section id="custom" class="card"><h2>Checkout (Stripe test mode)</h2><p>Simulated test payment — only card <code>4242424242424242</code> succeeds. Stock is decremented and an order is created.</p><div class="row"><input id="co-pid" value="pr1" placeholder="Product ID"><input id="co-qty" type="number" value="1"><input id="co-card" value="4242424242424242" placeholder="Test card"><button id="custom-run">Checkout</button><button id="alerts-run" class="secondary">Low-stock alerts</button><button id="stats-run" class="secondary">Admin stats</button></div><pre id="custom-out">Log in, then check out or view alerts.</pre></section>
+</main>
+<footer><p>E-Commerce Store (Full Stack) — built by Clamor. MIT licensed.</p></footer>
+<script>window.SCHEMA = {"products": {"label": "Products", "singular": "product", "fields": [{"key": "name", "label": "Name", "type": "text"}, {"key": "price", "label": "Price", "type": "number"}, {"key": "stock", "label": "Stock", "type": "number"}, {"key": "category", "label": "Category", "type": "select", "options": ["Electronics", "Clothing", "Home", "Books", "Sports"]}, {"key": "description", "label": "Description", "type": "textarea"}]}, "orders": {"label": "Orders", "singular": "order", "fields": [{"key": "customer", "label": "Customer", "type": "text"}, {"key": "items", "label": "Items", "type": "text"}, {"key": "total", "label": "Total", "type": "number"}, {"key": "status", "label": "Status", "type": "select", "options": ["Pending", "Paid", "Shipped", "Delivered", "Cancelled"]}, {"key": "paymentRef", "label": "Payment ref", "type": "text"}]}, "abandonedCarts": {"label": "Abandoned carts", "singular": "abandoned cart", "fields": [{"key": "customer", "label": "Customer", "type": "text"}, {"key": "items", "label": "Items", "type": "text"}, {"key": "total", "label": "Total", "type": "number"}]}}; window.CUSTOM_TAB = { run: function () { var out = document.getElementById('custom-out'); function show(p) { return function () { p.then(function (r) { out.textContent = JSON.stringify(r, null, 2); }).catch(function (e) { out.textContent = 'Error: ' + e.message; }); }; } var c = document.getElementById('custom-run'); if (c) c.onclick = function () { show(api('/api/checkout', { method: 'POST', body: JSON.stringify({ items: [{ productId: document.getElementById('co-pid').value, qty: Number(document.getElementById('co-qty').value) || 1 }], card: document.getElementById('co-card').value }) }))(); }; var a = document.getElementById('alerts-run'); if (a) a.onclick = show(api('/api/alerts')); var s = document.getElementById('stats-run'); if (s) s.onclick = show(api('/api/admin/stats')); } };</script>
+<script src="/app.js"></script>
+</body>
+</html>

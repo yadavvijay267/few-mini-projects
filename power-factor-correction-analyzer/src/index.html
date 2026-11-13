@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Power Factor Correction Analyzer</title>
+<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:0 auto;padding:20px;background:#f8fafc;color:#0f172a}
+h1{font-size:22px}.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin:14px 0}
+label{display:block;font-size:13px;margin:8px 0 2px}input{padding:8px;width:200px;border:1px solid #cbd5e1;border-radius:6px}
+button{background:#0284c7;color:#fff;border:0;border-radius:6px;padding:10px 18px;cursor:pointer}
+.big{font-size:28px;font-weight:700;color:#0369a1}.bar{height:18px;background:#bae6fd;border-radius:4px;margin:4px 0}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #e2e8f0;padding:6px;text-align:left;font-size:14px}</style></head>
+<body><h1>⚡ Power Factor Correction Analyzer</h1>
+<p>Size the capacitor bank that stops the low-PF penalty — and see when it pays for itself.</p>
+<div class="card"><h3>Load</h3>
+<label>Active power P (kW)</label><input id="kw" type="number" value="500">
+<label>Present power factor</label><input id="pf" type="number" step="0.01" value="0.78">
+<label>Target power factor</label><input id="tpf" type="number" step="0.01" value="0.95">
+<label>Capacitor step (kVAr)</label><input id="step" type="number" value="25">
+<label>Penalty (₹ / kVAr / month)</label><input id="pen" type="number" value="150">
+<label>Bank cost (₹ / kVAr installed)</label><input id="cost" type="number" value="1200">
+<br><br><button onclick="calc()">Analyse</button>
+<label style="margin-top:12px">…or upload billing CSV (month,kw,kvar,kva)</label>
+<input type="file" id="csv" accept=".csv" onchange="loadCSV(event)"></div>
+<div class="card" id="out"><p>Enter values and press Analyse.</p></div>
+<div class="card"><h3>Monthly PF (from CSV)</h3><div id="chart"></div></div>
+<script>
+function calc(){
+  const P=+document.getElementById('kw').value, pf=+document.getElementById('pf').value,
+    tp=+document.getElementById('tpf').value, step=+document.getElementById('step').value,
+    pen=+document.getElementById('pen').value, cost=+document.getElementById('cost').value;
+  const need=P*(Math.tan(Math.acos(pf))-Math.tan(Math.acos(tp)));
+  const bank=Math.ceil(need/step)*step, saving=need*pen, payback=bank*cost/saving;
+  document.getElementById('out').innerHTML=
+   '<p>Present PF <b>'+pf.toFixed(2)+'</b> → target <b>'+tp.toFixed(2)+'</b></p>'+
+   '<p>Correction required: <span class="big">'+need.toFixed(1)+' kVAr</span></p>'+
+   '<p>Recommended bank: <b>'+bank+' kVAr</b> ('+(bank/step)+' × '+step+' kVAr steps)</p>'+
+   '<p>Penalty saved: <b>₹'+saving.toLocaleString('en-IN',{maximumFractionDigits:0})+'/month</b></p>'+
+   '<p>Bank cost ≈ ₹'+(bank*cost).toLocaleString('en-IN')+' → <b>pays for itself in '+payback.toFixed(1)+' months</b></p>'+
+   '<p style="color:#64748b;font-size:13px">Formula: kVAr = P × (tan φ₁ − tan φ₂), cos φ₁ = present PF, cos φ₂ = target PF.</p>';
+}
+function loadCSV(ev){
+  const f=ev.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{const lines=r.result.trim().split(/\r?\n/).slice(1);
+    let html='<table><tr><th>Month</th><th>kW</th><th>kVAr</th><th>PF</th></tr>';
+    lines.forEach(l=>{const [m,kw,kvar,kva]=l.split(',');
+      const p=(+kw/+kva).toFixed(3);
+      html+='<tr><td>'+m+'</td><td>'+kw+'</td><td>'+kvar+'</td><td>'+p+'</td></tr>';
+      document.getElementById('chart').innerHTML+='<div>'+m+' PF '+p+'<div class="bar" style="width:'+(p*100)+'%"></div></div>';});
+    document.getElementById('out').innerHTML=html+'</table><p>Use the worst month above as the design load.</p>';};
+  r.readAsText(f);
+}
+calc();
+</script></body></html>

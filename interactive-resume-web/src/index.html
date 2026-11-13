@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clamor — Interactive Resume</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="id"><div class="avatar">C</div><div><h1>Clamor</h1><p>QC Engineer · Fiber Planning &amp; Designing · Noida, India</p></div></div>
+  <div class="hero-actions"><button id="printBtn" class="btn primary">⬇ Download PDF (Print)</button><button id="themeBtn" class="btn">🌙 Dark</button></div>
+</header>
+<nav class="filters" aria-label="Filter projects">
+  <span>Projects:</span>
+  <button data-f="all" class="active">All</button><button data-f="fiber">Fiber</button><button data-f="qc">QC</button><button data-f="web">Web</button><button data-f="data">Data</button>
+</nav>
+<main>
+  <section class="card"><h2>Profile</h2><p>Telecom design engineer (B.Tech, Electrical &amp; Electronics) working in fiber planning, designing and quality control. I plan routes, verify them in the field, and build web tools that make the work visible.</p></section>
+  <section class="card"><h2>Career Timeline — click a role for details</h2>
+    <div class="timeline">
+      <article class="role" tabindex="0"><button class="role-head"><span><strong>QC Engineer (Planning &amp; Designing)</strong><br>AMSYS IT Service Pvt Ltd · Noida</span><span class="dates">Apr 2026 — Present</span></button>
+        <div class="role-body hidden"><ul><li>Quality control of fiber designs: route plans, splice loss budgets, as-built verification.</li><li>OTDR trace review and closure sign-offs for field teams.</li><li>Built internal web tools for tracking design QC status.</li></ul></div></article>
+      <article class="role" tabindex="0"><button class="role-head"><span><strong>Fiber Design Engineer</strong><br>AMSYS IT Service Pvt Ltd · Noida</span><span class="dates">Dec 2023 — Apr 2026</span></button>
+        <div class="role-body hidden"><ul><li>Designed fiber routes and duct layouts using GIS and CAD tools.</li><li>Prepared as-built drawings and bill-of-quantity estimates.</li><li>Coordinated with site teams on route changes and permissions.</li></ul></div></article>
+      <article class="role" tabindex="0"><button class="role-head"><span><strong>B.Tech, Electrical &amp; Electronics Engineering</strong><br>Graduated 2023</span><span class="dates">2019 — 2023</span></button>
+        <div class="role-body hidden"><ul><li>Core electrical, power systems and electronics coursework.</li><li>Final-year project on power distribution planning.</li></ul></div></article>
+    </div></section>
+  <section class="card"><h2>Skills</h2><div id="skills"></div></section>
+  <section class="card"><h2>Projects</h2><div id="projects" class="projects"></div></section>
+  <section class="card"><h2>Certifications &amp; Learning</h2><ul><li>100-project portfolio — in progress (web, Python, AI, data, 3D).</li><li>Self-taught full-stack JavaScript, Python automation, Three.js.</li></ul></section>
+</main>
+<footer><p>Interactive resume of Clamor · The print stylesheet turns this same page into a clean one-page PDF — use “Download PDF (Print)”.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+10.0.2.64 - - [12/Nov/2026:02:03:21 +0000] "GET /api/users HTTP/1.1" 200 2486 "-" "curl/8.0" 23
+{"ts": "2026-11-12T02:03:21.772389", "level": "INFO", "service": "worker", "msg": "request / -> 200", "latency_ms": 23, "status": 200}
+10.0.0.153 - - [12/Nov/2026:02:03:23 +0000] "GET /api/products HTTP/1.1" 200 720 "-" "curl/8.0" 89
+10.0.1.131 - - [12/Nov/2026:02:03:25 +0000] "GET /login HTTP/1.1" 200 634 "-" "curl/8.0" 47
+10.0.3.58 - - [12/Nov/2026:02:03:27 +0000] "GET /api/products HTTP/1.1" 200 4757 "-" "curl/8.0" 111
+{"ts": "2026-11-12T02:03:27.772389", "level": "INFO", "service": "web", "msg": "request /health -> 200", "latency_ms": 111, "status": 200}
+10.0.3.89 - - [12/Nov/2026:02:03:29 +0000] "GET /api/orders HTTP/1.1" 200 2747 "-" "curl/8.0" 109
+10.0.2.28 - - [12/Nov/2026:02:03:31 +0000] "GET / HTTP/1.1" 200 6424 "-" "curl/8.0" 117
+10.0.2.208 - - [12/Nov/2026:02:03:33 +0000] "GET / HTTP/1.1" 200 7727 "-" "curl/8.0" 64
+{"ts": "2026-11-12T02:03:33.772389", "level": "INFO", "service": "worker", "msg": "request / -> 200", "latency_ms": 64, "status": 200}
+10.0.0.143 - - [12/Nov/2026:02:03:35 +0000] "GET /api/orders HTTP/1.1" 404 6125 "-" "curl/8.0" 1175
+10.0.0.13 - - [12/Nov/2026:02:03:37 +0000] "GET /checkout HTTP/1.1" 200 3933 "-" "curl/8.0" 110
+10.0.1.223 - - [12/Nov/2026:02:03:39 +0000] "GET / HTTP/1.1" 200 6427 "-" "curl/8.0" 30
+{"ts": "2026-11-12T02:03:39.772389", "level": "INFO", "service": "api", "msg": "request /api/products -> 200", "latency_ms": 30, "status": 200}
+10.0.1.96 - - [12/Nov/2026:02:03:41 +0000] "GET /api/orders HTTP/1.1" 200 3632 "-" "curl/8.0" 66
+10.0.0.157 - - [12/Nov/2026:02:03:43 +0000] "GET /checkout HTTP/1.1" 200 3003 "-" "curl/8.0" 109
+10.0.1.120 - - [12/Nov/2026:02:03:45 +0000] "GET /api/products HTTP/1.1" 200 4622 "-" "curl/8.0" 51
+{"ts": "2026-11-12T02:03:45.772389", "level": "INFO", "service": "worker", "msg": "request /checkout -> 200", "latency_ms": 51, "status": 200}
+10.0.2.217 - - [12/Nov/2026:02:03:47 +0000] "GET /health HTTP/1.1" 200 1116 "-" "curl/8.0" 107
+10.0.2.104 - - [12/Nov/2026:02:03:49 +0000] "GET /api/orders HTTP/1.1" 200 1284 "-" "curl/8.0" 24
+10.0.2.56 - - [12/Nov/2026:02:03:51 +0000] "GET /checkout HTTP/1.1" 200 8379 "-" "curl/8.0" 92
+{"ts": "2026-11-12T02:03:51.772389", "level": "INFO", "service": "api", "msg": "request /checkout -> 200", "latency_ms": 92, "status": 200}
+10.0.1.65 - - [12/Nov/2026:02:03:53 +0000] "GET /checkout HTTP/1.1" 200 4504 "-" "curl/8.0" 53
+10.0.3.94 - - [12/Nov/2026:02:03:55 +0000] "GET /api/users HTTP/1.1" 200 2466 "-" "curl/8.0" 74
+10.0.0.222 - - [12/Nov/2026:02:03:57 +0000] "GET / HTTP/1.1" 200 2704 "-" "curl/8.0" 31
+{"ts": "2026-11-12T02:03:57.772389", "level": "INFO", "service": "worker", "msg": "request /api/users -> 200", "latency_ms": 31, "status": 200}
+10.0.0.100 - - [12/Nov/2026:02:03:59 +0000] "GET /api/products HTTP/1.1" 200 7868 "-" "curl/8.0" 74
+10.0.0.176 - - [12/Nov/2026:02:04:01 +0000] "GET /checkout HTTP/1.1" 200 2076 "-" "curl/8.0" 90
+10.0.2.198 - - [12/Nov/2026:02:04:03 +0000] "GET /checkout HTTP/1.1" 200 5773 "-" "curl/8.0" 88
+{"ts": "2026-11-12T02:04:03.772389", "level": "INFO", "service": "web", "msg": "request /api/orders -> 200", "latency_ms": 88, "status": 200}
+10.0.0.246 - - [12/Nov/2026:02:04:05 +0000] "GET /checkout HTTP/1.1" 200 4515 "-" "curl/8.0" 78
+10.0.0.224 - - [12/Nov/2026:02:04:07 +0000] "GET /checkout HTTP/1.1" 404 5089 "-" "curl/8.0" 765
+10.0.1.41 - - [12/Nov/2026:02:04:09 +0000] "GET /api/orders HTTP/1.1" 200 2846 "-" "curl/8.0" 84
+{"ts": "2026-11-12T02:04:09.772389", "level": "INFO", "service": "worker", "msg": "request /health -> 200", "latency_ms": 84, "status": 200}
+10.0.2.127 - - [12/Nov/2026:02:04:11 +0000] "GET / HTTP/1.1" 201 2032 "-" "curl/8.0" 20
+10.0.1.16 - - [12/Nov/2026:02:04:13 +0000] "GET /api/users HTTP/1.1" 201 1490 "-" "curl/8.0" 59
+10.0.0.196 - - [12/Nov/2026:02:04:15 +0000] "GET /login HTTP/1.1" 200 2260 "-" "curl/8.0" 82
+{"ts": "2026-11-12T02:04:15.772389", "level": "INFO", "service": "web", "msg": "request /checkout -> 200", "latency_ms": 82, "status": 200}
+10.0.1.69 - - [12/Nov/2026:02:04:17 +0000] "GET /login HTTP/1.1" 200 7132 "-" "curl/8.0" 90
+10.0.1.184 - - [12/Nov/2026:02:04:19 +0000] "GET /api/orders HTTP/1.1" 404 6737 "-" "curl/8.0" 1504
+10.0.2.114 - - [12/Nov/2026:02:04:21 +0000] "GET /login HTTP/1.1" 502 7597 "-" "curl/8.0" 1730
+{"ts": "2026-11-12T02:04:21.772389", "level": "ERROR", "service": "web", "msg": "request /api/users -> 502", "latency_ms": 1730, "status": 502}
+10.0.0.152 - - [12/Nov/2026:02:04:23 +0000] "GET /login HTTP/1.1" 200 3970 "-" "curl/8.0" 63
+10.0.0.183 - - [12/Nov/2026:02:04:25 +0000] "GET /checkout HTTP/1.1" 200 1164 "-" "curl/8.0" 20
+10.0.2.20 - - [12/Nov/2026:02:04:27 +0000] "GET /login HTTP/1.1" 200 4099 "-" "curl/8.0" 24
+{"ts": "2026-11-12T02:04:27.772389", "level": "INFO", "service": "api", "msg": "request /checkout -> 200", "latency_ms": 24, "status": 200}
+10.0.1.187 - - [12/Nov/2026:02:04:29 +0000] "GET /login HTTP/1.1" 200 7944 "-" "curl/8.0" 89
+10.0.3.50 - - [12/Nov/2026:02:04:31 +0000] "GET / HTTP/1.1" 200 1788 "-" "curl/8.0" 80
+10.0.3.107 - - [12/Nov/2026:02:04:33 +0000] "GET /api/products HTTP/1.1" 200 1087 "-" "curl/8.0" 65
+{"ts": "2026-11-12T02:04:33.772389", "level": "INFO", "service": "worker", "msg": "request /checkout -> 200", "latency_ms": 65, "status": 200}
+10.0.0.105 - - [12/Nov/2026:02:04:35 +0000] "GET /checkout HTTP/1.1" 500 5759 "-" "curl/8.0" 601
+10.0.1.51 - - [12/Nov/2026:02:04:37 +0000] "GET /api/users HTTP/1.1" 200 8986 "-" "curl/8.0" 33
+10.0.1.73 - - [12/Nov/2026:02:04:39 +0000] "GET /api/products HTTP/1.1" 200 4292 "-" "curl/8.0" 74
+{"ts": "2026-11-12T02:04:39.772389", "level": "INFO", "service": "web", "msg": "request /api/products -> 200", "latency_ms": 74, "status": 200}
+10.0.0.14 - - [12/Nov/2026:02:04:41 +0000] "GET /checkout HTTP/1.1" 200 441 "-" "curl/8.0" 90
+10.0.1.106 - - [12/Nov/2026:02:04:43 +0000] "GET /api/products HTTP/1.1" 404 8086 "-" "curl/8.0" 884
+10.0.0.44 - - [12/Nov/2026:02:04:45 +0000] "GET /api/products HTTP/1.1" 200 235 "-" "curl/8.0" 71
+{"ts": "2026-11-12T02:04:45.772389", "level": "INFO", "service": "api", "msg": "request /api/orders -> 200", "latency_ms": 71, "status": 200}
+10.0.3.75 - - [12/Nov/2026:02:04:47 +0000] "GET /api/products HTTP/1.1" 201 8173 "-" "curl/8.0" 120
+10.0.1.249 - - [12/Nov/2026:02:04:49 +0000] "GET / HTTP/1.1" 200 1198 "-" "curl/8.0" 57
+10.0.0.151 - - [12/Nov/2026:02:04:51 +0000] "GET /api/products HTTP/1.1" 200 8438 "-" "curl/8.0" 27
+{"ts": "2026-11-12T02:04:51.772389", "level": "INFO", "service": "worker", "msg": "request /api/users -> 200", "latency_ms": 27, "status": 200}
+10.0.0.219 - - [12/Nov/2026:02:04:53 +0000] "GET /api/users HTTP/1.1" 200 1322 "-" "curl/8.0" 85
+10.0.1.105 - - [12/Nov/2026:02:04:55 +0000] "GET / HTTP/1.1" 200 4233 "-" "curl/8.0" 106
+10.0.0.109 - - [12/Nov/2026:02:04:57 +0000] "GET /checkout HTTP/1.1" 200 8765 "-" "curl/8.0" 25
+{"ts": "2026-11-12T02:04:57.772389", "level": "INFO", "service": "api", "msg": "request /api/orders -> 200", "latency_ms": 25, "status": 200}
+10.0.2.63 - - [12/Nov/2026:02:04:59 +0000] "GET /api/orders HTTP/1.1" 200 6684 "-" "curl/8.0" 111
+10.0.2.119 - - [12/Nov/2026:02:05:01 +0000] "GET /api/orders HTTP/1.1" 200 1388 "-" "curl/8.0" 102
+10.0.0.20 - - [12/Nov/2026:02:05:03 +0000] "GET /login HTTP/1.1" 200 3692 "-" "curl/8.0" 99
+{"ts": "2026-11-12T02:05:03.772389", "level": "INFO", "service": "worker", "msg": "request /api/orders -> 200", "latency_ms": 99, "status": 200}
+10.0.0.227 - - [12/Nov/2026:02:05:05 +0000] "GET /api/users HTTP/1.1" 200 6254 "-" "curl/8.0" 64
+10.0.2.158 - - [12/Nov/2026:02:05:07 +0000] "GET /health HTTP/1.1" 200 8866 "-" "curl/8.0" 76
+10.0.2.240 - - [12/Nov/2026:02:05:09 +0000] "GET /checkout HTTP/1.1" 200 1897 "-" "curl/8.0" 90
+{"ts": "2026-11-12T02:05:09.772389", "level": "INFO", "service": "web", "msg": "request /api/orders -> 200", "latency_ms": 90, "status": 200}
+10.0.1.71 - - [12/Nov/2026:02:05:11 +0000] "GET /api/orders HTTP/1.1" 200 3650 "-" "curl/8.0" 33
+10.0.2.131 - - [12/Nov/2026:02:05:13 +0000] "GET /api/products HTTP/1.1" 200 4314 "-" "curl/8.0" 46
+10.0.0.164 - - [12/Nov/2026:02:05:15 +0000] "GET /api/products HTTP/1.1" 201 4733 "-" "curl/8.0" 26
+{"ts": "2026-11-12T02:05:15.772389", "level": "INFO", "service": "web", "msg": "request / -> 201", "latency_ms": 26, "status": 201}
+10.0.2.43 - - [12/Nov/2026:02:05:17 +0000] "GET /checkout HTTP/1.1" 200 7439 "-" "curl/8.0" 36
+10.0.0.30 - - [12/Nov/2026:02:05:19 +0000] "GET / HTTP/1.1" 200 2642 "-" "curl/8.0" 74
+10.0.1.112 - - [12/Nov/2026:02:05:21 +0000] "GET /api/users HTTP/1.1" 200 885 "-" "curl/8.0" 67
+{"ts": "2026-11-12T02:05:21.772389", "level": "INFO", "service": "api", "msg": "request /api/orders -> 200", "latency_ms": 67, "status": 200}
+10.0.2.55 - - [12/Nov/2026:02:05:23 +0000] "GET /checkout HTTP/1.1" 200 4288 "-" "curl/8.0" 25
+10.0.3.160 - - [12/Nov/2026:02:05:25 +0000] "GET /checkout HTTP/1.1" 200 2732 "-" "curl/8.0" 65
+10.0.1.206 - - [12/Nov/2026:02:05:27 +0000] "GET /health HTTP/1.1" 201 3100 "-" "curl/8.0" 50
+{"ts": "2026-11-12T02:05:27.772389", "level": "INFO", "service": "api", "msg": "request / -> 201", "latency_ms": 50, "status": 201}
+10.0.3.207 - - [12/Nov/2026:02:05:29 +0000] "GET /checkout HTTP/1.1" 200 4265 "-" "curl/8.0" 62
+10.0.0.99 - - [12/Nov/2026:02:05:31 +0000] "GET /health HTTP/1.1" 200 834 "-" "curl/8.0" 120
+10.0.1.211 - - [12/Nov/2026:02:05:33 +0000] "GET /api/products HTTP/1.1" 200 5928 "-" "curl/8.0" 48
+{"ts": "2026-11-12T02:05:33.772389", "level": "INFO", "service": "api", "msg": "request /health -> 200", "latency_ms": 48, "status": 200}
+10.0.1.8 - - [12/Nov/2026:02:05:35 +0000] "GET /checkout HTTP/1.1" 200 3364 "-" "curl/8.0" 49
+10.0.0.249 - - [12/Nov/2026:02:05:37 +0000] "GET /health HTTP/1.1" 200 4773 "-" "curl/8.0" 55
+10.0.3.175 - - [12/Nov/2026:02:05:39 +0000] "GET /health HTTP/1.1" 200 8985 "-" "curl/8.0" 85
+{"ts": "2026-11-12T02:05:39.772389", "level": "INFO", "service": "api", "msg": "request / -> 200", "latency_ms": 85, "status": 200}
+10.0.1.150 - - [12/Nov/2026:02:05:41 +0000] "GET /api/orders HTTP/1.1" 200 826 "-" "curl/8.0" 53
+10.0.2.188 - - [12/Nov/2026:02:05:43 +0000] "GET /health HTTP/1.1" 200 5339 "-" "curl/8.0" 75
+10.0.0.100 - - [12/Nov/2026:02:05:45 +0000] "GET /login HTTP/1.1" 200 3314 "-" "curl/8.0" 85
+{"ts": "2026-11-12T02:05:45.772389", "level": "INFO", "service": "api", "msg": "request / -> 200", "latency_ms": 85, "status": 200}
+10.0.1.95 - - [12/Nov/2026:02:05:47 +0000] "GET /api/products HTTP/1.1" 200 1346 "-" "curl/8.0" 20
+10.0.2.171 - - [12/Nov/2026:02:05:49 +0000] "GET /health HTTP/1.1" 404 2241 "-" "curl/8.0" 1076
+10.0.2.172 - - [12/Nov/2026:02:05:51 +0000] "GET /api/products HTTP/1.1" 200 5544 "-" "curl/8.0" 58
+{"ts": "2026-11-12T02:05:51.772389", "level": "INFO", "service": "api", "msg": "request /checkout -> 200", "latency_ms": 58, "status": 200}
+10.0.1.109 - - [12/Nov/2026:02:05:53 +0000] "GET /checkout HTTP/1.1" 200 6411 "-" "curl/8.0" 36
+10.0.2.105 - - [12/Nov/2026:02:05:55 +0000] "GET /login HTTP/1.1" 200 206 "-" "curl/8.0" 42
+10.0.3.203 - - [12/Nov/2026:02:05:57 +0000] "GET /login HTTP/1.1" 200 5479 "-" "curl/8.0" 46
+{"ts": "2026-11-12T02:05:57.772389", "level": "INFO", "service": "api", "msg": "request /api/products -> 200", "latency_ms": 46, "status": 200}
+10.0.3.205 - - [12/Nov/2026:02:05:59 +0000] "GET /health HTTP/1.1" 200 2980 "-" "curl/8.0" 47
+10.0.2.25 - - [12/Nov/2026:02:06:01 +0000] "GET /health HTTP/1.1" 200 4048 "-" "curl/8.0" 56
+10.0.1.39 - - [12/Nov/2026:02:06:03 +0000] "GET / HTTP/1.1" 200 957 "-" "curl/8.0" 48
+{"ts": "2026-11-12T02:06:03.772389", "level": "INFO", "service": "web", "msg": "request /api/products -> 200", "latency_ms": 48, "status": 200}
+10.0.0.118 - - [12/Nov/2026:02:06:05 +0000] "GET /api/products HTTP/1.1" 200 3385 "-" "curl/8.0" 118
+10.0.3.104 - - [12/Nov/2026:02:06:07 +0000] "GET /api/users HTTP/1.1" 200 2617 "-" "curl/8.0" 69
+10.0.0.201 - - [12/Nov/2026:02:06:09 +0000] "GET /api/products HTTP/1.1" 200 3785 "-" "curl/8.0" 20
+{"ts": "2026-11-12T02:06:09.772389", "level": "INFO", "service": "web", "msg": "request /health -> 200", "latency_ms": 20, "status": 200}
+10.0.3.14 - - [12/Nov/2026:02:06:11 +0000] "GET /login HTTP/1.1" 404 4282 "-" "curl/8.0" 1460
+10.0.3.36 - - [12/Nov/2026:02:06:13 +0000] "GET /health HTTP/1.1" 201 7812 "-" "curl/8.0" 35
+10.0.2.245 - - [12/Nov/2026:02:06:15 +0000] "GET /health HTTP/1.1" 200 7451 "-" "curl/8.0" 91
+{"ts": "2026-11-12T02:06:15.772389", "level": "INFO", "service": "worker", "msg": "request /health -> 200", "latency_ms": 91, "status": 200}
+10.0.3.214 - - [12/Nov/2026:02:06:17 +0000] "GET /login HTTP/1.1" 200 7505 "-" "curl/8.0" 84
+10.0.3.117 - - [12/Nov/2026:02:06:19 +0000] "GET /api/orders HTTP/1.1" 200 4250 "-" "curl/8.0" 115
+10.0.3.162 - - [12/Nov/2026:02:06:21 +0000] "GET /api/users HTTP/1.1" 200 4699 "-" "curl/8.0" 55
+{"ts": "2026-11-12T02:06:21.772389", "level": "INFO", "service": "api", "msg": "request / -> 200", "latency_ms": 55, "status": 200}
+10.0.2.87 - - [12/Nov/2026:02:06:23 +0000] "GET /api/orders HTTP/1.1" 200 1520 "-" "curl/8.0" 50
+10.0.3.179 - - [12/Nov/2026:02:06:25 +0000] "GET /api/users HTTP/1.1" 200 3705 "-" "curl/8.0" 49
+10.0.2.140 - - [12/Nov/2026:02:06:27 +0000] "GET /api/products HTTP/1.1" 200 7012 "-" "curl/8.0" 72
+{"ts": "2026-11-12T02:06:27.772389", "level": "INFO", "service": "web", "msg": "request /api/users -> 200", "latency_ms": 72, "status": 200}
+10.0.0.221 - - [12/Nov/2026:02:06:29 +0000] "GET /health HTTP/1.1" 200 6432 "-" "curl/8.0" 69
+10.0.2.194 - - [12/Nov/2026:02:06:31 +0000] "GET /api/products HTTP/1.1" 200 7065 "-" "curl/8.0" 65
+10.0.1.126 - - [12/Nov/2026:02:06:33 +0000] "GET /api/users HTTP/1.1" 200 4671 "-" "curl/8.0" 114
+{"ts": "2026-11-12T02:06:33.772389", "level": "INFO", "service": "api", "msg": "request /api/products -> 200", "latency_ms": 114, "status": 200}
+10.0.3.187 - - [12/Nov/2026:02:06:35 +0000] "GET /api/users HTTP/1.1" 200 7857 "-" "curl/8.0" 63
+10.0.0.234 - - [12/Nov/2026:02:06:37 +0000] "GET /api/products HTTP/1.1" 201 644 "-" "curl/8.0" 99
+10.0.1.223 - - [12/Nov/2026:02:06:39 +0000] "GET /api/products HTTP/1.1" 200 3177 "-" "curl/8.0" 74
+{"ts": "2026-11-12T02:06:39.772389", "level": "INFO", "service": "web", "msg": "request /api/orders -> 200", "latency_ms": 74, "status": 200}

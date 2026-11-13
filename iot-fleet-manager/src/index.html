@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>IoT Device Fleet Manager</title>
+<style>body{font-family:system-ui,sans-serif;max-width:1000px;margin:0 auto;padding:20px;background:#f8fafc;color:#0f172a}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin:14px 0}
+button{background:#0369a1;color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;margin:4px}
+input,select{padding:8px;border:1px solid #cbd5e1;border-radius:6px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #e2e8f0;padding:6px;text-align:left;font-size:14px}
+.badge{padding:2px 8px;border-radius:10px;font-size:12px;color:#fff}
+.on{background:#16a34a}.off{background:#dc2626}.upd{background:#d97706}
+.bar{height:16px;background:#e2e8f0;border-radius:8px;overflow:hidden}.bar>div{height:100%;background:#0369a1}</style></head>
+<body><h1>📡 IoT Device Fleet Manager</h1>
+<p>Registry, health, staged firmware rollouts with automatic rollback, remote commands, audit log. Simulated telemetry — no hardware needed.</p>
+<div class="card"><h3>Provision a device</h3>
+<input id="devName" placeholder="device name (e.g. sensor-07)">
+<select id="devGroup"><option>warehouse</option><option>office</option><option>plant</option></select>
+<button onclick="provision()">Provision</button></div>
+<div class="card"><h3>Device registry — <span id="count"></span></h3><div id="registry"></div>
+<p style="color:#64748b">Telemetry refreshes every 3 s. Devices silent &gt; 10 min show OFFLINE.</p></div>
+<div class="card"><h3>🔄 Firmware campaign — staged rollout</h3>
+<label>Target version</label> <input id="fwVer" value="2.4.0" style="width:90px">
+<label>Rollout</label> <input type="range" id="rollout" min="10" max="100" step="10" value="10" oninput="document.getElementById('roVal').textContent=this.value+'%'"> <b id="roVal">10%</b>
+<button onclick="rollout()">Start rollout</button>
+<div class="bar" style="margin-top:10px"><div id="prog" style="width:0%"></div></div>
+<p id="campMsg"></p></div>
+<div class="card"><h3>📜 Audit log</h3><div id="audit"></div></div>
+<script>
+const KEY='iot-fleet-v1';
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{devices:[
+ {id:'dev-001',name:'sensor-01',group:'warehouse',fw:'2.3.1',batt:82,sig:-61,seen:Date.now()},
+ {id:'dev-002',name:'sensor-02',group:'warehouse',fw:'2.3.1',batt:77,sig:-68,seen:Date.now()},
+ {id:'dev-003',name:'thermostat-01',group:'office',fw:'2.3.1',batt:91,sig:-55,seen:Date.now()},
+ {id:'dev-004',name:'door-01',group:'office',fw:'2.2.0',batt:64,sig:-72,seen:Date.now()-12*60000},
+ {id:'dev-005',name:'meter-01',group:'plant',fw:'2.3.1',batt:58,sig:-80,seen:Date.now()},
+ {id:'dev-006',name:'meter-02',group:'plant',fw:'2.3.1',batt:73,sig:-66,seen:Date.now()}],audit:[]};
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+function log(action,detail){state.audit.unshift(new Date().toLocaleTimeString()+' — '+action+': '+detail);state.audit=state.audit.slice(0,30);save();}
+function provision(){
+  const name=document.getElementById('devName').value.trim();if(!name)return;
+  const key=[...crypto.getRandomValues(new Uint8Array(8))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  state.devices.push({id:'dev-'+String(state.devices.length+1).padStart(3,'0'),name,group:document.getElementById('devGroup').value,fw:'2.3.1',batt:85,sig:-60,seen:Date.now()});
+  log('provision',name+' provisioned (key '+key.slice(0,8)+'… )');render();
+}
+function command(name,cmd){log('command',cmd+' → '+name+' (accepted)');render();}
+function rollout(){
+  const ver=document.getElementById('fwVer').value,pct=+document.getElementById('rollout').value;
+  const pending=state.devices.filter(d=>d.fw!==ver);
+  const n=Math.floor(state.devices.length*pct/100), target=pending.slice(0,n);
+  let failed=null;
+  target.forEach(d=>{if(!failed&&Math.random()<0.05){failed=d.name;log('firmware-failed',d.name+' failed v'+ver+', rolled back to '+d.fw+' — campaign paused');}
+    else if(!failed){d.fw=ver;}});
+  const done=state.devices.filter(d=>d.fw===ver).length;
+  document.getElementById('prog').style.width=(done/state.devices.length*100)+'%';
+  document.getElementById('campMsg').textContent=failed?('⚠ Rollback: '+failed+' failed — campaign paused at '+done+'/'+state.devices.length+' on v'+ver+'. Fix the issue, then raise the rollout %.')
+    :('v'+ver+': '+done+'/'+state.devices.length+' devices updated ('+pct+'% rollout). Raise the % to continue the staged rollout.');
+  log('firmware','v'+ver+' rollout '+pct+'%: '+done+'/'+state.devices.length+' on new version'+(failed?' (paused: '+failed+')':''));
+  render();
+}
+function render(){
+  document.getElementById('count').textContent=state.devices.length+' devices';
+  document.getElementById('registry').innerHTML='<table><tr><th>Device</th><th>Group</th><th>Firmware</th><th>Battery</th><th>Signal</th><th>Status</th><th>Commands</th></tr>'+
+   state.devices.map(d=>{const off=Date.now()-d.seen>10*60000;
+    return '<tr><td>'+d.name+'</td><td>'+d.group+'</td><td>'+d.fw+'</td><td>'+d.batt+'%</td><td>'+d.sig+' dBm</td><td><span class="badge '+(off?'off':'on')+'">'+(off?'OFFLINE':'online')+'</span></td><td><button data-dev="'+d.name+'" data-cmd="reboot" onclick="command(this.dataset.dev,this.dataset.cmd)">Reboot</button><button data-dev="'+d.name+'" data-cmd="config-push" onclick="command(this.dataset.dev,this.dataset.cmd)">Config push</button></td></tr>';}).join('')+'</table>';
+  const off=state.devices.filter(d=>Date.now()-d.seen>10*60000);
+  if(off.length)document.getElementById('registry').innerHTML+='<p style="color:#dc2626;font-weight:700">⚠ OFFLINE ALERT: '+off.map(d=>d.name).join(', ')+' silent &gt; 10 min</p>';
+  document.getElementById('audit').innerHTML=state.audit.map(a=>'<div>'+a+'</div>').join('')||'<p>No actions yet.</p>';
+}
+setInterval(()=>{state.devices.forEach(d=>{if(Date.now()-d.seen<10*60000){d.batt=Math.max(5,Math.min(100,d.batt+Math.floor(Math.random()*3)-1));d.sig=Math.max(-95,Math.min(-40,d.sig+Math.floor(Math.random()*7)-3));d.seen=Date.now();}});save();render();},3000);
+render();
+</script></body></html>

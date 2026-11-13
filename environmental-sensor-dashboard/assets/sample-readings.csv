@@ -1,0 +1,12 @@
+timestamp,sensor_id,type,value,unit,location
+2026-11-12T00:00:00Z,TEMP-A1,temperature,22.4,C,Hall A - Row 1
+2026-11-12T06:00:00Z,TEMP-A1,temperature,23.1,C,Hall A - Row 1
+2026-11-12T12:00:00Z,TEMP-A1,temperature,25.8,C,Hall A - Row 1
+2026-11-12T14:00:00Z,TEMP-A1,temperature,27.6,C,Hall A - Row 1
+2026-11-12T18:00:00Z,TEMP-A1,temperature,25.2,C,Hall A - Row 1
+2026-11-12T00:00:00Z,HUM-A1,humidity,44.0,%,Hall A - Row 1
+2026-11-12T12:00:00Z,HUM-A1,humidity,48.5,%,Hall A - Row 1
+2026-11-12T14:00:00Z,HUM-A1,humidity,52.0,%,Hall A - Row 1
+2026-11-12T00:00:00Z,LEAK-B1,leak,0,boolean,Hall B - under CRAC
+2026-11-12T14:30:00Z,LEAK-B1,leak,1,boolean,Hall B - under CRAC
+2026-11-12T00:00:00Z,DOOR-MAIN,door,0,boolean,Main entrance

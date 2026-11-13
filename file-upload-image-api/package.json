@@ -1,0 +1,15 @@
+{
+  "name": "file-upload-image-api",
+  "version": "1.0.0",
+  "description": "File upload & image processing API with signed URLs and a WebP savings report.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/test.js",
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

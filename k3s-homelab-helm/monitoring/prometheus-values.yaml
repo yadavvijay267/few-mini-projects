@@ -1,0 +1,17 @@
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    resources: { requests: { cpu: 200m, memory: 512Mi } }
+grafana:
+  adminPassword: "change-me-in-production"
+  dashboards:
+    default:
+      k3s-overview:
+        json: |
+          { "title": "K3s Overview", "panels": [] }
+alertmanager:
+  config:
+    route: { receiver: webhook }
+    receivers:
+      - name: webhook
+        webhook_configs: [{ url: "http://localhost:8080/alert" }]

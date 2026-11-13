@@ -1,0 +1,10 @@
+{
+  "ups_on_battery": true,
+  "ups_runtime_minutes": 22,
+  "ups_load_pct": 68,
+  "hottest_inlet_c": 29.5,
+  "crac_standby_available": true,
+  "core_link_flapping": true,
+  "backup_link_ok": true,
+  "power_stable": true
+}

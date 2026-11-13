@@ -1,0 +1,2 @@
+# Static Three.js site — no Python dependencies.
+# Open src/index.html in a browser (Three.js via CDN).

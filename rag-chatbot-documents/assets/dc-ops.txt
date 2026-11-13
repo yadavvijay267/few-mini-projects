@@ -1,0 +1,8 @@
+Data Centre Operations Guide. The PUE target for the Noida data hall is 1.4 or lower.
+PUE is total facility energy divided by IT equipment energy. Cooling uses chilled water
+with N+1 CRAC units. The UPS runtime on battery is 15 minutes at full load, and the
+generator starts within 30 seconds of a mains failure. Rack power is capped at 8 kW per
+rack. Hot aisle containment keeps the cold aisle at 22 degrees Celsius.
+Incident response: for a UPS on battery event, confirm generator start, check battery
+runtime, and notify the NOC within 5 minutes. For a CRAC failure, open the hot aisle
+doors and shift load if the temperature rises above 27 degrees.

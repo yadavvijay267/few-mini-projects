@@ -1,0 +1,4 @@
+Aarav Sharma
+Data Analyst
+
+Experience: 3 years as a Data Analyst in e-commerce. Built dashboards in Python and SQL, analysed transaction data with pandas, and ran A/B tests. Strong statistics background: distributions, hypothesis testing, confidence intervals. Created data visualisation for weekly business reviews. Excellent communication and problem solving skills. Tools: Excel, Git, Docker. Some exposure to machine learning with scikit-learn.

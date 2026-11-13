@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Earthing &amp; Grounding Calculator (IEEE 80)</title>
+<style>body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f0fdf4;color:#0f172a}
+.card{background:#fff;border:1px solid #bbf7d0;border-radius:10px;padding:16px;margin:14px 0}
+label{display:block;font-size:13px;margin:8px 0 2px}input{padding:8px;width:200px;border:1px solid #cbd5e1;border-radius:6px}
+button{background:#15803d;color:#fff;border:0;border-radius:6px;padding:10px 18px;cursor:pointer}
+.pass{color:#15803d;font-weight:700}.fail{color:#dc2626;font-weight:700}
+canvas{border:1px solid #bbf7d0;background:#fff}</style></head>
+<body><h1>⏚ Earthing &amp; Grounding Calculator</h1>
+<p>IEEE 80 (simplified) — soil resistivity, rod/grid resistance, step &amp; touch voltage checks.</p>
+<div class="card">
+<label>Soil resistivity ρ (Ω·m)</label><input id="rho" type="number" value="100">
+<label>…or Wenner: spacing a (m)</label><input id="a" type="number" value="2">
+<label>Measured R (Ω)</label><input id="r" type="number" value="8">
+<button onclick="wenner()">ρ = 2πaR</button> <span id="rhoOut"></span><br><br>
+<label>Grid length (m)</label><input id="gl" type="number" value="20">
+<label>Grid width (m)</label><input id="gw" type="number" value="20">
+<label>Burial depth (m)</label><input id="depth" type="number" value="0.5">
+<label>Fault current (A)</label><input id="if" type="number" value="5000">
+<label>Fault duration (s)</label><input id="dur" type="number" step="0.1" value="0.5">
+<label>Surface resistivity ρs (Ω·m, crushed rock ≈ 3000)</label><input id="rhos" type="number" value="3000">
+<br><br><button onclick="calc()">Calculate design</button></div>
+<div class="card" id="out"></div>
+<div class="card"><h3>Grid layout</h3><canvas id="plot" width="700" height="420"></canvas></div>
+<script>
+function wenner(){const a=+document.getElementById('a').value,r=+document.getElementById('r').value;
+  const rho=2*Math.PI*a*r; document.getElementById('rho').value=rho.toFixed(1);
+  document.getElementById('rhoOut').textContent='ρ = '+rho.toFixed(1)+' Ω·m';}
+function calc(){
+  const rho=+document.getElementById('rho').value, L=+document.getElementById('gl').value,
+    W=+document.getElementById('gw').value, h=+document.getElementById('depth').value,
+    If=+document.getElementById('if').value, ts=+document.getElementById('dur').value,
+    rhos=+document.getElementById('rhos').value, Cs=0.7, A=L*W;
+  const Lt=2*(L+W)+Math.floor(L/5)*W+Math.floor(W/5)*L;
+  const Rg=rho*(1/Lt+(1/Math.sqrt(20*A))*(1+1/(1+h*Math.sqrt(20/A))));
+  const rod=rho/(2*Math.PI*3)*Math.log(4*3/0.016);
+  const gpr=If*Rg, eTouch=0.4*gpr, eStep=0.25*gpr;
+  const limT=(1000+1.5*Cs*rhos)*0.116/Math.sqrt(ts), limS=(1000+6*Cs*rhos)*0.116/Math.sqrt(ts);
+  document.getElementById('out').innerHTML=
+   '<p>Single 3 m rod: <b>'+rod.toFixed(2)+' Ω</b> &nbsp;·&nbsp; Grid '+L+'×'+W+' m ('+Lt.toFixed(0)+' m conductor): <b>Rg = '+Rg.toFixed(2)+' Ω</b></p>'+
+   '<p>GPR = '+gpr.toFixed(0)+' V</p>'+
+   '<p>Touch voltage '+eTouch.toFixed(0)+' V vs limit '+limT.toFixed(0)+' V → <span class="'+(eTouch<limT?'pass':'fail')+'">'+(eTouch<limT?'PASS':'FAIL')+'</span></p>'+
+   '<p>Step voltage '+eStep.toFixed(0)+' V vs limit '+limS.toFixed(0)+' V → <span class="'+(eStep<limS?'pass':'fail')+'">'+(eStep<limS?'PASS':'FAIL')+'</span></p>'+
+   '<p style="color:#64748b;font-size:13px">Simplified IEEE 80 (Schwarz grid formula, 50 kg body, Cs = 0.7). Uniform single-layer soil assumed — verify with a licensed engineer before construction.</p>';
+  const c=document.getElementById('plot'),ctx=c.getContext('2d'),sx=c.width/(L+4),sy=c.height/(W+4);
+  ctx.clearRect(0,0,c.width,c.height); ctx.strokeStyle='#15803d'; ctx.lineWidth=2;
+  ctx.strokeRect(2*sx,2*sy,L*sx,W*sy);
+  for(let x=5;x<L;x+=5){ctx.beginPath();ctx.moveTo((2+x)*sx,2*sy);ctx.lineTo((2+x)*sx,(2+W)*sy);ctx.stroke();}
+  for(let y=5;y<W;y+=5){ctx.beginPath();ctx.moveTo(2*sx,(2+y)*sy);ctx.lineTo((2+L)*sx,(2+y)*sy);ctx.stroke();}
+  ctx.fillStyle='#dc2626';
+  for(let x=0;x<=L;x+=5)for(let y=0;y<=W;y+=5){ctx.beginPath();ctx.arc((2+x)*sx,(2+y)*sy,4,0,7);ctx.fill();}
+  ctx.fillStyle='#0f172a';ctx.font='13px sans-serif';
+  ctx.fillText('Grid '+L+' m × '+W+' m — red dots are rod electrodes at mesh crossings',10,18);
+}
+calc();
+</script></body></html>

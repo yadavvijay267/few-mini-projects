@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "po1",
+      "author": "Ana Sharma",
+      "content": "Shipped the new homepage today. So proud of the team!",
+      "likes": 12,
+      "reposts": 3,
+      "createdAt": "2026-11-10T10:00:00.000Z"
+    },
+    {
+      "id": "po2",
+      "author": "Ravi Patel",
+      "content": "Hot take: the best code is the code you delete.",
+      "likes": 25,
+      "reposts": 8,
+      "createdAt": "2026-11-11T09:00:00.000Z"
+    },
+    {
+      "id": "po3",
+      "author": "Demo User",
+      "content": "Morning run done. Building in public, one project at a time.",
+      "likes": 5,
+      "reposts": 1,
+      "createdAt": "2026-11-11T08:00:00.000Z"
+    },
+    {
+      "id": "po4",
+      "author": "Ana Sharma",
+      "content": "Old post, but it went viral back then.",
+      "likes": 18,
+      "reposts": 2,
+      "createdAt": "2026-10-01T10:00:00.000Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": "cm1",
+      "postId": "po1",
+      "author": "Ravi Patel",
+      "text": "Looks great, congrats!",
+      "createdAt": "2026-11-10T11:00:00.000Z"
+    }
+  ],
+  "follows": [
+    {
+      "id": "f1",
+      "follower": "Demo User",
+      "following": "Ana Sharma",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "n1",
+      "user": "Ana Sharma",
+      "text": "Demo User started following you.",
+      "type": "follow",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ]
+}

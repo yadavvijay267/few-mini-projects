@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Journey of Light — A Fiber Story</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<nav id="chapters" aria-label="Story chapters">
+  <button data-target="ch1" class="active">1 · The Spark</button>
+  <button data-target="ch2">2 · The Glass</button>
+  <button data-target="ch3">3 · The Route</button>
+  <button data-target="ch4">4 · The Splice</button>
+  <button data-target="ch5">5 · The Light</button>
+</nav>
+<header class="hero">
+  <h1 class="reveal">The Journey<br>of Light</h1>
+  <p class="reveal">How a pulse of light travels 40 kilometres through a thread of glass — and arrives intact. Scroll to follow it.</p>
+  <div class="scroll-hint reveal">↓ Scroll</div>
+  <div class="beam" aria-hidden="true"></div>
+</header>
+<main>
+  <section class="chapter" id="ch1"><div class="text"><span class="num">Chapter 1</span><h2 class="reveal">The Spark</h2>
+    <p class="reveal">It starts in a laser no bigger than a grain of rice. A pulse of infrared light — invisible to the eye, faster than anything else humans have built — is born in a transmitter rack in Noida.</p>
+    <p class="reveal">One pulse. One bit. Then another, and another — <strong><span class="counter" data-to="10000000000">0</span> pulses every second.</strong></p></div>
+    <div class="visual parallax" data-speed="0.3"><div class="orb"></div></div></section>
+  <section class="chapter" id="ch2"><div class="text"><span class="num">Chapter 2</span><h2 class="reveal">The Glass</h2>
+    <p class="reveal">The pulse enters a fiber thinner than a human hair. Its core is pure silica glass, so clear that if the ocean were made of it, you could see the seabed from the surface.</p>
+    <p class="reveal">Total internal reflection bounces the light along the core — <strong><span class="counter" data-to="200000">0</span> km per second</strong>, two-thirds the speed of light in a vacuum.</p></div>
+    <div class="visual parallax" data-speed="0.5"><div class="fiber"></div></div></section>
+  <section class="horizontal" id="ch3">
+    <div class="h-track">
+      <div class="h-panel"><h2>Chapter 3 · The Route</h2><p>Ducts under the road. Poles along the highway. The cable is pulled, metre by metre, through a city that never stops moving.</p></div>
+      <div class="h-panel"><h2>40 km of duct</h2><p>Every joint is logged, every closure photographed, every splice tested before the next span begins.</p></div>
+      <div class="h-panel"><h2>0.2 dB per km</h2><p>That is all the light the fiber loses. After 40 km, the pulse is still strong enough to read.</p></div>
+    </div>
+  </section>
+  <section class="chapter" id="ch4"><div class="text"><span class="num">Chapter 4</span><h2 class="reveal">The Splice</h2>
+    <p class="reveal">Two fiber ends meet in a fusion splicer. An electric arc melts the glass; the cores align to within a micron. The joint is tested with an OTDR — a radar for light.</p>
+    <p class="reveal">A good splice loses <strong><span class="counter" data-to="5">0</span> hundredths of a decibel</strong>. A bad one is cut out and done again. Quality control is the whole job.</p></div>
+    <div class="visual parallax" data-speed="0.4"><div class="splice"></div></div></section>
+  <section class="chapter finale" id="ch5"><div class="text"><span class="num">Chapter 5</span><h2 class="reveal">The Light</h2>
+    <p class="reveal">Forty kilometres later, the pulse arrives. A photodiode turns it back into electricity, and a video call, a bank transfer, a homework upload — someone's ordinary moment — happens because the light made it.</p>
+    <p class="reveal">That is the story of fiber: invisible infrastructure, carrying visible lives.</p>
+    <button id="replay" class="btn">↻ Replay the story</button></div></section>
+</main>
+<footer><p>Built with GSAP ScrollTrigger + Lenis smooth scroll. Story and figures are original, written for this project.</p></footer>
+<p id="cdnNote" class="cdn-note hidden">Animation libraries could not load (offline) — the full story is still readable below, with a lightweight fallback.</p>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

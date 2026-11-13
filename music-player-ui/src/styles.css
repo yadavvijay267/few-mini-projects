@@ -1,0 +1,25 @@
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:#0f172a;color:#e2e8f0}
+.app{max-width:980px;margin:0 auto;padding:20px}
+header h1{margin:0}.note,.hint{color:#94a3b8;font-size:.9rem}
+#viz{width:100%;background:#111827;border-radius:12px;margin:14px 0}
+.now{display:flex;gap:16px;align-items:center;background:#1e293b;border-radius:14px;padding:16px;flex-wrap:wrap}
+.cover{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,#0ea5e9,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:2.4rem;flex-shrink:0}
+.now-info{flex:1;min-width:220px}.now-info h2{margin:0 0 2px;font-size:1.15rem}.now-info p{margin:0 0 8px;color:#94a3b8}
+#seek{width:100%}.times{display:flex;justify-content:space-between;font-size:.8rem;color:#94a3b8}
+.controls{display:flex;gap:8px;align-items:center}
+.controls button{background:#334155;color:#fff;border:0;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.1rem}
+.controls button.on{background:#0ea5e9}.controls .play{width:56px;height:56px;font-size:1.4rem;background:#0ea5e9}
+.vol input{width:100px}
+.lists{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:700px){.lists{grid-template-columns:1fr}}
+.playlist,.queue{background:#1e293b;border-radius:14px;padding:16px}
+.list-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.list-head h2{margin:0;margin-right:auto}
+input,select{padding:8px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+#trackList{list-style:none;padding:0;margin:12px 0 0}
+#trackList li{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;cursor:pointer}
+#trackList li:hover{background:#334155}#trackList li.playing{background:#0c4a6e}
+#trackList .t{flex:1}#trackList .dur{color:#94a3b8;font-size:.85rem}
+#trackList .qbtn{background:none;border:1px solid #475569;color:#e2e8f0;border-radius:6px;cursor:pointer;padding:4px 8px}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;cursor:pointer;margin-top:14px}
+body.mini .lists,body.mini .hint,body.mini header p{display:none}
+body.mini .app{max-width:560px}

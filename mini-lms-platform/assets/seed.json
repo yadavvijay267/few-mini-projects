@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "plain:demo1234",
+      "role": "admin",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ana",
+      "name": "Ana Sharma",
+      "email": "ana@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-ravi",
+      "name": "Ravi Patel",
+      "email": "ravi@example.com",
+      "password": "plain:demo1234",
+      "role": "user",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "c1",
+      "title": "Full-Stack Web Development",
+      "description": "From HTML to deployed apps with Node.js.",
+      "price": 4999,
+      "level": "Beginner",
+      "instructor": "Demo User",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "c2",
+      "title": "Fiber Optic Network Design",
+      "description": "Design, planning and documentation for fiber networks.",
+      "price": 2999,
+      "level": "Intermediate",
+      "instructor": "Ravi Patel",
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "c3",
+      "title": "Data Centre Operations",
+      "description": "Power, cooling, capacity and incident handling.",
+      "price": 6999,
+      "level": "Advanced",
+      "instructor": "Ana Sharma",
+      "createdAt": "2026-11-03T00:00:00.000Z"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "l1",
+      "courseId": "c1",
+      "title": "HTML & CSS Basics",
+      "contentType": "text",
+      "content": "Structure pages with semantic HTML and style them with CSS.",
+      "order": 1,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "l2",
+      "courseId": "c1",
+      "title": "JavaScript Fundamentals",
+      "contentType": "video",
+      "content": "https://example.com/videos/js-fundamentals (sample video URL)",
+      "order": 2,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "l3",
+      "courseId": "c1",
+      "title": "Build Your First API",
+      "contentType": "text",
+      "content": "Build a REST API with Node.js built-in http module.",
+      "order": 3,
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "l4",
+      "courseId": "c2",
+      "title": "Fiber Types & Loss Budgets",
+      "contentType": "text",
+      "content": "Single-mode vs multi-mode, and how to compute a loss budget.",
+      "order": 1,
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "l5",
+      "courseId": "c2",
+      "title": "Route Planning with GIS",
+      "contentType": "video",
+      "content": "https://example.com/videos/gis-routes (sample video URL)",
+      "order": 2,
+      "createdAt": "2026-11-02T00:00:00.000Z"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "e1",
+      "courseId": "c1",
+      "student": "Ana Sharma",
+      "progress": 66,
+      "status": "Enrolled",
+      "completedLessons": [
+        "l1",
+        "l2"
+      ],
+      "createdAt": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "e2",
+      "courseId": "c2",
+      "student": "Demo User",
+      "progress": 0,
+      "status": "Enrolled",
+      "completedLessons": [],
+      "createdAt": "2026-11-06T00:00:00.000Z"
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "q1",
+      "courseId": "c1",
+      "title": "Web Basics Quiz",
+      "questions": "[{\"q\": \"Which tag creates a hyperlink?\", \"options\": [\"<a>\", \"<link>\", \"<href>\", \"<url>\"], \"answer\": 0}, {\"q\": \"Which method starts a Node HTTP server?\", \"options\": [\"listen()\", \"start()\", \"run()\", \"serve()\"], \"answer\": 0}]",
+      "createdAt": "2026-11-01T00:00:00.000Z"
+    }
+  ],
+  "quizAttempts": [],
+  "discussions": [
+    {
+      "id": "dsc1",
+      "lessonId": "l1",
+      "author": "Ana Sharma",
+      "text": "The semantic HTML section was really clear, thanks!",
+      "createdAt": "2026-11-07T00:00:00.000Z"
+    }
+  ]
+}

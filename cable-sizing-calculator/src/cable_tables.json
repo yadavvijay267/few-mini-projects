@@ -1,0 +1,16 @@
+{
+  "copper_pvc": [
+    {"size_mm2": 1.5, "r_ohm_km": 12.1, "x_ohm_km": 0.11, "ampacity_a": 16, "cost_per_m_inr": 28},
+    {"size_mm2": 2.5, "r_ohm_km": 7.41, "x_ohm_km": 0.10, "ampacity_a": 22, "cost_per_m_inr": 42},
+    {"size_mm2": 4,   "r_ohm_km": 4.61, "x_ohm_km": 0.10, "ampacity_a": 30, "cost_per_m_inr": 62},
+    {"size_mm2": 6,   "r_ohm_km": 3.08, "x_ohm_km": 0.09, "ampacity_a": 38, "cost_per_m_inr": 88},
+    {"size_mm2": 10,  "r_ohm_km": 1.83, "x_ohm_km": 0.09, "ampacity_a": 52, "cost_per_m_inr": 140},
+    {"size_mm2": 16,  "r_ohm_km": 1.15, "x_ohm_km": 0.08, "ampacity_a": 70, "cost_per_m_inr": 215},
+    {"size_mm2": 25,  "r_ohm_km": 0.727,"x_ohm_km": 0.08, "ampacity_a": 92, "cost_per_m_inr": 330},
+    {"size_mm2": 35,  "r_ohm_km": 0.524,"x_ohm_km": 0.08, "ampacity_a": 114,"cost_per_m_inr": 450},
+    {"size_mm2": 50,  "r_ohm_km": 0.387,"x_ohm_km": 0.08, "ampacity_a": 140,"cost_per_m_inr": 620},
+    {"size_mm2": 70,  "r_ohm_km": 0.268,"x_ohm_km": 0.08, "ampacity_a": 175,"cost_per_m_inr": 860},
+    {"size_mm2": 95,  "r_ohm_km": 0.193,"x_ohm_km": 0.08, "ampacity_a": 215,"cost_per_m_inr": 1150},
+    {"size_mm2": 120, "r_ohm_km": 0.153,"x_ohm_km": 0.08, "ampacity_a": 250,"cost_per_m_inr": 1450}
+  ]
+}

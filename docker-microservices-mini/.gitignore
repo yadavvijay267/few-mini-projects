@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# Node
+node_modules/
+# Docker / local data
+.env
+*.log
+data/
+pgdata/
+redisdata/
+# OS
+.DS_Store

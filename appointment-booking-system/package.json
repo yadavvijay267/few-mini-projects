@@ -1,0 +1,11 @@
+{
+  "name": "appointment-booking-system",
+  "version": "1.0.0",
+  "description": "Booking System (Appointments)",
+  "main": "src/server/server.js",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "test": "node tests/test.js"
+  },
+  "license": "MIT"
+}

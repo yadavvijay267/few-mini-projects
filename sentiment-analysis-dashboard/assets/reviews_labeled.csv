@@ -1,0 +1,91 @@
+date,text,label
+2026-10-01,"I love this product, it works perfectly and feels premium",positive
+2026-10-02,"Excellent quality, fast delivery, very happy with my purchase",positive
+2026-10-03,"Great value for money, highly recommend to everyone",positive
+2026-10-04,"Amazing product, exceeded my expectations completely",positive
+2026-10-05,The quality is outstanding and the packaging was lovely,positive
+2026-10-06,Super fast shipping and the item is exactly as described,positive
+2026-10-07,"Brilliant service, the support team solved my issue quickly",positive
+2026-10-08,"Wonderful experience, will definitely buy again",positive
+2026-10-09,"Very pleased, the product is durable and looks great",positive
+2026-10-10,"Fantastic price for such good quality, five stars",positive
+2026-10-11,"Easy to use, reliable, and beautifully made",positive
+2026-10-12,The delivery was quick and the product is superb,positive
+2026-10-13,"I am delighted with this purchase, worth every penny",positive
+2026-10-14,Top-notch quality and friendly customer service,positive
+2026-10-15,"Works flawlessly, best purchase I have made this year",positive
+2026-10-16,"Great product, sturdy build and nice design",positive
+2026-10-17,"Really impressed, arrived early and works great",positive
+2026-10-18,"Love it, the quality is far better than expected",positive
+2026-10-19,"Perfect fit, excellent finish, very satisfied",positive
+2026-10-20,"Smooth ordering, fast delivery, great product",positive
+2026-10-21,"Absolutely love it, superb quality and excellent service",positive
+2026-10-22,"Outstanding value, wonderful product, highly recommended",positive
+2026-10-23,Delighted with the fast delivery and perfect condition,positive
+2026-10-24,"Excellent purchase, beautiful design and great performance",positive
+2026-10-25,"Thrilled with this product, fantastic quality throughout",positive
+2026-10-26,"Superb item, lovely finish, very happy customer here",positive
+2026-10-27,"Great experience from start to finish, excellent product",positive
+2026-10-28,"Perfect product, wonderful quality, would buy again",positive
+2026-10-01,Amazing quality and brilliant customer care,positive
+2026-10-02,"Love this, excellent value and flawless performance",positive
+2026-10-01,"Terrible quality, broke within a week, very disappointed",negative
+2026-10-02,"Worst purchase ever, cheap material and bad finish",negative
+2026-10-03,Slow delivery and the item arrived damaged,negative
+2026-10-04,"Awful service, nobody replied to my complaint",negative
+2026-10-05,"The product stopped working after two days, total waste of money",negative
+2026-10-06,"Overpriced for such poor quality, do not buy",negative
+2026-10-07,"Faulty item, misleading description, I want a refund",negative
+2026-10-08,"Horrible experience, late delivery and rude support",negative
+2026-10-09,"Flimsy and unreliable, broke on first use",negative
+2026-10-10,"Very unhappy, the colour is wrong and it smells bad",negative
+2026-10-11,"Bad packaging, item arrived scratched and dented",negative
+2026-10-12,The price is far too high for what you get,negative
+2026-10-13,"Disappointing, does not work as advertised at all",negative
+2026-10-14,"Poor quality control, missing parts in the box",negative
+2026-10-15,Delivery took three weeks and tracking never updated,negative
+2026-10-16,Rude customer service and no refund offered,negative
+2026-10-17,"Cheap plastic, feels like it will fall apart",negative
+2026-10-18,"Not worth the money, regret buying this",negative
+2026-10-19,Defective product and the return process is painful,negative
+2026-10-20,"It arrived late, damaged, and nothing like the photos",negative
+2026-10-21,"Terrible experience, awful quality, complete waste of money",negative
+2026-10-22,"Worst quality I have seen, broke straight away",negative
+2026-10-23,"Appalling service, faulty goods and no help at all",negative
+2026-10-24,"Horrible product, cheap and nasty, very disappointed",negative
+2026-10-25,"Useless item, stopped working immediately, avoid it",negative
+2026-10-26,"Dreadful delivery, damaged goods and rude staff",negative
+2026-10-27,"Pathetic quality, fell apart within days",negative
+2026-10-28,"Awful purchase, misleading listing and broken item",negative
+2026-10-01,"Disgusting condition on arrival, scratched and faulty",negative
+2026-10-02,"Terrible value, overpriced junk, I want my money back",negative
+2026-10-01,"The product is average, nothing special, it does the job",neutral
+2026-10-02,"It is okay for the price, mediocre but acceptable",neutral
+2026-10-03,"Average quality, standard features, neither good nor bad",neutral
+2026-10-04,"The item is fine, ordinary build, as expected for the price",neutral
+2026-10-05,"It works adequately, nothing remarkable either way",neutral
+2026-10-06,"An average product, acceptable quality, standard packaging",neutral
+2026-10-07,"The product is mediocre, it functions but is unremarkable",neutral
+2026-10-08,"It is neither impressive nor disappointing, just average",neutral
+2026-10-09,"Standard item, ordinary performance, acceptable overall",neutral
+2026-10-10,"The product does what it says, average in every way",neutral
+2026-10-11,"It is okay, not great and not bad, middle of the road",neutral
+2026-10-12,"Average build quality, standard size, nothing to note",neutral
+2026-10-13,"The item is acceptable, plain design, works as expected",neutral
+2026-10-14,"Mediocre product, adequate for occasional use, nothing more",neutral
+2026-10-15,"It is fine for the price, average quality, no complaints either way",neutral
+2026-10-16,"The product is standard, unremarkable, does the job adequately",neutral
+2026-10-17,"Ordinary item, average finish, acceptable for the cost",neutral
+2026-10-18,"It works, average performance, neither good nor bad",neutral
+2026-10-19,"A plain, average product, acceptable but not exciting",neutral
+2026-10-20,"The item is okay, standard quality, nothing special about it",neutral
+2026-10-21,"Mediocre at best, acceptable quality, average value",neutral
+2026-10-22,"An ordinary purchase, average in all respects",neutral
+2026-10-23,"The product is adequate, standard features, as described",neutral
+2026-10-24,"Nothing special, average quality, acceptable delivery time",neutral
+2026-10-25,"It is fine, unremarkable, does what is expected of it",neutral
+2026-10-26,"Average product, plain packaging, acceptable condition",neutral
+2026-10-27,"Standard quality, mediocre design, works adequately",neutral
+2026-10-28,"The item is acceptable, average size, ordinary materials",neutral
+2026-10-01,"It is okay overall, average, neither praise nor complaint",neutral
+2026-10-02,"A middle-of-the-road product, average and acceptable",neutral

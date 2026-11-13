@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Board Platform</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><h1>Job Board Platform</h1><p>Two-sided job board: post jobs, search and filter, apply with a resume, and an employer pipeline with match scores.</p></header>
+<main>
+<section id="auth" class="card">
+  <h2>Sign in</h2>
+  <p class="muted">Demo account: <code>demo@example.com</code> / <code>demo1234</code> — or register a new account.</p>
+  <div class="row">
+    <input id="auth-name" placeholder="Name (register only)">
+    <input id="auth-email" type="email" placeholder="Email" value="demo@example.com">
+    <input id="auth-pass" type="password" placeholder="Password" value="demo1234">
+    <button id="btn-login">Log in</button>
+    <button id="btn-register" class="secondary">Register</button>
+    <button id="btn-logout" class="secondary" hidden>Log out</button>
+  </div>
+  <p id="auth-status" class="muted"></p>
+</section>
+<nav id="tabs"></nav>
+<section id="panel" class="card"></section>
+<section id="custom" class="card"><h2>Match score</h2><p>Applicants are ranked by how many of the job's required skills they list. Try job <code>j1</code> (needs React, JavaScript, CSS).</p><div class="row"><input id="m-job" value="j1" placeholder="Job ID"><input id="m-skills" value="React, JavaScript" placeholder="Your skills, comma-separated"><button id="custom-run">My match score</button><button id="app-run" class="secondary">Ranked applicants</button><button id="dash-run" class="secondary">Employer dashboard</button></div><pre id="custom-out">Log in, then check a match score.</pre></section>
+</main>
+<footer><p>Job Board Platform — built by Clamor. MIT licensed.</p></footer>
+<script>window.SCHEMA = {"jobs": {"label": "Jobs", "singular": "job", "fields": [{"key": "title", "label": "Title", "type": "text"}, {"key": "company", "label": "Company", "type": "text"}, {"key": "location", "label": "Location", "type": "text"}, {"key": "salaryMin", "label": "Salary min", "type": "number"}, {"key": "salaryMax", "label": "Salary max", "type": "number"}, {"key": "remote", "label": "Remote", "type": "select", "options": ["Yes", "No"]}, {"key": "tags", "label": "Tags (comma-separated)", "type": "text"}, {"key": "description", "label": "Description", "type": "textarea"}]}, "applications": {"label": "Applications", "singular": "application", "fields": [{"key": "jobId", "label": "Job ID", "type": "text"}, {"key": "applicantName", "label": "Applicant", "type": "text"}, {"key": "email", "label": "Email", "type": "text"}, {"key": "skills", "label": "Skills (comma-separated)", "type": "text"}, {"key": "status", "label": "Status", "type": "select", "options": ["Applied", "Shortlisted", "Interview", "Rejected", "Hired"]}]}, "savedSearches": {"label": "Saved searches", "singular": "saved search", "fields": [{"key": "query", "label": "Query", "type": "text"}, {"key": "location", "label": "Location", "type": "text"}, {"key": "remote", "label": "Remote", "type": "select", "options": ["Yes", "No"]}]}}; window.CUSTOM_TAB = { run: function () { var out = document.getElementById('custom-out'); function show(p) { p.then(function (r) { out.textContent = JSON.stringify(r, null, 2); }).catch(function (e) { out.textContent = 'Error: ' + e.message; }); } var c = document.getElementById('custom-run'); if (c) c.onclick = function () { show(api('/api/jobs/' + document.getElementById('m-job').value + '/match?skills=' + encodeURIComponent(document.getElementById('m-skills').value))); }; var a = document.getElementById('app-run'); if (a) a.onclick = function () { show(api('/api/jobs/' + document.getElementById('m-job').value + '/applicants')); }; var d = document.getElementById('dash-run'); if (d) d.onclick = function () { show(api('/api/employer/dashboard')); }; } };</script>
+<script src="/app.js"></script>
+</body>
+</html>

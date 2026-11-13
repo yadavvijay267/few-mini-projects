@@ -1,0 +1,20 @@
+python
+sql
+machine learning
+scikit-learn
+pandas
+data analysis
+statistics
+deep learning
+tensorflow
+pytorch
+natural language processing
+nlp
+data visualisation
+data visualization
+excel
+git
+docker
+aws
+communication
+problem solving

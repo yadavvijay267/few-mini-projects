@@ -1,0 +1,2 @@
+# Node.js project (built-ins only) — no Python dependencies and no npm packages.
+# Production path: redis + bullmq (see docs/ARCHITECTURE.md).

@@ -1,0 +1,4 @@
+Rohan Verma
+Machine Learning Engineer
+
+Experience: 2 years building ML models. Deep learning with TensorFlow and PyTorch. Natural language processing and NLP pipelines. Python, scikit-learn, pandas. AWS and Docker for deployment. Limited SQL and statistics exposure; no dashboard or data visualisation work yet. Good problem solving skills.

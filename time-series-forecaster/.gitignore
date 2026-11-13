@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Node / front end
+node_modules/
+.env
+.env.local
+
+# Data / models / logs
+*.log
+*.h5
+*.pt
+*.onnx
+models/
+data/*.db
+*.db
+audit.log
+audit.jsonl
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.pytest_cache/

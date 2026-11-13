@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cable Sizing &amp; Voltage Drop Calculator</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><h1>Cable Sizing &amp; Voltage Drop Calculator</h1><p>Current rating, voltage drop and cost — per IEC/IS-style tables.</p></header>
+<main>
+<section class="card"><h2>Load &amp; run</h2>
+<label>Load (kW)<input id="kw" type="number" value="15" step="0.5"></label>
+<label>Voltage (V)<input id="v" type="number" value="415"></label>
+<label>Phases <select id="ph"><option value="3">3-phase</option><option value="1">1-phase</option></select></label>
+<label>Power factor<input id="pf" type="number" value="0.85" step="0.01" min="0.5" max="1"></label>
+<label>Run length (m)<input id="len" type="number" value="60"></label>
+<label>Voltage-drop limit (%) <select id="lim"><option value="5">5% (power loads)</option><option value="3">3% (lighting)</option></select></label>
+<label>Temperature derating<input id="tf" type="number" value="1.0" step="0.05"></label>
+<label>Grouping derating<input id="gf" type="number" value="1.0" step="0.05"></label>
+<label>Burial derating<input id="bf" type="number" value="1.0" step="0.05"></label>
+<button onclick="calc()">Size the cable</button></section>
+<section class="card"><h2>Recommendation</h2><div id="out"></div></section>
+<section class="card full"><h2>Compare two sizes</h2><div id="cmp"></div>
+<p class="mut">Vd = 2&middot;L&middot;I&middot;(R&middot;cos&phi; + X&middot;sin&phi;)/1000 (1-ph) or &radic;3&middot;L&middot;I&middot;(R&middot;cos&phi; + X&middot;sin&phi;)/1000 (3-ph). Tables are simplified copper/PVC values — verify against the manufacturer datasheet for real designs.</p></section>
+</main><script src="app.js"></script></body></html>

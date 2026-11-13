@@ -1,0 +1,5 @@
+{
+  "racks": ["A1", "A2", "A3"],
+  "rack_power_limit_kw": 8, "rack_weight_limit_kg": 1000,
+  "devices": [{"rack": "A1", "name": "Server-01", "type": "Server", "u": 2, "power_kw": 0.5, "weight_kg": 25}]
+}

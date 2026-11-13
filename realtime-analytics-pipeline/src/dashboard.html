@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Live Analytics</title>
+<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:.4rem .6rem;text-align:left}
+.live{color:green;font-weight:bold}</style></head>
+<body><h1>Real-Time Analytics <span class="live">● LIVE</span></h1>
+<p>Per-minute windows, updated every second. Late events: <span id="late">0</span> · Dead-letter: <span id="dl">0</span></p>
+<table><thead><tr><th>Window (UTC)</th><th>Events</th><th>Views</th><th>Clicks</th><th>Orders</th><th>Revenue</th><th>Top page</th><th>Closed</th></tr></thead>
+<tbody id="rows"></tbody></table>
+<script>
+const es = new EventSource('/events');
+es.onmessage = e => { const s = JSON.parse(e.data);
+  document.getElementById('late').textContent = s.late_events;
+  document.getElementById('dl').textContent = s.dead_letter;
+  document.getElementById('rows').innerHTML = s.windows.slice(-10).map(w =>
+    `<tr><td>${w.window_start}</td><td>${w.events}</td><td>${w.page_views}</td><td>${w.clicks}</td><td>${w.orders}</td><td>$${w.revenue.toFixed(2)}</td><td>${w.top_page||''}</td><td>${w.closed?'yes':'no'}</td></tr>`).join('');
+};
+</script></body></html>

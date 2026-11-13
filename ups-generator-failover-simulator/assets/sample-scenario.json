@@ -1,0 +1,16 @@
+{
+  "name": "Tight design — 950 kW load, 900 kVA generator (shedding expected)",
+  "load_kw": 950,
+  "ups_kva": 1000,
+  "ups_runtime_s": 900,
+  "gen_kva": 900,
+  "gen_start_s": 15,
+  "gen_ramp_s": 5,
+  "ats_delay_s": 3,
+  "restore_s": 300,
+  "shed_loads": [
+    {"name": "Non-critical office load", "kw": 120, "priority": 3},
+    {"name": "Test lab", "kw": 80, "priority": 2},
+    {"name": "CRAC unit B (redundant)", "kw": 150, "priority": 2}
+  ]
+}

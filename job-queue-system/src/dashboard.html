@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Queue Dashboard</title>
+<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:0 auto;padding:1rem} .cards{display:flex;gap:.5rem;flex-wrap:wrap}
+.card{border:1px solid #ccc;border-radius:8px;padding:.7rem 1rem;min-width:100px} table{width:100%;border-collapse:collapse;margin-top:1rem}
+td,th{border:1px solid #ddd;padding:.4rem;text-align:left} button{cursor:pointer;padding:.3rem .6rem}
+.dead{color:#b91c1c}.completed{color:#15803d} form{margin:1rem 0;display:flex;gap:.5rem;flex-wrap:wrap}
+input,select{padding:.4rem}</style></head>
+<body>
+<h1>Job Queue Dashboard</h1>
+<div class="cards" id="stats"></div>
+<form id="enqueueForm">
+  <select id="type"><option>sendEmail</option><option>generateReport</option><option>processImage</option><option>alwaysFail</option></select>
+  <input id="payload" placeholder='payload JSON, e.g. {"to":"a@b.co"}' size="40">
+  <input id="priority" type="number" placeholder="priority" value="0" style="width:80px">
+  <input id="delay" type="number" placeholder="delay ms" value="0" style="width:90px">
+  <button>Enqueue job</button>
+</form>
+<table><thead><tr><th>ID</th><th>Type</th><th>Status</th><th>Attempts</th><th>Error / Result</th><th>Action</th></tr></thead>
+<tbody id="jobs"></tbody></table>
+<script>
+async function refresh() {
+  const stats = await (await fetch('/stats')).json();
+  document.getElementById('stats').innerHTML = Object.entries(stats.counts).map(([k,v]) => `<div class="card"><strong>${k}</strong><br>${v}</div>`).join('');
+  const jobs = await (await fetch('/jobs')).json();
+  document.getElementById('jobs').innerHTML = jobs.map(j => `<tr><td>${j.id}</td><td>${j.type}</td><td class="${j.status}">${j.status}</td><td>${j.attempts}/${j.maxAttempts}</td><td>${j.lastError || JSON.stringify(j.result) || ''}</td><td>${j.status==='dead' ? `<button onclick="replay('${j.id}')">↻ Replay dead-letter</button>` : ''}</td></tr>`).join('');
+}
+async function replay(id) { await fetch('/jobs/'+id+'/replay', {method:'POST'}); refresh(); }
+document.getElementById('enqueueForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  let payload = {}; try { payload = JSON.parse(document.getElementById('payload').value || '{}'); } catch { alert('Invalid payload JSON'); return; }
+  await fetch('/jobs', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ type: document.getElementById('type').value, payload,
+      priority: +document.getElementById('priority').value, delayMs: +document.getElementById('delay').value })});
+  refresh();
+});
+setInterval(refresh, 1000); refresh();
+</script>
+</body></html>
